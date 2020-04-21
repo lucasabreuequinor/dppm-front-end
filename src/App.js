@@ -52,9 +52,9 @@ function App() {
 
 
         <Switch>
-          <Route path="/" exact component={WelcomeScreen}/>
-          <Route path="/create_project" exact component={CreateProjectScreen}/>
-          <Route path="/create_project/change_story" component={ChangeStoryScreen}/>
+          <Route path={process.env.PUBLIC_URL + '/'} exact component={WelcomeScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project"} exact component={CreateProjectScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/change_story"} component={ChangeStoryScreen}/>
         </Switch>
     </Router>  
   );
