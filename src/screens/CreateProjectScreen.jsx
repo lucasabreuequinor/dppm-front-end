@@ -47,7 +47,7 @@ class CreateProjectScreen extends React.Component{
 
               </CPSelectField>
               <CPStyledNextLinkContainer>
-                <CPStyledNextLink to="/create_project/change_story" > Next </CPStyledNextLink>
+                <CPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Next </CPStyledNextLink>
               </CPStyledNextLinkContainer>
 
             </CPForm>

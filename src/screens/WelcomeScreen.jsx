@@ -44,7 +44,7 @@ class WelcomeScreen extends React.Component {
   
                   <WelcomeCreateProject>
 
-                    <StyledOptionLink to="create_project">
+                    <StyledOptionLink to={process.env.PUBLIC_URL + "/create_project"}>
                     <OptionIcon name="new_file_logo">
                     </OptionIcon>
                       <span>Create project</span>
