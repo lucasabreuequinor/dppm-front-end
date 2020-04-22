@@ -11,8 +11,10 @@ import CHToContainer from "./CHToContainer"
 import CHToLabel from "./CHToLabel"
 import CHToTextArea from "./CHToTextArea"
 import CHLabel from "./CHLabel"
-import CHStyledNextLinkContainer from "./CHStyledNextLinkContainer"
+import CHStyledPreviousNextLinkContainer from "./CHStyledPreviousNextLinkContainer"
 import CHStyledNextLink from "./CHStyledNextLink"
+import CHStyledPreviousLink from "./CHStyledPreviousLink"
+
 
 
 export {
@@ -30,6 +32,7 @@ export {
       CHToLabel,
       CHToTextArea,
       CHLabel,
-      CHStyledNextLinkContainer,
-      CHStyledNextLink
+      CHStyledPreviousNextLinkContainer,
+      CHStyledNextLink,
+      CHStyledPreviousLink
 }

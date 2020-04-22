@@ -6,9 +6,9 @@ import {
   CPLabelField,
   CPInputField,
   CPSelectField,
-  CPButtonContainer,
-  CPStyledNextLink, 
-  CPStyledNextLinkContainer}
+  CPStyledNextLink,
+  CPStyledPreviousLink,
+  CPStyledPreviousNextLinkContainer}
   from "../components/create_project_screen"
 
 
@@ -46,9 +46,12 @@ class CreateProjectScreen extends React.Component{
               <CPSelectField>
 
               </CPSelectField>
-              <CPStyledNextLinkContainer>
+              <CPStyledPreviousNextLinkContainer>
+
+                <CPStyledPreviousLink to={process.env.PUBLIC_URL + "/"} > Previous </CPStyledPreviousLink>
                 <CPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Next </CPStyledNextLink>
-              </CPStyledNextLinkContainer>
+
+              </CPStyledPreviousNextLinkContainer>
 
             </CPForm>
           </CPFormContainer>

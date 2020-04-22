@@ -2,26 +2,24 @@ import styled, {css} from 'styled-components'
 import { Link } from "react-router-dom"
 
 
-const StyledOptionLink = styled(Link)`
+const CPStyledPreviousLink = styled(Link)`
 
-  align-self: flex-start;
-  display: flex;
-  align-items: center;
-  padding: .3em 1em;
+  font-family: 'Montserrat';
   background-color: #007079;
+  border: none;
+  color: white;
+  padding: .5em 4em;
   border-radius: .2em;
   font-size: .9em;
+  cursor: pointer;
   text-decoration: none;
-  color: white;
-
-  & > span {
-    margin-left: .5em;
-  }
 
 `
-export default StyledOptionLink
+
+export default CPStyledPreviousLink
 
 
 // &:visited{
 //   color: unset;
 // }
+

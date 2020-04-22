@@ -13,8 +13,9 @@ import {
   CHToLabel,
   CHToTextArea,
   CHLabel,
-  CHStyledNextLinkContainer,
-  CHStyledNextLink
+  CHStyledPreviousNextLinkContainer,
+  CHStyledNextLink,
+  CHStyledPreviousLink
   }
   from "../components/change_story_screen"
 
@@ -49,9 +50,10 @@ class ChangeStoryScreen extends React.Component{
 
 
             </CHFormsContainer>
-            <CHStyledNextLinkContainer>
-              <CHStyledNextLink to="/"> Next </CHStyledNextLink>
-            </CHStyledNextLinkContainer>
+            <CHStyledPreviousNextLinkContainer>
+              <CHStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project"} > Previous </CHStyledPreviousLink>
+              <CHStyledNextLink to={process.env.PUBLIC_URL + "/"} > Next </CHStyledNextLink>
+            </CHStyledPreviousNextLinkContainer>
 
           </CHFormAndLabelContainer>
   

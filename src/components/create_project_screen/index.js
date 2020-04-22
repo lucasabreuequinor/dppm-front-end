@@ -4,8 +4,10 @@ import CPForm from "./CPForm"
 import CPLabelField from "./CPLabelField"
 import CPInputField from "./CPInputField"
 import CPSelectField from "./CPSelectField"
-import CPStyledNextLinkContainer from "./CPStyledNextLinkContainer"
+import CPStyledPreviousNextLinkContainer from "./CPStyledPreviousNextLinkContainer"
 import CPStyledNextLink from "./CPStyledNextLink"
+import CPStyledPreviousLink from "./CPStyledPreviousLink"
+
 
 
 
@@ -17,6 +19,7 @@ export {
       CPLabelField,
       CPInputField,
       CPSelectField,
-      CPStyledNextLinkContainer,
-      CPStyledNextLink
+      CPStyledPreviousNextLinkContainer,
+      CPStyledNextLink,
+      CPStyledPreviousLink
 }
