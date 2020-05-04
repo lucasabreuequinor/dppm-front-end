@@ -1,7 +1,9 @@
 import React from 'react';
 import { WelcomeScreen, 
   CreateProjectScreen,
-  ChangeStoryScreen } 
+  ChangeStoryScreen,
+  SolutionAndDataScreen,
+  BusinessCaseScreen } 
   
   from "./screens";
 
@@ -56,6 +58,8 @@ function App() {
           <Route path={process.env.PUBLIC_URL + '/'} exact component={WelcomeScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project"} exact component={CreateProjectScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project/change_story"} component={ChangeStoryScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/solution_and_data"} component={SolutionAndDataScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/business_case"} component={BusinessCaseScreen}/>
         </Switch>
     </Router>  
   );

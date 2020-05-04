@@ -2,7 +2,7 @@ import styled, {css} from 'styled-components'
 import { Link } from "react-router-dom"
 
 
-const CHStyledPreviousLink = styled(Link)`
+const SADStyledPreviousLink = styled(Link)`
 
   font-family: 'Montserrat';
   background-color: #007079;
@@ -18,4 +18,4 @@ const CHStyledPreviousLink = styled(Link)`
 
 `
 
-export default CHStyledPreviousLink
+export default SADStyledPreviousLink

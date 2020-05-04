@@ -8,11 +8,13 @@ const CPStyledPreviousLink = styled(Link)`
   background-color: #007079;
   border: none;
   color: white;
-  padding: .5em 4em;
+  padding: .5em 1em;
   border-radius: .2em;
   font-size: .9em;
   cursor: pointer;
   text-decoration: none;
+  width: 100px;
+  text-align: center;
 
 `
 

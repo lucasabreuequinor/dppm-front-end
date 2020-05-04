@@ -1,8 +1,7 @@
-import styled, {css} from 'styled-components'
-import { Link } from "react-router-dom"
+import styled from 'styled-components'
 
 
-const CHStyledPreviousLink = styled(Link)`
+const SADArchDiagramsUploadArchDiagramButton = styled.button`
 
   font-family: 'Montserrat';
   background-color: #007079;
@@ -11,11 +10,12 @@ const CHStyledPreviousLink = styled(Link)`
   padding: .5em 1em;
   border-radius: .2em;
   font-size: .9em;
+  font-weight: bold;
   cursor: pointer;
   text-decoration: none;
-  width: 100px;
   text-align: center;
+  margin-top: 1.9em;
 
 `
 
-export default CHStyledPreviousLink
+export default SADArchDiagramsUploadArchDiagramButton

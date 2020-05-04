@@ -52,48 +52,13 @@ class ChangeStoryScreen extends React.Component{
             </CHFormsContainer>
             <CHStyledPreviousNextLinkContainer>
               <CHStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project"} > Previous </CHStyledPreviousLink>
-              <CHStyledNextLink to={process.env.PUBLIC_URL + "/"} > Next </CHStyledNextLink>
+              <CHStyledNextLink to={process.env.PUBLIC_URL + "/create_project/solution_and_data"} > Next </CHStyledNextLink>
             </CHStyledPreviousNextLinkContainer>
 
           </CHFormAndLabelContainer>
   
         </CHMainContainer>
 
-        {/* <CPMainContainer>
-          <CPFormContainer>
-            <CPForm>
-              <CPLabelField>Project Name</CPLabelField>
-              <CPInputField></CPInputField>
-              
-              <CPLabelField>Project Leader</CPLabelField>
-              <CPSelectField>
-
-              </CPSelectField>
-
-              <CPLabelField>Digital Programme</CPLabelField>
-              <CPSelectField>
-
-              </CPSelectField>
-
-              <CPLabelField>Approver</CPLabelField>
-              <CPSelectField>
-
-              </CPSelectField>
-
-              <CPLabelField>Link to SIP</CPLabelField>
-              <CPInputField></CPInputField>
-
-              <CPLabelField>DG</CPLabelField>
-              <CPSelectField>
-
-              </CPSelectField>
-              <CPButtonContainer>
-                <CPButtonNext>Next</CPButtonNext>
-              </CPButtonContainer>
-
-            </CPForm>
-          </CPFormContainer>
-        </CPMainContainer> */}
       </React.Fragment>
       
       )
