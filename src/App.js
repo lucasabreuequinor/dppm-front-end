@@ -23,7 +23,34 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 function App() {
   return (
     <Router>
-
+        <HeaderContainer>
+          <Header>
+            <WrapLogoLabelHeader>
+              <Icon width="32px" name="equinor_logo" alt="equinor logo" ></Icon>
+              <LabelHeader>Create new project</LabelHeader>
+            </WrapLogoLabelHeader>
+            <NavBar>
+              <Icon hide_break_point onClick={(event) => {console.log(event.target)}} cursor="pointer" width="32px" id="menu" name="ham_logo" alt="toggle menu" ></Icon>
+              <NavBarMenu id="nav" className="hide-menu">
+                <ExitNavBarMenu id="exit">
+                  <Icon cursor="pointer" width="15px" name="exit_menu_logo" ></Icon>
+                </ExitNavBarMenu>
+                <ItemNavBarMenu>
+                  <StyledLink>Link 1</StyledLink>                      
+                </ItemNavBarMenu>
+                <ItemNavBarMenu>
+                  <StyledLink>Link 1</StyledLink>                      
+                </ItemNavBarMenu>
+                <ItemNavBarMenu>
+                  <StyledLink>Link 1</StyledLink>                      
+                </ItemNavBarMenu>
+                <ItemNavBarMenu>
+                  <StyledLink>Link 1</StyledLink>                      
+                </ItemNavBarMenu>                            
+              </NavBarMenu>
+            </NavBar>
+          </Header>
+        </HeaderContainer>
 
 
         <Switch>
