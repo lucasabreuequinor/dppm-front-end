@@ -4,11 +4,9 @@ const BCKeyPerformanceIndicatorsContainer = styled.div`
 
   display: flex;
   flex-direction: column;
+  margin-top: 1.9em;
   flex-grow: 1;
   flex-basis: 50%;
-  margin-top: 1.9em;
-  overflow: scroll;
-  
 }
 `
 export default BCKeyPerformanceIndicatorsContainer

@@ -6,7 +6,6 @@ const BCKeyAssumpContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
   flex-basis: 50%;
-  
 }
 `
 export default BCKeyAssumpContainer

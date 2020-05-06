@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const SADArchContractStatusInput = styled.input`
 
   border: 1px solid #707070;
+  width:100%;
   padding-top: .5em;
   padding: .5em;
   border-radius: .2em;

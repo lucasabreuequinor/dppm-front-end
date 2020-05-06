@@ -18,6 +18,9 @@ import BCKeyPerformanceIndicatorsTableYear2Column from "./BCKeyPerformanceIndica
 import BCKeyPerformanceIndicatorsTableYear3Column from "./BCKeyPerformanceIndicatorsTableYear3Column"
 import BCKeyPerformanceIndicatorsTableYear4Column from "./BCKeyPerformanceIndicatorsTableYear4Column"
 import BCKeyPerformanceIndicatorsTableYear5Column from "./BCKeyPerformanceIndicatorsTableYear5Column"
+import BCKeyPerformanceIndicatorsTableImpactRow from "./BCKeyPerformanceIndicatorsTableImpactRow"
+import BCKeyPerformanceIndicatorsAddKpiButton from "./BCKeyPerformanceIndicatorsAddKpiButton"
+import BCKeyPerformanceIndicatorsKpiItem from "./BCKeyPerformanceIndicatorsKpiItem"
 
 
 export {
@@ -41,7 +44,10 @@ export {
       BCKeyPerformanceIndicatorsTableYear2Column,
       BCKeyPerformanceIndicatorsTableYear3Column,
       BCKeyPerformanceIndicatorsTableYear4Column,
-      BCKeyPerformanceIndicatorsTableYear5Column
+      BCKeyPerformanceIndicatorsTableYear5Column,
+      BCKeyPerformanceIndicatorsTableImpactRow,
+      BCKeyPerformanceIndicatorsAddKpiButton,
+      BCKeyPerformanceIndicatorsKpiItem
 }
 
 

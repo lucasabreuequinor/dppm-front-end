@@ -19,8 +19,9 @@ import {
   BCKeyPerformanceIndicatorsTableYear2Column,
   BCKeyPerformanceIndicatorsTableYear3Column,
   BCKeyPerformanceIndicatorsTableYear4Column,
-  BCKeyPerformanceIndicatorsTableYear5Column
-
+  BCKeyPerformanceIndicatorsTableYear5Column,
+  BCKeyPerformanceIndicatorsAddKpiButton,
+  BCKeyPerformanceIndicatorsKpiItem
   }
   from "../components/business_case_screen"
       
@@ -35,21 +36,29 @@ class BusinessCaseScreen extends React.Component {
       kpis:[
 
       ],
-      kips_quantity: 0
+      kpis_quantity: 0
     }
   
   }
 
   addkpi = (e) => {
-    this.setState((state) => ({
-      kpis: [...state.kpis,{impact_type:'', indicator:'', baseline: '', year1: '', year2: '', year3: '', year4: '', year5: ''}
-    ]
-    }))
+    if(this.state.kpis_quantity < 6)
+    {
+
+      this.setState((state) => ({
+        kpis: [...state.kpis,{impact_type:'', indicator:'', baseline: '', year1: '', year2: '', year3: '', year4: '', year5: ''}
+      ],
+      kpis_quantity: state.kpis_quantity + 1
+      }))
+
+    }
+
     e.preventDefault()
   }
 
 
   render(){
+    console.log(this.state.kpis_quantity)
     return(
         <React.Fragment>
           <BCMainContainer>
@@ -80,23 +89,35 @@ class BusinessCaseScreen extends React.Component {
                         <BCKeyPerformanceIndicatorsTableYear4Column>Year 4</BCKeyPerformanceIndicatorsTableYear4Column>
                         <BCKeyPerformanceIndicatorsTableYear5Column>Year 5</BCKeyPerformanceIndicatorsTableYear5Column>
                         {
-                          this.state.kpis.map(kpi => 
-                          <React.Fragment>
-                            <div>{kpi.impact_type}</div>  
-                            <div style={{backgroundColor:'#DCDCDC'}}>{kpi.indicator}</div>  
-                            <div>{kpi.baseline}</div>  
-                            <div>{kpi.year1}</div>  
-                            <div>{kpi.year2}</div>  
-                            <div>{kpi.year3}</div>
-                            <div>{kpi.year4}</div>
-                            <div>{kpi.year5}</div>  
-                          </React.Fragment>
+                          this.state.kpis.map((kpi, index) =>
+                          index % 2 != 0 ?
+                            <React.Fragment>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                            </React.Fragment>
+                          :
+                            <React.Fragment>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                            </React.Fragment>                        
                           )
                         }
+                        <BCKeyPerformanceIndicatorsAddKpiButton onClick={ this.addkpi }></BCKeyPerformanceIndicatorsAddKpiButton>
 
                       </BCKeyPerformanceIndicatorsTableContainer>
                     </BCKeyPerformanceIndicatorsContainer>
-                    <button onClick={ this.addkpi }> + </button>
                   </BCKeyAssumpKeyPerformanceIndicatorsContainer>
 
                 </BCFormsContainer>
