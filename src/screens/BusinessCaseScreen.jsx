@@ -4,11 +4,17 @@ import {
   BCFormAndCashFlowGraphicContainerAndLabel,
   BCLabel,
   BCFormAndCashFlowGraphicContainer,
-  BCFormsContainer,
-  BCKeyAssumpKeyPerformanceIndicatorsContainer,
+  BCKeyAssumpCashFlowImpactKeyPerformanceIndicatorsContainer,
+  BCKeyAssumpCashFlowImpactContainer,
   BCKeyAssumpContainer,
   BCKeyAssumpLabel,
   BCKeyAssumpTextArea,
+  BCCashFlowImpactLabelContainer,
+  BCCashFlowImpactContainer,
+  BCCashFlowReviewedByOPAFCContainer,
+  BCCashFlowReviewedByOPAFCLabel,
+  BCCashFlowReviewedByOPAFCInput,
+  BCCashFlowImpactLabel,
   BCKeyPerformanceIndicatorsContainer,
   BCKeyPerformanceIndicatorsLabel,
   BCKeyPerformanceIndicatorsTableContainer,
@@ -21,7 +27,9 @@ import {
   BCKeyPerformanceIndicatorsTableYear4Column,
   BCKeyPerformanceIndicatorsTableYear5Column,
   BCKeyPerformanceIndicatorsAddKpiButton,
-  BCKeyPerformanceIndicatorsKpiItem
+  BCKeyPerformanceIndicatorsKpiItem,
+  BCCashFlowGraphicContainer,
+  CashFlowGraphic
   }
   from "../components/business_case_screen"
       
@@ -42,7 +50,7 @@ class BusinessCaseScreen extends React.Component {
   }
 
   addkpi = (e) => {
-    if(this.state.kpis_quantity < 6)
+    if(this.state.kpis_quantity < 18)
     {
 
       this.setState((state) => ({
@@ -67,14 +75,51 @@ class BusinessCaseScreen extends React.Component {
               <BCLabel>Business Case</BCLabel>
 
               <BCFormAndCashFlowGraphicContainer>
-                <BCFormsContainer>
 
-                  <BCKeyAssumpKeyPerformanceIndicatorsContainer>
+                  <BCKeyAssumpCashFlowImpactKeyPerformanceIndicatorsContainer>
 
-                    <BCKeyAssumpContainer>  
-                      <BCKeyAssumpLabel>Key assumptions:</BCKeyAssumpLabel>
-                      <BCKeyAssumpTextArea></BCKeyAssumpTextArea>
-                    </BCKeyAssumpContainer>
+                    <BCKeyAssumpCashFlowImpactContainer>  
+                      
+                      <BCKeyAssumpContainer>
+
+                        <BCKeyAssumpLabel>Key assumptions:</BCKeyAssumpLabel>
+                        <BCKeyAssumpTextArea></BCKeyAssumpTextArea>
+
+                      </BCKeyAssumpContainer>
+
+                      <BCCashFlowImpactLabelContainer>
+
+                        <BCCashFlowImpactLabel>Cashflow impact:</BCCashFlowImpactLabel>
+
+                        <BCCashFlowImpactContainer>
+
+                          <BCCashFlowReviewedByOPAFCContainer>
+                            
+                            <BCCashFlowReviewedByOPAFCLabel>{"Reviewed by OPA/F&C?"}</BCCashFlowReviewedByOPAFCLabel>
+                            <BCCashFlowReviewedByOPAFCInput></BCCashFlowReviewedByOPAFCInput>
+                          
+                          </BCCashFlowReviewedByOPAFCContainer>
+
+                          <BCCashFlowReviewedByOPAFCContainer>
+                            
+                            <BCCashFlowReviewedByOPAFCLabel>{"Reviewed by OPA/F&C?"}</BCCashFlowReviewedByOPAFCLabel>
+                            <BCCashFlowReviewedByOPAFCInput></BCCashFlowReviewedByOPAFCInput>
+                          
+                          </BCCashFlowReviewedByOPAFCContainer>
+
+                          <BCCashFlowReviewedByOPAFCContainer>
+                            
+                            <BCCashFlowReviewedByOPAFCLabel>{"Reviewed by OPA/F&C?"}</BCCashFlowReviewedByOPAFCLabel>
+                            <BCCashFlowReviewedByOPAFCInput></BCCashFlowReviewedByOPAFCInput>
+                          
+                          </BCCashFlowReviewedByOPAFCContainer>
+
+                        </BCCashFlowImpactContainer>
+
+                      </BCCashFlowImpactLabelContainer>
+
+
+                    </BCKeyAssumpCashFlowImpactContainer>
 
                     <BCKeyPerformanceIndicatorsContainer>
                       <BCKeyPerformanceIndicatorsLabel>Key performance indicators:</BCKeyPerformanceIndicatorsLabel>
@@ -118,12 +163,19 @@ class BusinessCaseScreen extends React.Component {
 
                       </BCKeyPerformanceIndicatorsTableContainer>
                     </BCKeyPerformanceIndicatorsContainer>
-                  </BCKeyAssumpKeyPerformanceIndicatorsContainer>
+                  </BCKeyAssumpCashFlowImpactKeyPerformanceIndicatorsContainer>
 
-                </BCFormsContainer>
+                  <BCCashFlowGraphicContainer style={{overflow:'hidden'}}>
+
+                    <CashFlowGraphic>
+                      
+                    </CashFlowGraphic>
+
+                  </BCCashFlowGraphicContainer>
 
               </BCFormAndCashFlowGraphicContainer>
             </BCFormAndCashFlowGraphicContainerAndLabel>
+
           </BCMainContainer>
         </React.Fragment>
     )

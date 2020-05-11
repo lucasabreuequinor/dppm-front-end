@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 const SADStyledPreviousLink = styled(Link)`
 
-  font-family: 'Montserrat';
+  font-family: inherit;
   background-color: #007079;
   border: none;
   color: white;

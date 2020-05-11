@@ -13,11 +13,11 @@ const BCKeyPerformanceIndicatorsTableContainer = styled.div`
   grid-auto-rows: 28px;
   width: 100%;
   border-radius: .2em;
-  font-family: 'Montserrat';
+  font-family: inherit;
   // color: #4d4c4c;
   color: #000000;
   box-sizing: border-box;
-  font-size: .9em;
+  font-size: .8em;
   font-weight: bold;
   margin-top: .8em;
   resize: none;

@@ -8,7 +8,7 @@ const SADArchContractStatusInput = styled.input`
   padding: .5em;
   border-radius: .2em;
   font-weight: 500;
-  font-family: 'Montserrat';
+  font-family: inherit;
   color: #4d4c4c;
   padding-left : 10px;
   padding-right: 10px;

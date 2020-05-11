@@ -6,7 +6,7 @@ const BCKeyPerformanceIndicatorsAddKpiButton = styled.button`
 
   width: 125px;
   background-image: url(${add_logo});
-  font-family: 'Montserrat';
+  font-family: inherit;
 
   background-color: transparent; /* make the button transparent */
   background-repeat: no-repeat;  /* make the background image appear only ondce */

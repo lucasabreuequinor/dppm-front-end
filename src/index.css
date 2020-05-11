@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:500,400,700&display=swap');
+@import url('https://eds-static.equinor.com/font/equinor-font.css');
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Equinor', 'Montserrat',  sans-serif;
   margin: 0;
 }

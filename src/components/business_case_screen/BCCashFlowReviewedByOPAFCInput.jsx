@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-const SADArchDiagramsTextArea = styled.textarea`
+const BCCashFlowReviewedByOPAFCInput = styled.input`
 
   border: 1px solid #707070;
-  width: 100%;
+  width:100%;
   padding-top: .5em;
   padding: .5em;
   border-radius: .2em;
@@ -12,13 +12,10 @@ const SADArchDiagramsTextArea = styled.textarea`
   color: #4d4c4c;
   padding-left : 10px;
   padding-right: 10px;
-  box-sizing: border-box;
-  
+  box-sizing: border-box;  
 
-  flex: 1;
-  margin-top: .8em;
   resize: none;
 }
 `
-export default SADArchDiagramsTextArea
+export default BCCashFlowReviewedByOPAFCInput
 
