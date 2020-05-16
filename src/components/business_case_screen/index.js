@@ -25,11 +25,18 @@ import BCKeyPerformanceIndicatorsTableYear2Column from "./BCKeyPerformanceIndica
 import BCKeyPerformanceIndicatorsTableYear3Column from "./BCKeyPerformanceIndicatorsTableYear3Column"
 import BCKeyPerformanceIndicatorsTableYear4Column from "./BCKeyPerformanceIndicatorsTableYear4Column"
 import BCKeyPerformanceIndicatorsTableYear5Column from "./BCKeyPerformanceIndicatorsTableYear5Column"
-import BCKeyPerformanceIndicatorsTableImpactRow from "./BCKeyPerformanceIndicatorsTableImpactRow"
 import BCKeyPerformanceIndicatorsAddKpiButton from "./BCKeyPerformanceIndicatorsAddKpiButton"
+import BCKeyPerformanceIndicatorsKpiItemImpactType from "./BCKeyPerformanceIndicatorsKpiItemImpactType"
+import BCKeyPerformanceIndicatorsKpiItemIndicator from "./BCKeyPerformanceIndicatorsKpiItemIndicator"
+import BCKeyPerformanceIndicatorsKpiItemBaseline from "./BCKeyPerformanceIndicatorsKpiItemBaseline"
+import BCKeyPerformanceIndicatorsKpiItemYear1 from "./BCKeyPerformanceIndicatorsKpiItemYear1"
+import BCKeyPerformanceIndicatorsKpiItemYear2 from "./BCKeyPerformanceIndicatorsKpiItemYear2"
+import BCKeyPerformanceIndicatorsKpiItemYear3 from "./BCKeyPerformanceIndicatorsKpiItemYear3"
+import BCKeyPerformanceIndicatorsKpiItemYear4 from "./BCKeyPerformanceIndicatorsKpiItemYear4"
+import BCKeyPerformanceIndicatorsKpiItemYear5 from "./BCKeyPerformanceIndicatorsKpiItemYear5"
 import BCKeyPerformanceIndicatorsKpiItem from "./BCKeyPerformanceIndicatorsKpiItem"
 import BCCashFlowGraphicContainer from "./BCCashFlowGraphicContainer"
-import CashFlowGraphic from "./CashFlowGraphic"
+import BCCashFlowGraphic from "./BCCashFlowGraphic"
 
 
 export {
@@ -61,11 +68,18 @@ export {
        BCKeyPerformanceIndicatorsTableYear3Column,
        BCKeyPerformanceIndicatorsTableYear4Column,
        BCKeyPerformanceIndicatorsTableYear5Column,
-       BCKeyPerformanceIndicatorsTableImpactRow,
        BCKeyPerformanceIndicatorsAddKpiButton,
+       BCKeyPerformanceIndicatorsKpiItemImpactType,
+       BCKeyPerformanceIndicatorsKpiItemIndicator,
+       BCKeyPerformanceIndicatorsKpiItemBaseline,
+       BCKeyPerformanceIndicatorsKpiItemYear1,
+       BCKeyPerformanceIndicatorsKpiItemYear2,
+       BCKeyPerformanceIndicatorsKpiItemYear3,
+       BCKeyPerformanceIndicatorsKpiItemYear4,
+       BCKeyPerformanceIndicatorsKpiItemYear5,
        BCKeyPerformanceIndicatorsKpiItem,
        BCCashFlowGraphicContainer,
-       CashFlowGraphic
+       BCCashFlowGraphic
       
 }
 

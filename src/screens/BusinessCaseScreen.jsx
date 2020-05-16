@@ -27,9 +27,16 @@ import {
   BCKeyPerformanceIndicatorsTableYear4Column,
   BCKeyPerformanceIndicatorsTableYear5Column,
   BCKeyPerformanceIndicatorsAddKpiButton,
-  BCKeyPerformanceIndicatorsKpiItem,
+  BCKeyPerformanceIndicatorsKpiItemImpactType,
+  BCKeyPerformanceIndicatorsKpiItemIndicator,
+  BCKeyPerformanceIndicatorsKpiItemBaseline,
+  BCKeyPerformanceIndicatorsKpiItemYear1,
+  BCKeyPerformanceIndicatorsKpiItemYear2,
+  BCKeyPerformanceIndicatorsKpiItemYear3,
+  BCKeyPerformanceIndicatorsKpiItemYear4,
+  BCKeyPerformanceIndicatorsKpiItemYear5,
   BCCashFlowGraphicContainer,
-  CashFlowGraphic
+  BCCashFlowGraphic
   }
   from "../components/business_case_screen"
       
@@ -137,25 +144,25 @@ class BusinessCaseScreen extends React.Component {
                           this.state.kpis.map((kpi, index) =>
                           index % 2 != 0 ?
                             <React.Fragment>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItemImpactType style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemImpactType>
+                              <BCKeyPerformanceIndicatorsKpiItemIndicator style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemIndicator>
+                              <BCKeyPerformanceIndicatorsKpiItemBaseline style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemBaseline>
+                              <BCKeyPerformanceIndicatorsKpiItemYear1 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear1>
+                              <BCKeyPerformanceIndicatorsKpiItemYear2 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear2>
+                              <BCKeyPerformanceIndicatorsKpiItemYear3 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear3>
+                              <BCKeyPerformanceIndicatorsKpiItemYear4 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear4>
+                              <BCKeyPerformanceIndicatorsKpiItemYear5 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear5>
                             </React.Fragment>
                           :
                             <React.Fragment>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
-                              <BCKeyPerformanceIndicatorsKpiItem style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItem>
+                              <BCKeyPerformanceIndicatorsKpiItemImpactType style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemImpactType>
+                              <BCKeyPerformanceIndicatorsKpiItemIndicator style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemIndicator>
+                              <BCKeyPerformanceIndicatorsKpiItemBaseline style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemBaseline>
+                              <BCKeyPerformanceIndicatorsKpiItemYear1 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear1>
+                              <BCKeyPerformanceIndicatorsKpiItemYear2 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear2>
+                              <BCKeyPerformanceIndicatorsKpiItemYear3 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear3>
+                              <BCKeyPerformanceIndicatorsKpiItemYear4 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear4>
+                              <BCKeyPerformanceIndicatorsKpiItemYear5 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear5>
                             </React.Fragment>                        
                           )
                         }
@@ -167,9 +174,9 @@ class BusinessCaseScreen extends React.Component {
 
                   <BCCashFlowGraphicContainer style={{overflow:'hidden'}}>
 
-                    <CashFlowGraphic>
+                    <BCCashFlowGraphic>
                       
-                    </CashFlowGraphic>
+                    </BCCashFlowGraphic>
 
                   </BCCashFlowGraphicContainer>
 

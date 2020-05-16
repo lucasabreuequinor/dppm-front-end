@@ -5,3 +5,8 @@ body {
   font-family: 'Equinor', 'Montserrat',  sans-serif;
   margin: 0;
 }
+
+textarea, input {
+
+  font-size: 1em;
+}
