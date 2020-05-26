@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeTechSetupStatus } from '../../actions/solution_and_data';
 
-const SADTechSetupStatusInput = styled.input`
+const SADTechSetupStatusInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADTechSetupStatusInput = styled.input`
   resize: none;
 }
 `
-export default SADTechSetupStatusInput
+const SADTechSetupStatusInput = () => {
+  const techSetupStatus = useSelector(state => state.sadReducers.sadTechSetupStatus);
+  const dispatch = useDispatch();
 
+  return <SADTechSetupStatusInputStyled
+            value={techSetupStatus}
+            onChange={(e) => dispatch(changeTechSetupStatus(e.target.value)) }
+          />
+
+}
+
+export default SADTechSetupStatusInput

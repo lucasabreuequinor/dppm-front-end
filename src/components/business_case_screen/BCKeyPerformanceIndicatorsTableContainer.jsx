@@ -10,7 +10,7 @@ const BCKeyPerformanceIndicatorsTableContainer = styled.div`
   column-gap: .2em;
   row-gap: .3em;
   grid-template-rows: 25px;
-  grid-auto-rows: 28px;
+  grid-auto-rows: auto;
   width: 100%;
   border-radius: .2em;
   font-family: inherit;

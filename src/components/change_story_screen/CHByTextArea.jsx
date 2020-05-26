@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeBy } from '../../actions/change_story';
 
-const CHByTextArea = styled.textarea`
+const CHByTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,15 @@ const CHByTextArea = styled.textarea`
   resize: none;
 }
 `
-export default CHByTextArea
+const CHByTextArea = () => {
+  const by = useSelector(state => state.chReducers.chBy);
+  const dispatch = useDispatch();
 
+  return <CHByTextAreaStyled
+            value={by}
+            onChange={(e) => dispatch(changeBy(e.target.value)) }
+          />
+
+}
+
+export default CHByTextArea

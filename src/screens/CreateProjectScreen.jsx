@@ -8,7 +8,21 @@ import {
   CPSelectField,
   CPStyledNextLink,
   CPStyledPreviousLink,
-  CPStyledPreviousNextLinkContainer}
+  CPStyledPreviousNextLinkContainer,
+  CPProjectNameLabel,
+  CPProjectNameInput,
+  CPProjectLeaderLabel,
+  CPProjectLeaderSelect,
+  CPDigitalProgrammeLabel,
+  CPDigitalProgrammeSelect,
+  CPApproverLabel,
+  CPApproverSelect,
+  CPLinkToSipLabel,
+  CPLinkToSipInput,
+  CPDGLabel,
+  CPDGSelect,
+  }
+
   from "../components/create_project_screen"
 
 
@@ -21,31 +35,31 @@ class CreateProjectScreen extends React.Component{
         <CPMainContainer>
           <CPFormContainer>
             <CPForm>
-              <CPLabelField no_margin >Project Name</CPLabelField>
-              <CPInputField></CPInputField>
+              <CPProjectNameLabel no_margin >Project Name</CPProjectNameLabel>
+              <CPProjectNameInput></CPProjectNameInput>
               
-              <CPLabelField>Project Leader</CPLabelField>
-              <CPSelectField>
+              <CPProjectLeaderLabel>Project Leader</CPProjectLeaderLabel>
+              <CPProjectLeaderSelect>
 
-              </CPSelectField>
+              </CPProjectLeaderSelect>
 
-              <CPLabelField>Digital Programme</CPLabelField>
-              <CPSelectField>
+              <CPDigitalProgrammeLabel>Digital Programme</CPDigitalProgrammeLabel>
+              <CPDigitalProgrammeSelect>
 
-              </CPSelectField>
+              </CPDigitalProgrammeSelect>
 
-              <CPLabelField>Approver</CPLabelField>
-              <CPSelectField>
+              <CPApproverLabel>Approver</CPApproverLabel>
+              <CPApproverSelect>
 
-              </CPSelectField>
+              </CPApproverSelect>
 
-              <CPLabelField>Link to SIP</CPLabelField>
-              <CPInputField></CPInputField>
+              <CPLinkToSipLabel>Link to SIP</CPLinkToSipLabel>
+              <CPLinkToSipInput></CPLinkToSipInput>
 
-              <CPLabelField>DG</CPLabelField>
-              <CPSelectField>
+              <CPDGLabel>DG</CPDGLabel>
+              <CPDGSelect>
 
-              </CPSelectField>
+              </CPDGSelect>
               <CPStyledPreviousNextLinkContainer>
 
                 <CPStyledPreviousLink to={process.env.PUBLIC_URL + "/"} > Previous </CPStyledPreviousLink>

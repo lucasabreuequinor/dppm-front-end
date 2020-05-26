@@ -22,8 +22,6 @@ import {
 
 class ChangeStoryScreen extends React.Component{
 
-  
-
   render(){
     return (
       <React.Fragment>

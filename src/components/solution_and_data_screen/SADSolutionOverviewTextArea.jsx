@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeSolutionOverview } from '../../actions/solution_and_data';
 
-const SADSolutionOverviewTextArea = styled.textarea`
+const SADSolutionOverviewTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,15 @@ const SADSolutionOverviewTextArea = styled.textarea`
   resize: none;
 }
 `
-export default SADSolutionOverviewTextArea
+const SADSolutionOverviewTextArea = () => {
+  const solutionOverview = useSelector(state => state.sadReducers.sadSolutionOverview);
+  const dispatch = useDispatch();
 
+  return <SADSolutionOverviewTextAreaStyled
+            value={solutionOverview}
+            onChange={(e) => dispatch(changeSolutionOverview(e.target.value)) }
+          />
+
+}
+
+export default SADSolutionOverviewTextArea

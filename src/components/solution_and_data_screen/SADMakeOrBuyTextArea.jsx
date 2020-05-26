@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeMakeOrBuy } from '../../actions/solution_and_data';
 
-const SADMakeOrBuyTextArea = styled.textarea`
+const SADMakeOrBuyTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,15 @@ const SADMakeOrBuyTextArea = styled.textarea`
   resize: none;
 }
 `
-export default SADMakeOrBuyTextArea
+const SADMakeOrBuyTextArea = () => {
+  const makeOrBuy = useSelector(state => state.sadReducers.sadMakeOrBuy);
+  const dispatch = useDispatch();
 
+  return <SADMakeOrBuyTextAreaStyled
+            value={makeOrBuy}
+            onChange={(e) => dispatch(changeMakeOrBuy(e.target.value)) }
+          />
+
+}
+
+export default SADMakeOrBuyTextArea

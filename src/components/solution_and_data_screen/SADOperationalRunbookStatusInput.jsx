@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeOperationalRunbookStatus } from '../../actions/solution_and_data';
 
-const SADOperationalRunbookStatusInput = styled.input`
+const SADOperationalRunbookStatusInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADOperationalRunbookStatusInput = styled.input`
   resize: none;
 }
 `
-export default SADOperationalRunbookStatusInput
+const SADOperationalRunbookStatusInput = () => {
+  const operationalRunbookStatus = useSelector(state => state.sadReducers.sadOperationalRunbookStatus);
+  const dispatch = useDispatch();
 
+  return <SADOperationalRunbookStatusInputStyled
+            value={operationalRunbookStatus}
+            onChange={(e) => dispatch(changeOperationalRunbookStatus(e.target.value)) }
+          />
+
+}
+
+export default SADOperationalRunbookStatusInput

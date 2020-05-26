@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeArchtechtureDetail } from '../../actions/solution_and_data';
 
-const SADArchDetailsInput = styled.input`
+const SADArchDetailsInputStyled = styled.input`
 
   border: 1px solid #707070;
   width: 100%;
@@ -19,5 +22,15 @@ const SADArchDetailsInput = styled.input`
   resize: none;
 }
 `
-export default SADArchDetailsInput
+const SADArchDetailsInput = () => {
+  const archtechtureDetail = useSelector(state => state.sadReducers.sadArchtechtureDetail);
+  const dispatch = useDispatch();
 
+  return <SADArchDetailsInputStyled
+            value={archtechtureDetail}
+            onChange={(e) => dispatch(changeArchtechtureDetail(e.target.value)) }
+          />
+
+}
+
+export default SADArchDetailsInput

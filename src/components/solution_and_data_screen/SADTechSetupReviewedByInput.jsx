@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeTechSetupReviewedBy } from '../../actions/solution_and_data';
 
-const SADTechSetupReviewedByInput = styled.input`
+const SADTechSetupReviewedByInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADTechSetupReviewedByInput = styled.input`
   resize: none;
 }
 `
-export default SADTechSetupReviewedByInput
+const SADTechSetupReviewedByInput = () => {
+  const techSetupReviewedBy = useSelector(state => state.sadReducers.sadTechSetupReviewedBy);
+  const dispatch = useDispatch();
 
+  return <SADTechSetupReviewedByInputStyled
+            value={techSetupReviewedBy}
+            onChange={(e) => dispatch(changeTechSetupReviewedBy(e.target.value)) }
+          />
+
+}
+
+export default SADTechSetupReviewedByInput

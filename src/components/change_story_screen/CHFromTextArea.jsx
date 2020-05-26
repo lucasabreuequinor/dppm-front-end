@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeFrom } from '../../actions/change_story';
 
-const CHFromTextArea = styled.textarea`
+const CHFromTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,16 @@ const CHFromTextArea = styled.textarea`
   resize: none;
 }
 `
+const CHFromTextArea = () => {
+  const from = useSelector(state => state.chReducers.chFrom);
+  const dispatch = useDispatch();
+
+  return <CHFromTextAreaStyled
+            value={from}
+            onChange={(e) => dispatch(changeFrom(e.target.value)) }
+          />
+
+}
+
 export default CHFromTextArea
 

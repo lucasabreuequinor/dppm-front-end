@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeArchContractFollowUp } from '../../actions/solution_and_data';
 
-const SADArchContractFollowUpInput = styled.input`
+const SADArchContractFollowUpInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADArchContractFollowUpInput = styled.input`
   resize: none;
 }
 `
-export default SADArchContractFollowUpInput
+const SADArchContractFollowUpInput = () => {
+  const archContractFollowUp = useSelector(state => state.sadReducers.sadArchContractFollowUp);
+  const dispatch = useDispatch();
 
+  return <SADArchContractFollowUpInputStyled
+            value={archContractFollowUp}
+            onChange={(e) => dispatch(changeArchContractFollowUp(e.target.value)) }
+          />
+
+}
+
+export default SADArchContractFollowUpInput

@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 
-const SADArchDiagramsUploadArchDiagramButton = styled.button`
+const SADArchDiagramsUploadArchDiagramButton = styled.label
+.attrs({
+  for:'input-diagram'
+})`
 
   font-family: inherit;
   background-color: #007079;

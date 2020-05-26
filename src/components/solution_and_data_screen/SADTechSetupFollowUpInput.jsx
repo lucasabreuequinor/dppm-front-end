@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeTechSetupFollowUp } from '../../actions/solution_and_data';
 
-const SADTechSetupFollowUpInput = styled.input`
+const SADTechSetupFollowUpInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADTechSetupFollowUpInput = styled.input`
   resize: none;
 }
 `
-export default SADTechSetupFollowUpInput
+const SADTechSetupFollowUpInput = () => {
+  const techSetupFollowUp = useSelector(state => state.sadReducers.sadTechSetupFollowUp);
+  const dispatch = useDispatch();
 
+  return <SADTechSetupFollowUpInputStyled
+            value={techSetupFollowUp}
+            onChange={(e) => dispatch(changeTechSetupFollowUp(e.target.value)) }
+          />
+
+}
+
+export default SADTechSetupFollowUpInput

@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeOperationalRunbookReviewedBy } from '../../actions/solution_and_data';
 
-const SADOperationalRunbookReviewedByInput = styled.input`
+const SADOperationalRunbookReviewedByInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADOperationalRunbookReviewedByInput = styled.input`
   resize: none;
 }
 `
-export default SADOperationalRunbookReviewedByInput
+const SADOperationalRunbookReviewedByInput = () => {
+  const operationalRunbookReviewedBy = useSelector(state => state.sadReducers.sadOperationalRunbookReviewedBy);
+  const dispatch = useDispatch();
 
+  return <SADOperationalRunbookReviewedByInputStyled
+            value={operationalRunbookReviewedBy}
+            onChange={(e) => dispatch(changeOperationalRunbookReviewedBy(e.target.value)) }
+          />
+
+}
+
+export default SADOperationalRunbookReviewedByInput

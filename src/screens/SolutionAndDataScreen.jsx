@@ -55,6 +55,7 @@ import {
   SADStyledPreviousLink,
   SADStyledNextLink,
   SADArchDiagramsUploadArchDiagramButton,
+  SADArchDiagramsUploadArchDiagramInput,
   // CHByContainer,
   // CHByLabel,
   // CHByTextArea,
@@ -100,15 +101,19 @@ import {
 
                   <SADArchDiagramsContainer>
                     <SADArchDiagramsLabel>Archtechture diagram:</SADArchDiagramsLabel>
-                    <SADArchDiagramsTextArea>Image Preview HERE !!!</SADArchDiagramsTextArea>
+                    
+                    {/*CHANGE final to Div*/}
+                    <SADArchDiagramsTextArea>Image Preview HERE !!!</SADArchDiagramsTextArea>  
+                    {/*CHANGE final to Label*/}
                     <SADArchDiagramsUploadArchDiagramButton>Upload Diagram</SADArchDiagramsUploadArchDiagramButton>
+                    <SADArchDiagramsUploadArchDiagramInput/>
                   </SADArchDiagramsContainer>
 
                   <SADArchDetailsContainer>
                     <SADArchDetailsLabel>Archtechture details:</SADArchDetailsLabel>
                     <SADArchDetailsInput></SADArchDetailsInput>
                   </SADArchDetailsContainer>
-
+                  
               </SADArchDiagramsArchDetailsContainer>
 
               <SADArchContractTechSetupOperationRunbookContainer>

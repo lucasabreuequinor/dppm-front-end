@@ -53,6 +53,9 @@ import SADStyledPreviousNextLinkContainer from "./SADStyledPreviousNextLinkConta
 import SADStyledPreviousLink from "./SADStyledPreviousLink"
 import SADStyledNextLink from "./SADStyledNextLink"
 import SADArchDiagramsUploadArchDiagramButton from "./SADArchDiagramsUploadArchDiagramButton"
+import SADArchDiagramsUploadArchDiagramInput from "./SADArchDiagramsUploadArchDiagramInput"
+
+
 // import CHByContainer from "./CHByContainer"
 // import CHByLabel from "./CHByLabel"
 // import CHByTextArea from "./CHByTextArea"
@@ -123,6 +126,7 @@ export {
       SADStyledPreviousLink,
       SADStyledNextLink,
       SADArchDiagramsUploadArchDiagramButton,
+      SADArchDiagramsUploadArchDiagramInput,
       // CHByContainer,
       // CHByLabel,
       // CHByTextArea,

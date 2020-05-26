@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeArchContractReviewedBy } from '../../actions/solution_and_data';
 
-const SADArchContractReviewedByInput = styled.input`
+const SADArchContractReviewedByInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADArchContractReviewedByInput = styled.input`
   resize: none;
 }
 `
-export default SADArchContractReviewedByInput
+const SADArchContractReviewedByInput = () => {
+  const archContractReviewedBy = useSelector(state => state.sadReducers.sadArchContractReviewedBy);
+  const dispatch = useDispatch();
 
+  return <SADArchContractReviewedByInputStyled
+            value={archContractReviewedBy}
+            onChange={(e) => dispatch(changeArchContractReviewedBy(e.target.value)) }
+          />
+
+}
+
+export default SADArchContractReviewedByInput

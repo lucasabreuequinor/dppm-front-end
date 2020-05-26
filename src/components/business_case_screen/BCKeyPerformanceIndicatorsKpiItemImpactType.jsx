@@ -1,6 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { changeKPIImpactType } from '../../actions/business_case';
 
-const BCKeyPerformanceIndicatorsKpiItemImpactType = styled.input`
+
+const BCKeyPerformanceIndicatorsKpiItemImpactTypeStyled = styled.input`
 
 
   border: 0px solid #707070;
@@ -16,4 +20,18 @@ const BCKeyPerformanceIndicatorsKpiItemImpactType = styled.input`
   resize: none;
 }
 `
+const BCKeyPerformanceIndicatorsKpiItemImpactType = ({kpi}) => {
+  const dispatch = useDispatch();
+
+  return <BCKeyPerformanceIndicatorsKpiItemImpactTypeStyled
+            style={{
+                    backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
+                  }}
+
+            value={kpi.impact_type}
+            onChange={(e) => dispatch(changeKPIImpactType({id: kpi.id,impact_type:e.target.value})) }
+          />
+
+}
+
 export default BCKeyPerformanceIndicatorsKpiItemImpactType

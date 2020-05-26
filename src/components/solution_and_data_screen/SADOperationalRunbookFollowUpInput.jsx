@@ -1,6 +1,10 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeOperationalRunbookFollowUp } from '../../actions/solution_and_data';
 
-const SADOperationalRunbookFollowUpInput = styled.input`
+
+const SADOperationalRunbookFollowUpInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +21,15 @@ const SADOperationalRunbookFollowUpInput = styled.input`
   resize: none;
 }
 `
-export default SADOperationalRunbookFollowUpInput
+const SADOperationalRunbookFollowUpInput = () => {
+  const operationalRunbookFollowUp = useSelector(state => state.sadReducers.sadOperationalRunbookFollowUp);
+  const dispatch = useDispatch();
 
+  return <SADOperationalRunbookFollowUpInputStyled
+            value={operationalRunbookFollowUp}
+            onChange={(e) => dispatch(changeOperationalRunbookFollowUp(e.target.value)) }
+          />
+
+}
+
+export default SADOperationalRunbookFollowUpInput

@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeKeyAssumptions } from '../../actions/business_case';
 
-const BCKeyAssumpTextArea = styled.textarea`
+const BCKeyAssumpTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,15 @@ const BCKeyAssumpTextArea = styled.textarea`
   resize: none;
 }
 `
-export default BCKeyAssumpTextArea
+const BCKeyAssumpTextArea = () => {
+  const keyAssumptions = useSelector(state => state.bcReducers.bcKeyAssumptions);
+  const dispatch = useDispatch();
 
+  return <BCKeyAssumpTextAreaStyled
+            value={keyAssumptions}
+            onChange={(e) => dispatch(changeKeyAssumptions(e.target.value)) }
+          />
+
+}
+
+export default BCKeyAssumpTextArea

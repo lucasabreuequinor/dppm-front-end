@@ -14,6 +14,14 @@ import {
   BCCashFlowReviewedByOPAFCContainer,
   BCCashFlowReviewedByOPAFCLabel,
   BCCashFlowReviewedByOPAFCInput,
+  BCCashFlowReviewerContainer,
+  BCCashFlowReviewerLabel,
+  BCCashFlowReviewerInput,
+  BCCashFlowApprovedByContainer,
+  BCCashFlowApprovedByLabel,
+  BCCashFlowApprovedByInput,
+
+
   BCCashFlowImpactLabel,
   BCKeyPerformanceIndicatorsContainer,
   BCKeyPerformanceIndicatorsLabel,
@@ -26,7 +34,16 @@ import {
   BCKeyPerformanceIndicatorsTableYear3Column,
   BCKeyPerformanceIndicatorsTableYear4Column,
   BCKeyPerformanceIndicatorsTableYear5Column,
+  BCKeyPerformanceIndicatorsButtonsContainer,
+
+  BCKeyPerformanceIndicatorsAddKpiButtonContainer,
   BCKeyPerformanceIndicatorsAddKpiButton,
+  BCKeyPerformanceIndicatorsAddKpiButtonLabel,
+
+  BCKeyPerformanceIndicatorsDeleteKpiButtonContainer,
+  BCKeyPerformanceIndicatorsDeleteKpiButton,
+  BCKeyPerformanceIndicatorsDeleteKpiButtonLabel,
+
   BCKeyPerformanceIndicatorsKpiItemImpactType,
   BCKeyPerformanceIndicatorsKpiItemIndicator,
   BCKeyPerformanceIndicatorsKpiItemBaseline,
@@ -39,41 +56,71 @@ import {
   BCCashFlowGraphic
   }
   from "../components/business_case_screen"
-      
 
-class BusinessCaseScreen extends React.Component {
+import { useSelector, useDispatch } from 'react-redux'
+import { addKPI, changeKPIImpactType } from '../actions/business_case'
+let nextKpiId=0;
 
-  constructor(props){
-    super(props)
-    
-    this.state = {
+const BusinessCaseScreen = () => {
 
-      kpis:[
-
-      ],
-      kpis_quantity: 0
-    }
   
-  }
+  const kpis = useSelector(state => state.bcReducers.bcKPIs.kpis);
+  const nextKpiId = useSelector(state => state.bcReducers.bcKPIs.nextKpiId);
+  const maxKpis = useSelector(state => state.bcReducers.bcKPIs.maxKpis);
 
-  addkpi = (e) => {
-    if(this.state.kpis_quantity < 18)
+  const dispatch = useDispatch(); 
+
+
+  // constructor(props){
+  //   super(props)
+    
+  //   this.state = {
+
+  //     kpis:[
+
+  //     ],
+  //     kpis_quantity: 0
+  //   }
+  
+  // }
+  const addNewKPI = (e) => {
+    
+    if(kpis.length < 5)
     {
-
-      this.setState((state) => ({
-        kpis: [...state.kpis,{impact_type:'', indicator:'', baseline: '', year1: '', year2: '', year3: '', year4: '', year5: ''}
-      ],
-      kpis_quantity: state.kpis_quantity + 1
-      }))
-
+      dispatch(addKPI(
+                {
+                  id: nextKpiId,
+                  impact_type: 'production',
+                  indicator: 'oil',
+                  baseline: 2015,
+                  year1: 2017,
+                  year2: 2018,
+                  year3: 2019,
+                  year4: 2020,
+                  year5: 2022,
+                }
+      ))
+      dispatch({type: 'INCREMENT_NEXT_KPI_ID'})
     }
+    else
+      alert("Maximum KPIs: 5")
+
+    
+    // if(this.state.kpis_quantity < 5)
+    // {
+
+    //   this.setState((state) => ({
+    //     kpis: [...state.kpis,{impact_type:'', indicator:'', baseline: '', year1: '', year2: '', year3: '', year4: '', year5: ''}
+    //   ],
+    //   kpis_quantity: state.kpis_quantity + 1
+    //   }))
+
+    // }
 
     e.preventDefault()
   }
 
-
-  render(){
-    console.log(this.state.kpis_quantity)
+    // console.log(this.state.kpis_quantity)
     return(
         <React.Fragment>
           <BCMainContainer>
@@ -107,19 +154,19 @@ class BusinessCaseScreen extends React.Component {
                           
                           </BCCashFlowReviewedByOPAFCContainer>
 
-                          <BCCashFlowReviewedByOPAFCContainer>
+                          <BCCashFlowReviewerContainer>
                             
-                            <BCCashFlowReviewedByOPAFCLabel>{"Reviewed by OPA/F&C?"}</BCCashFlowReviewedByOPAFCLabel>
-                            <BCCashFlowReviewedByOPAFCInput></BCCashFlowReviewedByOPAFCInput>
+                            <BCCashFlowReviewerLabel>{"Reviewer"}</BCCashFlowReviewerLabel>
+                            <BCCashFlowReviewerInput></BCCashFlowReviewerInput>
                           
-                          </BCCashFlowReviewedByOPAFCContainer>
+                          </BCCashFlowReviewerContainer>
 
-                          <BCCashFlowReviewedByOPAFCContainer>
+                          <BCCashFlowApprovedByContainer>
                             
-                            <BCCashFlowReviewedByOPAFCLabel>{"Reviewed by OPA/F&C?"}</BCCashFlowReviewedByOPAFCLabel>
-                            <BCCashFlowReviewedByOPAFCInput></BCCashFlowReviewedByOPAFCInput>
+                            <BCCashFlowApprovedByLabel>{"Approved By"}</BCCashFlowApprovedByLabel>
+                            <BCCashFlowApprovedByInput></BCCashFlowApprovedByInput>
                           
-                          </BCCashFlowReviewedByOPAFCContainer>
+                          </BCCashFlowApprovedByContainer>
 
                         </BCCashFlowImpactContainer>
 
@@ -141,32 +188,35 @@ class BusinessCaseScreen extends React.Component {
                         <BCKeyPerformanceIndicatorsTableYear4Column>Year 4</BCKeyPerformanceIndicatorsTableYear4Column>
                         <BCKeyPerformanceIndicatorsTableYear5Column>Year 5</BCKeyPerformanceIndicatorsTableYear5Column>
                         {
-                          this.state.kpis.map((kpi, index) =>
-                          index % 2 != 0 ?
+                          kpis.map(kpi =>
                             <React.Fragment>
-                              <BCKeyPerformanceIndicatorsKpiItemImpactType style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemImpactType>
-                              <BCKeyPerformanceIndicatorsKpiItemIndicator style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemIndicator>
-                              <BCKeyPerformanceIndicatorsKpiItemBaseline style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemBaseline>
-                              <BCKeyPerformanceIndicatorsKpiItemYear1 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear1>
-                              <BCKeyPerformanceIndicatorsKpiItemYear2 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear2>
-                              <BCKeyPerformanceIndicatorsKpiItemYear3 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear3>
-                              <BCKeyPerformanceIndicatorsKpiItemYear4 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear4>
-                              <BCKeyPerformanceIndicatorsKpiItemYear5 style={{backgroundColor:'#b3c7c9'}}></BCKeyPerformanceIndicatorsKpiItemYear5>
-                            </React.Fragment>
-                          :
-                            <React.Fragment>
-                              <BCKeyPerformanceIndicatorsKpiItemImpactType style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemImpactType>
-                              <BCKeyPerformanceIndicatorsKpiItemIndicator style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemIndicator>
-                              <BCKeyPerformanceIndicatorsKpiItemBaseline style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemBaseline>
-                              <BCKeyPerformanceIndicatorsKpiItemYear1 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear1>
-                              <BCKeyPerformanceIndicatorsKpiItemYear2 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear2>
-                              <BCKeyPerformanceIndicatorsKpiItemYear3 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear3>
-                              <BCKeyPerformanceIndicatorsKpiItemYear4 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear4>
-                              <BCKeyPerformanceIndicatorsKpiItemYear5 style={{backgroundColor:'#E0E0E0'}}></BCKeyPerformanceIndicatorsKpiItemYear5>
-                            </React.Fragment>                        
+                              <BCKeyPerformanceIndicatorsKpiItemImpactType kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemImpactType>
+                              <BCKeyPerformanceIndicatorsKpiItemIndicator kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemIndicator>
+                              <BCKeyPerformanceIndicatorsKpiItemBaseline kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemBaseline>
+                              <BCKeyPerformanceIndicatorsKpiItemYear1 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear1>
+                              <BCKeyPerformanceIndicatorsKpiItemYear2 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear2>
+                              <BCKeyPerformanceIndicatorsKpiItemYear3 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear3>
+                              <BCKeyPerformanceIndicatorsKpiItemYear4 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear4>
+                              <BCKeyPerformanceIndicatorsKpiItemYear5 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear5>
+                            </React.Fragment>                      
                           )
                         }
-                        <BCKeyPerformanceIndicatorsAddKpiButton onClick={ this.addkpi }></BCKeyPerformanceIndicatorsAddKpiButton>
+                        <BCKeyPerformanceIndicatorsButtonsContainer>
+                          <BCKeyPerformanceIndicatorsAddKpiButtonContainer>
+                            <BCKeyPerformanceIndicatorsAddKpiButton onClick={ addNewKPI }></BCKeyPerformanceIndicatorsAddKpiButton>
+                            <BCKeyPerformanceIndicatorsAddKpiButtonLabel>
+                              Add item
+                            </BCKeyPerformanceIndicatorsAddKpiButtonLabel>
+                          </BCKeyPerformanceIndicatorsAddKpiButtonContainer>
+
+                          <BCKeyPerformanceIndicatorsDeleteKpiButtonContainer>
+                            <BCKeyPerformanceIndicatorsDeleteKpiButton onClick={ addNewKPI }></BCKeyPerformanceIndicatorsDeleteKpiButton>
+                            <BCKeyPerformanceIndicatorsDeleteKpiButtonLabel>
+                              Delete item
+                            </BCKeyPerformanceIndicatorsDeleteKpiButtonLabel>
+                          </BCKeyPerformanceIndicatorsDeleteKpiButtonContainer>
+
+                        </BCKeyPerformanceIndicatorsButtonsContainer>
 
                       </BCKeyPerformanceIndicatorsTableContainer>
                     </BCKeyPerformanceIndicatorsContainer>
@@ -186,7 +236,6 @@ class BusinessCaseScreen extends React.Component {
           </BCMainContainer>
         </React.Fragment>
     )
-  }
 }
 
 export default BusinessCaseScreen

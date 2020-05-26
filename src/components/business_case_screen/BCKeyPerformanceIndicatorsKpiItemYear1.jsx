@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useDispatch } from 'react-redux'
+import { changeKPIYear1 } from '../../actions/business_case';
 
-const BCKeyPerformanceIndicatorsKpiItemYear1 = styled.input`
+const BCKeyPerformanceIndicatorsKpiItemYear1Styled = styled.input`
 
 
   border: 0px solid #707070;
@@ -16,4 +19,18 @@ const BCKeyPerformanceIndicatorsKpiItemYear1 = styled.input`
   resize: none;
 }
 `
+const BCKeyPerformanceIndicatorsKpiItemYear1 = ({kpi}) => {
+  const dispatch = useDispatch();
+
+  return <BCKeyPerformanceIndicatorsKpiItemYear1Styled
+            style={{
+                    backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
+                  }}
+
+            value={kpi.year1}
+            onChange={(e) => dispatch(changeKPIYear1({id: kpi.id, year1:e.target.value})) }
+          />
+
+}
+
 export default BCKeyPerformanceIndicatorsKpiItemYear1

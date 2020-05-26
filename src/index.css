@@ -9,4 +9,6 @@ body {
 textarea, input {
 
   font-size: 1em;
+  text-overflow: ellipsis;
 }
+

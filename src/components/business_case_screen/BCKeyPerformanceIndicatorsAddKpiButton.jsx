@@ -4,7 +4,8 @@ const add_logo = require("../../images/plus-logo.svg")
 
 const BCKeyPerformanceIndicatorsAddKpiButton = styled.button`
 
-  width: 125px;
+  width: 28px;
+  height: 28px;
   background-image: url(${add_logo});
   font-family: inherit;
 

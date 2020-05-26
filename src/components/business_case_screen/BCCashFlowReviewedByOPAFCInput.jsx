@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeReviewedByOPAFC } from '../../actions/business_case';
 
-const BCCashFlowReviewedByOPAFCInput = styled.input`
+const BCCashFlowReviewedByOPAFCInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const BCCashFlowReviewedByOPAFCInput = styled.input`
   resize: none;
 }
 `
-export default BCCashFlowReviewedByOPAFCInput
+const BCCashFlowReviewedByOPAFCInput = () => {
+  const reviewedByOPAFC = useSelector(state => state.bcReducers.bcReviewedByOPAFC);
+  const dispatch = useDispatch();
 
+  return <BCCashFlowReviewedByOPAFCInputStyled
+            value={reviewedByOPAFC}
+            onChange={(e) => dispatch(changeReviewedByOPAFC(e.target.value)) }
+          />
+
+}
+
+export default BCCashFlowReviewedByOPAFCInput

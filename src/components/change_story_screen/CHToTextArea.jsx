@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeTo } from '../../actions/change_story';
 
-const CHToTextArea = styled.textarea`
+const CHToTextAreaStyled = styled.textarea`
 
   border: 1px solid #707070;
   width: 100%;
@@ -20,5 +23,15 @@ const CHToTextArea = styled.textarea`
   resize: none;
 }
 `
-export default CHToTextArea
+const CHToTextArea = () => {
+  const to = useSelector(state => state.chReducers.chTo);
+  const dispatch = useDispatch();
 
+  return <CHToTextAreaStyled
+            value={to}
+            onChange={(e) => dispatch(changeTo(e.target.value)) }
+          />
+
+}
+
+export default CHToTextArea

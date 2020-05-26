@@ -1,6 +1,9 @@
+import React from 'react'
 import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+import { changeArchContractStatus } from '../../actions/solution_and_data';
 
-const SADArchContractStatusInput = styled.input`
+const SADArchContractStatusInputStyled = styled.input`
 
   border: 1px solid #707070;
   width:100%;
@@ -17,5 +20,15 @@ const SADArchContractStatusInput = styled.input`
   resize: none;
 }
 `
-export default SADArchContractStatusInput
+const SADArchContractStatusInput = () => {
+  const archContractStatus = useSelector(state => state.sadReducers.sadArchContractStatus);
+  const dispatch = useDispatch();
 
+  return <SADArchContractStatusInputStyled
+            value={archContractStatus}
+            onChange={(e) => dispatch(changeArchContractStatus(e.target.value)) }
+          />
+
+}
+
+export default SADArchContractStatusInput
