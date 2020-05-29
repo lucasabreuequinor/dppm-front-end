@@ -15,6 +15,13 @@ const BCKeyPerformanceIndicatorsKpiItemBaselineStyled = styled.input`
   box-sizing: border-box;
   text-overflow: ellipsis;  
 
+  &:active {
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }  
 
   resize: none;
 }
@@ -23,14 +30,18 @@ const BCKeyPerformanceIndicatorsKpiItemBaseline = ({kpi}) => {
   const dispatch = useDispatch();
 
   return <BCKeyPerformanceIndicatorsKpiItemBaselineStyled
+            type="number"
+            min="0"
+            key={kpi.id}
             style={{
                     backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={kpi.baseline}
-            onChange={(e) => dispatch(changeKPIBaseline({id: kpi.id, baseline:e.target.value})) }
-          />
+            onChange={(e) => dispatch(changeKPIBaseline({id: kpi.id, baseline:parseInt(e.target.value ? e.target.value: 0)})) }
+            />
 
 }
 
 export default BCKeyPerformanceIndicatorsKpiItemBaseline
+

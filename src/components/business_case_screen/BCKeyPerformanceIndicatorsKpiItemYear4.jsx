@@ -5,7 +5,6 @@ import { changeKPIYear4 } from '../../actions/business_case';
 
 const BCKeyPerformanceIndicatorsKpiItemYear4Styled = styled.input`
 
-
   border: 0px solid #707070;
   width:100%;
   padding: .5em;
@@ -15,6 +14,13 @@ const BCKeyPerformanceIndicatorsKpiItemYear4Styled = styled.input`
   box-sizing: border-box;
   text-overflow: ellipsis;  
 
+  &:active {
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }  
 
   resize: none;
 }
@@ -23,13 +29,16 @@ const BCKeyPerformanceIndicatorsKpiItemYear4 = ({kpi}) => {
   const dispatch = useDispatch();
 
   return <BCKeyPerformanceIndicatorsKpiItemYear4Styled
+            type="number"
+            min="0"
+            key={kpi.id}
             style={{
                     backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={kpi.year4}
-            onChange={(e) => dispatch(changeKPIYear4({id: kpi.id, year4:e.target.value})) }
-          />
+            onChange={(e) => dispatch(changeKPIYear4({id: kpi.id, year4:parseInt(e.target.value ? e.target.value: 0)})) }
+            />
 
 }
 

@@ -1,60 +1,93 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LabelList,
 } from 'recharts';
+import { useSelector, useDispatch } from 'react-redux'
 
 
-let baseline = String(new Date().getFullYear())
-const getYear = () => {return baseline++}
+const BCCashFlowGraphic = () => {
+  const jsfiddleUrl = 'https://jsfiddle.net/alidingling/90v76x08/'
+  
+  const kpis = useSelector(state => state.bcReducers.bcKPIs.kpis);
+  const baseLineColumn = useSelector(state => state.bcReducers.bcKPIs.bcBaselineColumn.selected)
+  const year1LineColumn = useSelector(state => state.bcReducers.bcKPIs.bcYear1Column.selected)
+  const year2LineColumn = useSelector(state => state.bcReducers.bcKPIs.bcYear2Column.selected)
+  const year3LineColumn = useSelector(state => state.bcReducers.bcKPIs.bcYear3Column.selected)
+  const year4LineColumn = useSelector(state => state.bcReducers.bcKPIs.bcYear4Column.selected)
+  const year5LineColumn = useSelector(state => state.bcReducers.bcKPIs.bcYear5Column.selected)
 
-const data = [
-  {
-    name: baseline, X: 0, PE: 0, MPP: 0,
-  },
-  {
-    name: getYear(), X: 30 , PE: 40, MPP: 80,
-  },
-  {
-    name: getYear(), X: 40, PE: 100, MPP: 200,
-  },
-  {
-    name: getYear(), X: 50, PE: 150, MPP: 300,
-  },
-  {
-    name: getYear(), X: 60, PE: 200, MPP: 310,
-  },
-  {
-    name: getYear(), X: 70, PE: 270, MPP: 350,
-  }
-];
+  const numberColumns = 6
+  const baselineYears = [
+    {year: baseLineColumn, name: 'baseline'},
+    {year: year1LineColumn, name: 'year1' },
+    {year: year2LineColumn, name: 'year2' },
+    {year: year3LineColumn, name: 'year3' },
+    {year: year4LineColumn, name: 'year4' },
+    {year: year5LineColumn, name: 'year5' },
+  ]
 
-export default class Example extends PureComponent {
-  static jsfiddleUrl = 'https://jsfiddle.net/alidingling/90v76x08/';
+  const data = [...Array(numberColumns).keys()]
+               .map((el,i) =>
+                {
+            
+                  const opexSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'OPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
+                  const capexSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'CAPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
+                  const peSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'PE').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
+                  const mppSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'MPP').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
+                  const co2Sum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'CO2').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
+                  const savedHoursSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'Saved Hours').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
 
-  render() {
-    return (
-      <ResponsiveContainer>
-        <BarChart
-          data={data}
-          // margin={{
-          //   top: 20, right: 30, left: 20, bottom: 5,
-          // }}
-        >
-          <XAxis dataKey="name" tick={{fontSize: '.7em'}}/>
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="X" stackId="a" fill="#12213b">
-            <LabelList dataKey="X" style={{fill: "#FFFFFF", fontSize:".6em"}}></LabelList>
-          </Bar>
-          <Bar dataKey="PE" stackId="a" fill="#007079">
-            <LabelList dataKey="PE" style={{fill: "#FFFFFF", fontSize:".6em"}}></LabelList>
-          </Bar>
-          <Bar dataKey="MPP" stackId="a" fill="#ffd6fb">
-            <LabelList dataKey="PE" style={{fill: "#000000", fontSize:".6em"}}></LabelList>
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+                  return( 
+                  {
+                    name: baselineYears[i].year,
+                    ...(opexSum ? {'OPEX': opexSum}: {}), 
+                    ...(capexSum ? {'CAPEX': capexSum}: {}),
+                    ...(peSum ? {'PE': peSum}: {}),
+                    ...(mppSum ? {'MPP': mppSum}: {}),
+                    ...(co2Sum ? {'CO2': co2Sum}: {}),                    
+                    ...(savedHoursSum ? {'SAVED HOURS': savedHoursSum}: {})                   
+                  })
+                })
+  return (
+    <ResponsiveContainer>
+      <BarChart
+        data={data}
+        // margin={{
+        //   top: 20, right: 30, left: 20, bottom: 5,
+        // }}
+      >
+        <XAxis dataKey="name" tick={{fontSize: '.7em',fontWeight:'bold'}}/>
+        <Tooltip />
+        <Legend />
 
-    );
-  }
+        <Bar dataKey="OPEX" stackId="a" fill="#333333">
+          <LabelList dataKey="OPEX" style={{fill: "#FFFFFF", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+        <Bar dataKey="CAPEX" stackId="a" fill="#7D0023">
+          <LabelList dataKey="CAPEX" style={{fill: "#FFFFFF", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+        <Bar dataKey="PE" stackId="a" fill="#007079">
+          <LabelList dataKey="PE" style={{fill: "#FFFFFF", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+        <Bar dataKey="MPP" stackId="a" fill="#FFA261">
+          <LabelList dataKey="MPP" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+        <Bar dataKey="CO2" stackId="a" fill="#28C858">
+          <LabelList dataKey="CO2" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+        <Bar dataKey="SAVED HOURS" stackId="a" fill="#FFB2C8">
+          <LabelList dataKey="SAVED HOURS" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
+        </Bar>
+
+      </BarChart>
+    </ResponsiveContainer>
+
+  );
 }
+
+export default BCCashFlowGraphic

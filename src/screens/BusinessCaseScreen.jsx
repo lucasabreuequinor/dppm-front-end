@@ -28,14 +28,34 @@ import {
   BCKeyPerformanceIndicatorsTableContainer,
   BCKeyPerformanceIndicatorsTableImpactColumn,
   BCKeyPerformanceIndicatorsTableIndicatorColumn,
-  BCKeyPerformanceIndicatorsTableBaselineColumn,
-  BCKeyPerformanceIndicatorsTableYear1Column,
-  BCKeyPerformanceIndicatorsTableYear2Column,
-  BCKeyPerformanceIndicatorsTableYear3Column,
-  BCKeyPerformanceIndicatorsTableYear4Column,
-  BCKeyPerformanceIndicatorsTableYear5Column,
-  BCKeyPerformanceIndicatorsButtonsContainer,
 
+  BCKeyPerformanceIndicatorsTableBaselineContainer,
+  BCKeyPerformanceIndicatorsTableBaselineColumn,
+  BCKeyPerformanceIndicatorsTableBaselineSelect,
+
+
+  BCKeyPerformanceIndicatorsTableYear1Container,
+  BCKeyPerformanceIndicatorsTableYear1Column,
+  BCKeyPerformanceIndicatorsTableYear1Select,
+
+  BCKeyPerformanceIndicatorsTableYear2Container,
+  BCKeyPerformanceIndicatorsTableYear2Column,
+  BCKeyPerformanceIndicatorsTableYear2Select,
+
+  BCKeyPerformanceIndicatorsTableYear3Container,
+  BCKeyPerformanceIndicatorsTableYear3Column,
+  BCKeyPerformanceIndicatorsTableYear3Select,
+
+  BCKeyPerformanceIndicatorsTableYear4Container,
+  BCKeyPerformanceIndicatorsTableYear4Column,
+  BCKeyPerformanceIndicatorsTableYear4Select,
+
+  BCKeyPerformanceIndicatorsTableYear5Container,
+  BCKeyPerformanceIndicatorsTableYear5Column,
+  BCKeyPerformanceIndicatorsTableYear5Select,
+
+  BCKeyPerformanceIndicatorsButtonsContainer,
+  
   BCKeyPerformanceIndicatorsAddKpiButtonContainer,
   BCKeyPerformanceIndicatorsAddKpiButton,
   BCKeyPerformanceIndicatorsAddKpiButtonLabel,
@@ -58,69 +78,51 @@ import {
   from "../components/business_case_screen"
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addKPI, changeKPIImpactType } from '../actions/business_case'
+import { addKPI, deleteKPI, decrementNextKPIID, incrementNextKPIID } from '../actions/business_case'
 let nextKpiId=0;
 
 const BusinessCaseScreen = () => {
 
-  
+  const dispatch = useDispatch(); 
+
   const kpis = useSelector(state => state.bcReducers.bcKPIs.kpis);
   const nextKpiId = useSelector(state => state.bcReducers.bcKPIs.nextKpiId);
   const maxKpis = useSelector(state => state.bcReducers.bcKPIs.maxKpis);
 
-  const dispatch = useDispatch(); 
-
-
-  // constructor(props){
-  //   super(props)
-    
-  //   this.state = {
-
-  //     kpis:[
-
-  //     ],
-  //     kpis_quantity: 0
-  //   }
-  
-  // }
   const addNewKPI = (e) => {
     
-    if(kpis.length < 5)
+    if(kpis.length < maxKpis)
     {
       dispatch(addKPI(
                 {
                   id: nextKpiId,
-                  impact_type: 'production',
-                  indicator: 'oil',
-                  baseline: 2015,
-                  year1: 2017,
-                  year2: 2018,
-                  year3: 2019,
-                  year4: 2020,
-                  year5: 2022,
+                  baseline: 100,
+                  year1: 100,
+                  year2: 100,
+                  year3: 100,
+                  year4: 100,
+                  year5: 100,
                 }
       ))
-      dispatch({type: 'INCREMENT_NEXT_KPI_ID'})
+      dispatch(incrementNextKPIID())
     }
     else
       alert("Maximum KPIs: 5")
 
-    
-    // if(this.state.kpis_quantity < 5)
-    // {
-
-    //   this.setState((state) => ({
-    //     kpis: [...state.kpis,{impact_type:'', indicator:'', baseline: '', year1: '', year2: '', year3: '', year4: '', year5: ''}
-    //   ],
-    //   kpis_quantity: state.kpis_quantity + 1
-    //   }))
-
-    // }
-
     e.preventDefault()
   }
 
-    // console.log(this.state.kpis_quantity)
+  const deleteAnKPI = (e) => {
+
+    if(kpis.length > 0)
+    {
+      dispatch(deleteKPI({id:kpis.length-1}))
+      dispatch(decrementNextKPIID())
+    }
+    e.preventDefault()
+  }
+
+
     return(
         <React.Fragment>
           <BCMainContainer>
@@ -181,12 +183,37 @@ const BusinessCaseScreen = () => {
 
                         <BCKeyPerformanceIndicatorsTableImpactColumn>Impact type</BCKeyPerformanceIndicatorsTableImpactColumn>
                         <BCKeyPerformanceIndicatorsTableIndicatorColumn>Indicator</BCKeyPerformanceIndicatorsTableIndicatorColumn>
-                        <BCKeyPerformanceIndicatorsTableBaselineColumn>Baseline</BCKeyPerformanceIndicatorsTableBaselineColumn>
-                        <BCKeyPerformanceIndicatorsTableYear1Column>Year 1</BCKeyPerformanceIndicatorsTableYear1Column>
-                        <BCKeyPerformanceIndicatorsTableYear2Column>Year 2</BCKeyPerformanceIndicatorsTableYear2Column>
-                        <BCKeyPerformanceIndicatorsTableYear3Column>Year 3</BCKeyPerformanceIndicatorsTableYear3Column>
-                        <BCKeyPerformanceIndicatorsTableYear4Column>Year 4</BCKeyPerformanceIndicatorsTableYear4Column>
-                        <BCKeyPerformanceIndicatorsTableYear5Column>Year 5</BCKeyPerformanceIndicatorsTableYear5Column>
+                        
+                        <BCKeyPerformanceIndicatorsTableBaselineContainer>
+                          <BCKeyPerformanceIndicatorsTableBaselineColumn>Baseline</BCKeyPerformanceIndicatorsTableBaselineColumn>
+                          <BCKeyPerformanceIndicatorsTableBaselineSelect></BCKeyPerformanceIndicatorsTableBaselineSelect>
+                        </BCKeyPerformanceIndicatorsTableBaselineContainer>
+
+
+                        <BCKeyPerformanceIndicatorsTableYear1Container>
+                          <BCKeyPerformanceIndicatorsTableYear1Column>Year 1</BCKeyPerformanceIndicatorsTableYear1Column>
+                          <BCKeyPerformanceIndicatorsTableYear1Select></BCKeyPerformanceIndicatorsTableYear1Select>
+                        </BCKeyPerformanceIndicatorsTableYear1Container>
+
+
+                        <BCKeyPerformanceIndicatorsTableYear2Container>
+                          <BCKeyPerformanceIndicatorsTableYear2Column>Year 2</BCKeyPerformanceIndicatorsTableYear2Column>
+                          <BCKeyPerformanceIndicatorsTableYear2Select></BCKeyPerformanceIndicatorsTableYear2Select>
+                        </BCKeyPerformanceIndicatorsTableYear2Container>
+
+                        <BCKeyPerformanceIndicatorsTableYear3Container>
+                          <BCKeyPerformanceIndicatorsTableYear3Column>Year 3</BCKeyPerformanceIndicatorsTableYear3Column>
+                          <BCKeyPerformanceIndicatorsTableYear3Select></BCKeyPerformanceIndicatorsTableYear3Select>
+                        </BCKeyPerformanceIndicatorsTableYear3Container>
+                        <BCKeyPerformanceIndicatorsTableYear4Container>
+                          <BCKeyPerformanceIndicatorsTableYear4Column>Year 4</BCKeyPerformanceIndicatorsTableYear4Column>
+                          <BCKeyPerformanceIndicatorsTableYear4Select></BCKeyPerformanceIndicatorsTableYear4Select>
+                        </BCKeyPerformanceIndicatorsTableYear4Container>
+                        <BCKeyPerformanceIndicatorsTableYear5Container>
+                          <BCKeyPerformanceIndicatorsTableYear5Column>Year 5</BCKeyPerformanceIndicatorsTableYear5Column>
+                          <BCKeyPerformanceIndicatorsTableYear5Select></BCKeyPerformanceIndicatorsTableYear5Select>
+                        </BCKeyPerformanceIndicatorsTableYear5Container>
+
                         {
                           kpis.map(kpi =>
                             <React.Fragment>
@@ -202,6 +229,7 @@ const BusinessCaseScreen = () => {
                           )
                         }
                         <BCKeyPerformanceIndicatorsButtonsContainer>
+
                           <BCKeyPerformanceIndicatorsAddKpiButtonContainer>
                             <BCKeyPerformanceIndicatorsAddKpiButton onClick={ addNewKPI }></BCKeyPerformanceIndicatorsAddKpiButton>
                             <BCKeyPerformanceIndicatorsAddKpiButtonLabel>
@@ -210,7 +238,7 @@ const BusinessCaseScreen = () => {
                           </BCKeyPerformanceIndicatorsAddKpiButtonContainer>
 
                           <BCKeyPerformanceIndicatorsDeleteKpiButtonContainer>
-                            <BCKeyPerformanceIndicatorsDeleteKpiButton onClick={ addNewKPI }></BCKeyPerformanceIndicatorsDeleteKpiButton>
+                            <BCKeyPerformanceIndicatorsDeleteKpiButton onClick={ deleteAnKPI }></BCKeyPerformanceIndicatorsDeleteKpiButton>
                             <BCKeyPerformanceIndicatorsDeleteKpiButtonLabel>
                               Delete item
                             </BCKeyPerformanceIndicatorsDeleteKpiButtonLabel>

@@ -15,6 +15,13 @@ const BCKeyPerformanceIndicatorsKpiItemYear1Styled = styled.input`
   box-sizing: border-box;
   text-overflow: ellipsis;  
 
+  &:active {
+    border: none;
+  }
+
+  &:focus {
+    outline: none;
+  }  
 
   resize: none;
 }
@@ -23,12 +30,15 @@ const BCKeyPerformanceIndicatorsKpiItemYear1 = ({kpi}) => {
   const dispatch = useDispatch();
 
   return <BCKeyPerformanceIndicatorsKpiItemYear1Styled
+            type="number"
+            min="0"
+            key={kpi.id}  
             style={{
                     backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={kpi.year1}
-            onChange={(e) => dispatch(changeKPIYear1({id: kpi.id, year1:e.target.value})) }
+            onChange={(e) => dispatch(changeKPIYear1({id: kpi.id, year1:parseInt(e.target.value ? e.target.value: 0)})) }
           />
 
 }

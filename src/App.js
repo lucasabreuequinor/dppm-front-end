@@ -18,7 +18,6 @@ import { WelcomeScreen,
   from "./components/welcome_screen";
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-alert(process.env.PUBLIC_URL)
 
 function App() {
   return (
