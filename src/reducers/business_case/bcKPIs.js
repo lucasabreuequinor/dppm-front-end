@@ -10,6 +10,7 @@ import {combineReducers} from 'redux'
 
 
 const kpi = (state, action) => {
+  console.log(action)
   switch(action.type){
     case 'ADD_KPI':
       return {
@@ -114,6 +115,7 @@ const kpi = (state, action) => {
 }
 
 const kpis = (state = [], action) => {
+  
   switch(action.type){
     case 'ADD_KPI':
       return [

@@ -9,7 +9,7 @@ const BCKeyPerformanceIndicatorsKpiItemImpactTypeStyled = styled.select`
 
   border: 0px solid #707070;
   width:100%;
-  padding: .5em;
+  padding: .5rem;
   font-weight: 500;
   font-family: inherit;
   color: #000000;
@@ -31,7 +31,7 @@ const BCKeyPerformanceIndicatorsKpiItemImpactTypeStyled = styled.select`
 `
 const BCKeyPerformanceIndicatorsKpiItemImpactType = ({kpi}) => {
   const dispatch = useDispatch();
-
+ 
   return <BCKeyPerformanceIndicatorsKpiItemImpactTypeStyled
             key={kpi.id}
             style={{

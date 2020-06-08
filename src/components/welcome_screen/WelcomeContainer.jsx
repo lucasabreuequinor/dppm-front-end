@@ -6,7 +6,7 @@ console.log(equinor_logo)
 
 const WelcomeContainer = styled.div`
   
-  margin-top:6em;
+  margin-top:6rem;
 
   
 `

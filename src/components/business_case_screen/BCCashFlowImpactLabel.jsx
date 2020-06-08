@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const BCCashFlowImpactLabel = styled.label`
+const BCCashFlowImpactLabel = styled.span`
 
-  font-size: 1em;
+  font-size: 1rem;
 
 }
 `

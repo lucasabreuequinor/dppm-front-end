@@ -6,7 +6,7 @@ const SADOperationalRunbookReviewedByContainer = styled.div`
   flex-direction: row; 
   justify-content: space-between;
   align-items: center;
-  margin-top: .8em; 
+  margin-top: .8rem; 
 
 `
 export default SADOperationalRunbookReviewedByContainer

@@ -7,15 +7,15 @@ const StyledOptionLink = styled(Link)`
   align-self: flex-start;
   display: flex;
   align-items: center;
-  padding: .3em 1em;
+  padding: .3em 1rem;
   background-color: #007079;
-  border-radius: .2em;
-  font-size: .9em;
+  border-radius: .2rem;
+  font-size: .9rem;
   text-decoration: none;
   color: white;
 
   & > span {
-    margin-left: .5em;
+    margin-left: .5rem;
   }
 
 `

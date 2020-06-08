@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 //ANTES ISSO AQUI ERA SÓ DIV
-const BCKeyPerformanceIndicatorsTableBaselineColumn = styled.div`
+const BCKeyPerformanceIndicatorsTableBaselineColumn = styled.span`
 
 `
 export default BCKeyPerformanceIndicatorsTableBaselineColumn

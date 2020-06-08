@@ -4,8 +4,8 @@ const BCKeyPerformanceIndicatorsTableImpactRow = styled.input`
 
   background-color: ${props => props.style.backgroundColor};
   border: none;
-  padding-top: .5em;
-  padding: .5em;
+  padding-top: .5rem;
+  padding: .5rem;
   font-weight: 500;
   font-family: inherit;
   color: #4d4c4c;

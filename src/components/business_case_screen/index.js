@@ -79,6 +79,9 @@ import BCKeyPerformanceIndicatorsKpiItem from "./BCKeyPerformanceIndicatorsKpiIt
 import BCCashFlowGraphicContainer from "./BCCashFlowGraphicContainer"
 import BCCashFlowGraphic from "./BCCashFlowGraphic"
 
+import BCStyledPreviousNextLinkContainer from './BCStyledPreviousNextLinkContainer'
+import BCStyledPreviousLink from './BCStyledPreviousLink'
+import BCStyledNextLink from './BCStyledNextLink'
 
 export {
       
@@ -156,7 +159,11 @@ export {
        BCKeyPerformanceIndicatorsKpiItemYear5,
        BCKeyPerformanceIndicatorsKpiItem,
        BCCashFlowGraphicContainer,
-       BCCashFlowGraphic
+       BCCashFlowGraphic,
+
+       BCStyledPreviousNextLinkContainer,
+       BCStyledPreviousLink,
+       BCStyledNextLink
       
 }
 

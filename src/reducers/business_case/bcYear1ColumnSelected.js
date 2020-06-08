@@ -1,6 +1,6 @@
-const currentDate = new Date().getFullYear().toString()
+import { currentYear } from './constants'
 
-const bcYear1ColumnSelected = (state = currentDate, action) => {
+const bcYear1ColumnSelected = (state = currentYear, action) => {
   switch(action.type){
     case 'CHANGE_YEAR_1_COLUMN_SELECTED':
       return action.selected

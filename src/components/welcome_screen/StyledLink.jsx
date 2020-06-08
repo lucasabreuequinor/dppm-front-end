@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   display:block;
   width: 100%;
-  padding: 1em 2em;
+  padding: 1em 2rem;
   background-color: rgb(49,55,59);
 
   &::hover {

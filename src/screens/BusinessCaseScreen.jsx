@@ -73,13 +73,17 @@ import {
   BCKeyPerformanceIndicatorsKpiItemYear4,
   BCKeyPerformanceIndicatorsKpiItemYear5,
   BCCashFlowGraphicContainer,
-  BCCashFlowGraphic
+  BCCashFlowGraphic,
+
+  BCStyledPreviousNextLinkContainer,
+  BCStyledPreviousLink,
+  BCStyledNextLink
+
   }
   from "../components/business_case_screen"
 
 import { useSelector, useDispatch } from 'react-redux'
 import { addKPI, deleteKPI, decrementNextKPIID, incrementNextKPIID } from '../actions/business_case'
-let nextKpiId=0;
 
 const BusinessCaseScreen = () => {
 
@@ -107,7 +111,7 @@ const BusinessCaseScreen = () => {
       dispatch(incrementNextKPIID())
     }
     else
-      alert("Maximum KPIs: 5")
+      alert(`Maximum KPIs:${maxKpis}`)
 
     e.preventDefault()
   }
@@ -205,10 +209,12 @@ const BusinessCaseScreen = () => {
                           <BCKeyPerformanceIndicatorsTableYear3Column>Year 3</BCKeyPerformanceIndicatorsTableYear3Column>
                           <BCKeyPerformanceIndicatorsTableYear3Select></BCKeyPerformanceIndicatorsTableYear3Select>
                         </BCKeyPerformanceIndicatorsTableYear3Container>
+
                         <BCKeyPerformanceIndicatorsTableYear4Container>
                           <BCKeyPerformanceIndicatorsTableYear4Column>Year 4</BCKeyPerformanceIndicatorsTableYear4Column>
                           <BCKeyPerformanceIndicatorsTableYear4Select></BCKeyPerformanceIndicatorsTableYear4Select>
                         </BCKeyPerformanceIndicatorsTableYear4Container>
+                        
                         <BCKeyPerformanceIndicatorsTableYear5Container>
                           <BCKeyPerformanceIndicatorsTableYear5Column>Year 5</BCKeyPerformanceIndicatorsTableYear5Column>
                           <BCKeyPerformanceIndicatorsTableYear5Select></BCKeyPerformanceIndicatorsTableYear5Select>
@@ -259,6 +265,12 @@ const BusinessCaseScreen = () => {
                   </BCCashFlowGraphicContainer>
 
               </BCFormAndCashFlowGraphicContainer>
+
+              <BCStyledPreviousNextLinkContainer>
+                <BCStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Previous </BCStyledPreviousLink>
+                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} > Next </BCStyledNextLink>
+              </BCStyledPreviousNextLinkContainer>
+
             </BCFormAndCashFlowGraphicContainerAndLabel>
 
           </BCMainContainer>

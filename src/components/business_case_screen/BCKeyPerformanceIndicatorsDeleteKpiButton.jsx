@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
-const add_logo = require("../../images/minus-logo.svg")
+const minus_logo = require("../../images/minus-logo.svg")
 
 const BCKeyPerformanceIndicatorsDeleteKpiButton = styled.button`
 
   width: 28px;
   height: 28px;
-  background-image: url(${add_logo});
+  background-image: url(${minus_logo});
   font-family: inherit;
 
   background-color: transparent; /* make the button transparent */

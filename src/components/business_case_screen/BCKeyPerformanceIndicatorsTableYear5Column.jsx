@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BCKeyPerformanceIndicatorsTableYear5Column = styled.div`
+const BCKeyPerformanceIndicatorsTableYear5Column = styled.span`
 
 }
 `

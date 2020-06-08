@@ -6,7 +6,7 @@ const BCCashFlowImpactLabelContainer = styled.div`
   flex-direction: column;
   flex-grow: 1;
   flex-basis: 50%;
-  margin-top: 1.9em;
+  margin-top: 1.9rem;
 
 
   @media only screen and (min-width: 350px){
@@ -19,7 +19,7 @@ const BCCashFlowImpactLabelContainer = styled.div`
 
   @media only screen and (min-width: 1230px){
     margin-top: 0;
-    margin-left: 1.9em;
+    margin-left: 1.9rem;
   }
   
 }

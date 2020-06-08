@@ -6,7 +6,7 @@ import { changeBaselineColumnSelected } from '../../actions/business_case';
 const BCKeyPerformanceIndicatorsTableBaselineSelectStyled = styled.select`
 
   border: 1px solid #707070;
-  margin-top: .5em;
+  margin-top: .5rem;
 
   font-family: inherit;
   color: #4d4c4c;

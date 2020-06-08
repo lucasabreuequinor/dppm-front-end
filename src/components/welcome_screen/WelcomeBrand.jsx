@@ -8,11 +8,11 @@ const WelcomeBrand = styled.div`
   
 
   h1 {
-    margin: 0 0 0 1em;
-    font-size: 1.8rem;
+    margin: 0 0 0 1rem;
+    font-size: 1.8rrem;
 
     @media only screen and (min-width: 875px){
-      font-size: 2.4rem;
+      font-size: 2.4rrem;
       
     }
 

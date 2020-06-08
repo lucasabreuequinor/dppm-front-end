@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const BCKeyAssumpLabel = styled.label`
+const BCKeyAssumpLabel = styled.span`
 
-  font-size: 1em;
+  font-size: 1rem;
 
 }
 `

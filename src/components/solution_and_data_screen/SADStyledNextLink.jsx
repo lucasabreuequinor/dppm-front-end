@@ -8,9 +8,9 @@ const SADStyledNextLink = styled(Link)`
   background-color: #007079;
   border: none;
   color: white;
-  padding: .5em 1em;
-  border-radius: .2em;
-  font-size: .9em;
+  padding: .5em 1rem;
+  border-radius: .2rem;
+  font-size: .9rem;
   cursor: pointer;
   text-decoration: none;
   width: 100px;

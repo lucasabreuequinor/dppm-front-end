@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const BCCashFlowApprovedByLabel = styled.label`
+const BCCashFlowApprovedByLabel = styled.span`
 
-  font-size: 1em;
+  font-size: 1rem;
   
 }
 `

@@ -5,7 +5,7 @@ import { changeYear2ColumnSelected } from '../../actions/business_case';
 
 const BCKeyPerformanceIndicatorsTableYear2SelectStyled = styled.select`
 
-  margin-top: .5em;
+  margin-top: .5rem;
   color: #4d4c4c;
   border: none;
   font-family: inherit;

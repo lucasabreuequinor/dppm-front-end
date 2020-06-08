@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const SADTechSetupTitle = styled.p`
 
-  font-size: 1em;
+  font-size: 1rem;
   margin: 0;
 
 }

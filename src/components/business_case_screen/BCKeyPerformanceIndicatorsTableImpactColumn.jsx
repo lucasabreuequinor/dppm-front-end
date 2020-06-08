@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BCKeyPerformanceIndicatorsTableImpactColumn = styled.div`
+const BCKeyPerformanceIndicatorsTableImpactColumn = styled.span`
 
 }
 `

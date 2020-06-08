@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const SADTechSetupFollowUpLabel = styled.label`
 
-  font-size: 1em;
+  font-size: 1rem;
   
 }
 `

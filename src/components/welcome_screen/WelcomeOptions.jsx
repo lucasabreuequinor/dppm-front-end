@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 const WelcomeOptions = styled.div`
     text-align:center;
-    margin-top: 10em;
-    margin-bottom: 6em;
+    margin-top: 10rem;
+    margin-bottom: 6rem;
 
     & > div {
     display: inline-flex;

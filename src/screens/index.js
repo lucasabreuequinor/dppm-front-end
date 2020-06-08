@@ -3,7 +3,9 @@ import CreateProjectScreen from "./CreateProjectScreen"
 import ChangeStoryScreen from "./ChangeStoryScreen"
 import SolutionAndDataScreen from "./SolutionAndDataScreen"
 import BusinessCaseScreen from "./BusinessCaseScreen"
-
+import BusinessCaseItensScreen from "./BusinessCaseItensScreen"
+import ResourcePlanScreen from './ResourcePlanScreen'
+import RiskRegisterScreen from './RiskRegisterScreen'
 
 
 export {
@@ -11,5 +13,8 @@ export {
       CreateProjectScreen,
       ChangeStoryScreen,
       SolutionAndDataScreen,
-      BusinessCaseScreen
+      BusinessCaseScreen,
+      BusinessCaseItensScreen,
+      ResourcePlanScreen,
+      RiskRegisterScreen
     }

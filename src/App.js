@@ -3,7 +3,10 @@ import { WelcomeScreen,
   CreateProjectScreen,
   ChangeStoryScreen,
   SolutionAndDataScreen,
-  BusinessCaseScreen } 
+  BusinessCaseScreen,
+  BusinessCaseItensScreen,
+  ResourcePlanScreen,
+  RiskRegisterScreen } 
   
   from "./screens";
 
@@ -58,6 +61,9 @@ function App() {
           <Route path={process.env.PUBLIC_URL + "/create_project/change_story"} component={ChangeStoryScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project/solution_and_data"} component={SolutionAndDataScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project/business_case"} component={BusinessCaseScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/business_case_itens"} component={BusinessCaseItensScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/resource_plan"} component={ResourcePlanScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/risk_register"} component={RiskRegisterScreen}/>
         </Switch>
     </Router>  
   );

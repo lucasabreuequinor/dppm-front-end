@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const BCKeyPerformanceIndicatorsTableYear4Container = styled.div`
-  margin-bottom: .8em;
+  margin-bottom: .8rem;
 
 }
 `

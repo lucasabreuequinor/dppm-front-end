@@ -4,7 +4,7 @@ const BCLabel = styled.span`
 
   display: block;
   font-weight: bold;
-  font-size: 1em;
+  font-size: 1rem;
 
 }
 `

@@ -10,7 +10,7 @@ const BCCashFlowImpactContainer = styled.div`
 
   @supports (-ms-ime-align: auto){
       justify-content: space-between;
-      margin-top: .8em;
+      margin-top: .8rem;
   }
 
 `

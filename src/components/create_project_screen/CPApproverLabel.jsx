@@ -2,15 +2,15 @@ import styled from 'styled-components'
 
 const CPApproverLabel = styled.label`
 
-  font-size: 1em;
-  margin-bottom: .4em;
+  font-size: 1rem;
+  margin-bottom: .4rem;
   margin-top: ${props => props.no_margin ? "" : "1.9em"};
   font-weight: bold;
   
-  // margin-top: 6em;
+  // margin-top: 6rem;
   // display: block;
   // font-weight: bold;
-  // font-size: 1em;
+  // font-size: 1rem;
 
 
 `
