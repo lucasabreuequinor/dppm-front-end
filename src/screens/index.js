@@ -6,6 +6,8 @@ import BusinessCaseScreen from "./BusinessCaseScreen"
 import BusinessCaseItensScreen from "./BusinessCaseItensScreen"
 import ResourcePlanScreen from './ResourcePlanScreen'
 import RiskRegisterScreen from './RiskRegisterScreen'
+import LegalPlanChangeMgmtScreen from './LegalPlanChangeMgmtScreen'
+
 
 
 export {
@@ -16,5 +18,6 @@ export {
       BusinessCaseScreen,
       BusinessCaseItensScreen,
       ResourcePlanScreen,
-      RiskRegisterScreen
+      RiskRegisterScreen,
+      LegalPlanChangeMgmtScreen
     }

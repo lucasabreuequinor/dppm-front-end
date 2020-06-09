@@ -6,7 +6,8 @@ import { WelcomeScreen,
   BusinessCaseScreen,
   BusinessCaseItensScreen,
   ResourcePlanScreen,
-  RiskRegisterScreen } 
+  RiskRegisterScreen,
+  LegalPlanChangeMgmtScreen } 
   
   from "./screens";
 
@@ -64,6 +65,7 @@ function App() {
           <Route path={process.env.PUBLIC_URL + "/create_project/business_case_itens"} component={BusinessCaseItensScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project/resource_plan"} component={ResourcePlanScreen}/>
           <Route path={process.env.PUBLIC_URL + "/create_project/risk_register"} component={RiskRegisterScreen}/>
+          <Route path={process.env.PUBLIC_URL + "/create_project/legal_plan_change_mgmt"} component={LegalPlanChangeMgmtScreen}/>
         </Switch>
     </Router>  
   );

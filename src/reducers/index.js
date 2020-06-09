@@ -5,6 +5,7 @@ import bcReducers from './business_case'
 import bciReducers from './business_case_items'
 import rpReducers from './resource_plan'
 import rrReducers from './risk_register'
+import lpcmReducers from './legal_plan_change_mgmt'
 
 
 
@@ -17,7 +18,8 @@ const allReducers = combineReducers({
   bcReducers,
   bciReducers,
   rpReducers,
-  rrReducers
+  rrReducers,
+  lpcmReducers
 
 })
 

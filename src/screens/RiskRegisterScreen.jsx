@@ -25,30 +25,6 @@ import {
         RRStyledPreviousLink,
         RRStyledNextLink
 
-        // RPResourceOwnerColumn,
-        // RPRoleRequiredColumn,
-        // RPNameColumn,
-        // RPAllocationColumn,
-        // RPStartDateColumn,
-        // RPDurationColumn,
-
-        // RPResourceItemResourceOwner,
-        // RPResourceItemRoleRequired,
-        // RPResourceItemName,
-        // RPResourceItemAllocation,
-        // RPResourceItemStartDate,
-        // RPResourceItemDuration,
-
-        // RPButtonsContainer,
-
-        // RPaddResourceButtonContainer,
-        // RPaddResourceButton,
-        // RPaddResourceButtonLabel,
-
-        // RPdeleteResourceButtonContainer,
-        // RPdeleteResourceButton,
-        // RPdeleteResourceButtonLabel
-
          }
        from '../components/risk_register_screen'
 
@@ -144,7 +120,7 @@ const RiskRegisterScreen = () => {
 
             <RRStyledPreviousNextLinkContainer>
               <RRStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/resource_plan"} > Previous </RRStyledPreviousLink>
-              <RRStyledNextLink to={process.env.PUBLIC_URL + "/"} > Next </RRStyledNextLink>
+              <RRStyledNextLink to={process.env.PUBLIC_URL + "/create_project/legal_plan_change_mgmt"} > Next </RRStyledNextLink>
             </RRStyledPreviousNextLinkContainer>
 
           </RRContainer>
