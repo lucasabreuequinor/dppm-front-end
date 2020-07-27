@@ -157,7 +157,7 @@ import { BCItemsMainContainer,
          BCItemsTotalPerYearYear5Total,
          BCItemsTotalPerYearTotal,
 
-         BCSItemstyledPreviousNextLinkContainer,
+         BCItemstyledPreviousNextLinkContainer,
          BCItemsStyledPreviousLink,
          BCItemsStyledNextLink
                 
@@ -310,10 +310,23 @@ const BusinessCaseItensScreen = () => {
     e.preventDefault()
   }
 
+  const savePdf = () => {
+
+    let canvas_bcItems = document.getElementById('bcitems_pdf_container'); 
+    window.scrollTo(0,0);  
+    window.canvasObject[4].width = canvas_bcItems.offsetWidth;
+    window.canvasObject[4].height = canvas_bcItems.offsetHeight;
+
+    window.html2canvas(canvas_bcItems).then(function(canvas) {
+    window.canvasObject[4].canvas = canvas;
+
+  })
+}
+
   return (
       <React.Fragment>
         <BCItemsMainContainer>
-          <BCItemsContainer>
+          <BCItemsContainer id="bcitems_pdf_container">
             <BCItemsLabel>Business Case Itens</BCItemsLabel>
             <BCItemsCostSavingNetProdTotalTableContainer>
               <BCItemsCostSavingNetProdTotalTableItemColumn>Item</BCItemsCostSavingNetProdTotalTableItemColumn>
@@ -353,7 +366,6 @@ const BusinessCaseItensScreen = () => {
 
               <BCItemsCostSavingNetProdTotalTableTotalContainer className="del-margin">
                 <BCItemsCostSavingNetProdTotalTableTotalColumn>Total</BCItemsCostSavingNetProdTotalTableTotalColumn>
-                {/* <BCItemsCostSavingNetProdTotalTableTotalDisplay></BCItemsCostSavingNetProdTotalTableTotalDisplay> */}
               </BCItemsCostSavingNetProdTotalTableTotalContainer>
 
               <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer className="del-margin">
@@ -388,7 +400,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }             
 
-              <BCItemsCostPerYearButtonsContainer>
+              <BCItemsCostPerYearButtonsContainer data-html2canvas-ignore>
 
                 <BCItemsCostPerYearAddCostItemButtonContainer>
                   <BCItemsCostPerYearAddCostItemButton onClick={ addNewCostItem }></BCItemsCostPerYearAddCostItemButton>
@@ -434,7 +446,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }
 
-              <BCItemsSavingPerYearButtonsContainer>
+              <BCItemsSavingPerYearButtonsContainer data-html2canvas-ignore>
 
                 <BCItemsSavingPerYearAddSavingItemButtonContainer>
                   <BCItemsSavingPerYearAddSavingItemButton onClick={ addNewSavingItem }></BCItemsSavingPerYearAddSavingItemButton>
@@ -493,7 +505,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }
 
-              <BCItemsProductionPerYearButtonsContainer>
+              <BCItemsProductionPerYearButtonsContainer data-html2canvas-ignore>
 
               <BCItemsProductionPerYearAddProductionItemButtonContainer>
                 <BCItemsProductionPerYearAddProductionItemButton onClick={ addNewProductionItem }></BCItemsProductionPerYearAddProductionItemButton>
@@ -524,10 +536,10 @@ const BusinessCaseItensScreen = () => {
 
             </BCItemsCostSavingNetProdTotalTableContainer>
 
-            <BCSItemstyledPreviousNextLinkContainer>
+            <BCItemstyledPreviousNextLinkContainer data-html2canvas-ignore>
                 <BCItemsStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/business_case"} > Previous </BCItemsStyledPreviousLink>
-                <BCItemsStyledNextLink to={process.env.PUBLIC_URL + "/create_project/resource_plan"} > Next </BCItemsStyledNextLink>
-            </BCSItemstyledPreviousNextLinkContainer>
+                <BCItemsStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_realization_plan"} delay={100} pdfOnClick={savePdf}> Next </BCItemsStyledNextLink>
+            </BCItemstyledPreviousNextLinkContainer>
 
           </BCItemsContainer>
         </BCItemsMainContainer>

@@ -25,15 +25,29 @@ import {
 
   from "../components/create_project_screen"
 
+import {useSelector, useDispatch} from 'react-redux'
+import {changeCpCanvas} from '../actions/canvas'
 
-class CreateProjectScreen extends React.Component{
 
+const CreateProjectScreen = () => {
 
-  render(){
+  const savePdf = () => {
+
+    let canvas_cp = document.getElementById('cp_pdf_container'); 
+    window.scrollTo(0,0);  
+    window.canvasObject[0].width = canvas_cp.offsetWidth;
+    window.canvasObject[0].height = canvas_cp.offsetHeight;
+
+    window.html2canvas(canvas_cp, {useCORS:true}).then(function(canvas) {
+    window.canvasObject[0].canvas = canvas;
+
+  })
+}
+
     return (
       <React.Fragment>
         <CPMainContainer>
-          <CPFormContainer>
+          <CPFormContainer id="cp_pdf_container">
             <CPForm>
               <CPProjectNameLabel no_margin >Project Name</CPProjectNameLabel>
               <CPProjectNameInput></CPProjectNameInput>
@@ -60,10 +74,10 @@ class CreateProjectScreen extends React.Component{
               <CPDGSelect>
 
               </CPDGSelect>
-              <CPStyledPreviousNextLinkContainer>
+              <CPStyledPreviousNextLinkContainer data-html2canvas-ignore>
 
                 <CPStyledPreviousLink to={process.env.PUBLIC_URL + "/"} > Previous </CPStyledPreviousLink>
-                <CPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Next </CPStyledNextLink>
+                <CPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/change_story"} delay={100} pdfOnClick={savePdf}> Next </CPStyledNextLink>
 
               </CPStyledPreviousNextLinkContainer>
 
@@ -73,9 +87,8 @@ class CreateProjectScreen extends React.Component{
       </React.Fragment>
       
       )
-  }
+    }
 
-}
 
 
 export default CreateProjectScreen

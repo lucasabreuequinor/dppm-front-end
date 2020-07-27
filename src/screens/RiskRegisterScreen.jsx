@@ -76,11 +76,23 @@ const RiskRegisterScreen = () => {
     e.preventDefault()
   }
 
+  const savePdf = () => {
+
+      let canvas_rr = document.getElementById('rr_pdf_container'); 
+      window.scrollTo(0,0);  
+      window.canvasObject[8].width = canvas_rr.offsetWidth;
+      window.canvasObject[8].height = canvas_rr.offsetHeight;
+
+      window.html2canvas(canvas_rr).then(function(canvas) {
+      window.canvasObject[8].canvas = canvas;
+
+    })
+  }
 
   return (
       <React.Fragment>
         <RRMainContainer>
-          <RRContainer>
+          <RRContainer id="rr_pdf_container">
             <RRLabel>Risk register</RRLabel>
             <RRTableContainer>
               <RRDescriptionColumn>Description</RRDescriptionColumn>
@@ -97,7 +109,7 @@ const RiskRegisterScreen = () => {
                 )
               }      
             
-            <RRButtonsContainer>
+            <RRButtonsContainer data-html2canvas-ignore>
 
               <RRaddRiskButtonContainer>
                 <RRaddRiskButton onClick={ addNewRisk }></RRaddRiskButton>
@@ -118,9 +130,9 @@ const RiskRegisterScreen = () => {
             </RRTableContainer>
 
 
-            <RRStyledPreviousNextLinkContainer>
+            <RRStyledPreviousNextLinkContainer data-html2canvas-ignore>
               <RRStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/resource_plan"} > Previous </RRStyledPreviousLink>
-              <RRStyledNextLink to={process.env.PUBLIC_URL + "/create_project/legal_plan_change_mgmt"} > Next </RRStyledNextLink>
+              <RRStyledNextLink to={process.env.PUBLIC_URL + "/create_project/legal_plan_change_mgmt"} delay={100} pdfOnClick={savePdf}> Next </RRStyledNextLink>
             </RRStyledPreviousNextLinkContainer>
 
           </RRContainer>

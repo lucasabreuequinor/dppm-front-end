@@ -6,7 +6,7 @@ const costItem = (state, action) => {
     case 'ADD_COST_ITEM':
       return {
         id: action.id,
-        item: action.item,
+        item: action.item, 
         cost_type: action.cost_type,
         baseline: action.baseline,
         year1: action.year1,

@@ -32,7 +32,7 @@ class WelcomeScreen extends React.Component {
           <WelcomeOptions>
                 <div>
   
-                  <WelcomeListProjects>
+                  <WelcomeListProjects onClick={()=>{ alert('Feature coming soon!\n\n: )') }}>
 
                     <StyledOptionLink to="">
                     <OptionIcon name="folder_logo">

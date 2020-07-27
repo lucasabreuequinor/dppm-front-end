@@ -86,10 +86,24 @@ const ResourcePlanScreen = () => {
     e.preventDefault()
   }
 
+
+  const savePdf = () => {
+
+    let canvas_rp = document.getElementById('rp_pdf_container'); 
+    window.scrollTo(0,0);
+    window.canvasObject[7].width = canvas_rp.offsetWidth;
+    window.canvasObject[7].height = canvas_rp.offsetHeight;    
+    
+    window.html2canvas(canvas_rp).then(function(canvas) {
+    window.canvasObject[7].canvas = canvas;
+
+  })
+}  
+
   return (
       <React.Fragment>
         <RPMainContainer>
-          <RPContainer>
+          <RPContainer id="rp_pdf_container">
             <RPLabel>Resource Plan</RPLabel>
             <RPTableContainer>
 
@@ -113,7 +127,7 @@ const ResourcePlanScreen = () => {
                 )
               }
 
-              <RPButtonsContainer>
+              <RPButtonsContainer data-html2canvas-ignore>
 
                 <RPaddResourceButtonContainer>
                   <RPaddResourceButton onClick={ addNewResource }></RPaddResourceButton>
@@ -133,9 +147,9 @@ const ResourcePlanScreen = () => {
 
             </RPTableContainer>
 
-            <RPStyledPreviousNextLinkContainer>
-                <RPStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} > Previous </RPStyledPreviousLink>
-                <RPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/risk_register"} > Next </RPStyledNextLink>
+            <RPStyledPreviousNextLinkContainer data-html2canvas-ignore>
+                <RPStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/project_plan"} > Previous </RPStyledPreviousLink>
+                <RPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/risk_register"} delay={100} pdfOnClick={ savePdf }> Next </RPStyledNextLink>
             </RPStyledPreviousNextLinkContainer>
 
           </RPContainer>

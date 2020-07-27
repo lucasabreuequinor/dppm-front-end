@@ -126,11 +126,23 @@ const BusinessCaseScreen = () => {
     e.preventDefault()
   }
 
+  const savePdf = () => {
+
+    let canvas_bc = document.getElementById('bc_pdf_container'); 
+    window.scrollTo(0,0);  
+    window.canvasObject[3].width = canvas_bc.offsetWidth;
+    window.canvasObject[3].height = canvas_bc.offsetHeight;
+
+    window.html2canvas(canvas_bc).then(function(canvas) {
+    window.canvasObject[3].canvas = canvas;
+
+  })
+}
 
     return(
         <React.Fragment>
           <BCMainContainer>
-            <BCFormAndCashFlowGraphicContainerAndLabel>
+            <BCFormAndCashFlowGraphicContainerAndLabel id="bc_pdf_container">
 
               <BCLabel>Business Case</BCLabel>
 
@@ -234,7 +246,7 @@ const BusinessCaseScreen = () => {
                             </React.Fragment>                      
                           )
                         }
-                        <BCKeyPerformanceIndicatorsButtonsContainer>
+                        <BCKeyPerformanceIndicatorsButtonsContainer data-html2canvas-ignore>
 
                           <BCKeyPerformanceIndicatorsAddKpiButtonContainer>
                             <BCKeyPerformanceIndicatorsAddKpiButton onClick={ addNewKPI }></BCKeyPerformanceIndicatorsAddKpiButton>
@@ -243,7 +255,7 @@ const BusinessCaseScreen = () => {
                             </BCKeyPerformanceIndicatorsAddKpiButtonLabel>
                           </BCKeyPerformanceIndicatorsAddKpiButtonContainer>
 
-                          <BCKeyPerformanceIndicatorsDeleteKpiButtonContainer>
+                          <BCKeyPerformanceIndicatorsDeleteKpiButtonContainer> 
                             <BCKeyPerformanceIndicatorsDeleteKpiButton onClick={ deleteAnKPI }></BCKeyPerformanceIndicatorsDeleteKpiButton>
                             <BCKeyPerformanceIndicatorsDeleteKpiButtonLabel>
                               Delete item
@@ -266,9 +278,9 @@ const BusinessCaseScreen = () => {
 
               </BCFormAndCashFlowGraphicContainer>
 
-              <BCStyledPreviousNextLinkContainer>
-                <BCStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Previous </BCStyledPreviousLink>
-                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} > Next </BCStyledNextLink>
+              <BCStyledPreviousNextLinkContainer data-html2canvas-ignore>
+                <BCStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/solution_and_data"} > Previous </BCStyledPreviousLink>
+                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} delay={100} pdfOnClick={savePdf}> Next </BCStyledNextLink>
               </BCStyledPreviousNextLinkContainer>
 
             </BCFormAndCashFlowGraphicContainerAndLabel>

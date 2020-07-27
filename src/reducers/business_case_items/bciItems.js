@@ -7,6 +7,7 @@ import bciYear5Column from './bciYear5Column'
 import bciCostItems from './bciCostItems'
 import bciSavingItems from './bciSavingItems'
 import bciProductionItems from './bciProductionItems'
+import bciDriverItems from './bciDriverItems'
 
 
 import {combineReducers} from 'redux' 
@@ -21,7 +22,8 @@ const bciItems = combineReducers({
   bciYear5Column,
   bciCostItems,
   bciSavingItems,
-  bciProductionItems
+  bciProductionItems,
+  bciDriverItems
 })
 
 

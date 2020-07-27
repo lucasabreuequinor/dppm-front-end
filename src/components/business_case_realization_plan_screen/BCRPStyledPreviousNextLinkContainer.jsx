@@ -1,7 +1,7 @@
 import styled, {css} from 'styled-components'
 
 
-const BCSItemstyledPreviousNextLinkContainer = styled.div`
+const BCRPStyledPreviousNextLinkContainer = styled.div`
 
   display: flex;
   justify-content: space-between;
@@ -9,4 +9,4 @@ const BCSItemstyledPreviousNextLinkContainer = styled.div`
 
 `
 
-export default BCSItemstyledPreviousNextLinkContainer
+export default BCRPStyledPreviousNextLinkContainer

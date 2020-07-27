@@ -165,7 +165,7 @@ import BCItemsTotalPerYearYear4Total from './BCItemsTotalPerYearYear4Total'
 import BCItemsTotalPerYearYear5Total from './BCItemsTotalPerYearYear5Total'
 import BCItemsTotalPerYearTotal from './BCItemsTotalPerYearTotal'
 
-import BCSItemstyledPreviousNextLinkContainer from './BCSItemstyledPreviousNextLinkContainer'
+import BCItemstyledPreviousNextLinkContainer from './BCItemstyledPreviousNextLinkContainer'
 import BCItemsStyledPreviousLink from './BCItemsStyledPreviousLink'
 import BCItemsStyledNextLink from './BCItemsStyledNextLink'
 
@@ -327,7 +327,7 @@ export {
   BCItemsTotalPerYearYear5Total,
   BCItemsTotalPerYearTotal,
 
-  BCSItemstyledPreviousNextLinkContainer,
+  BCItemstyledPreviousNextLinkContainer,
   BCItemsStyledPreviousLink,
   BCItemsStyledNextLink
 

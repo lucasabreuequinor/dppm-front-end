@@ -6,7 +6,8 @@ import bciReducers from './business_case_items'
 import rpReducers from './resource_plan'
 import rrReducers from './risk_register'
 import lpcmReducers from './legal_plan_change_mgmt'
-
+import ppReducers from './project_plan'
+import canvasReducers from './canvas'
 
 
 import {combineReducers} from 'redux'
@@ -19,7 +20,9 @@ const allReducers = combineReducers({
   bciReducers,
   rpReducers,
   rrReducers,
-  lpcmReducers
+  lpcmReducers,
+  ppReducers,
+  canvasReducers
 
 })
 

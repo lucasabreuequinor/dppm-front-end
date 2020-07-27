@@ -70,14 +70,25 @@ import {
   from "../components/solution_and_data_screen"
 
 
-  class SolutionAndDataScreen extends React.Component {
+  const SolutionAndDataScreen = () => {
 
-  render(){
+    const savePdf = () => {
+
+      let canvas_sad = document.getElementById('sad_pdf_container'); 
+      window.scrollTo(0,0);  
+      window.canvasObject[2].width = canvas_sad.offsetWidth;
+      window.canvasObject[2].height = canvas_sad.offsetHeight;
+
+      window.html2canvas(canvas_sad, {useCORS:true}).then(function(canvas) {
+      window.canvasObject[2].canvas = canvas;
+
+    })
+  }
 
     return(
       <React.Fragment>
         <SADMainContainer>
-          <SADFormAndLabelContainer>
+          <SADFormAndLabelContainer id="sad_pdf_container">
 
             <SADLabel>Solution and Data</SADLabel>
             
@@ -201,9 +212,9 @@ import {
 
 
             </SADFormsContainer>
-            <SADStyledPreviousNextLinkContainer>
+            <SADStyledPreviousNextLinkContainer data-html2canvas-ignore>
               <SADStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/change_story"} > Previous </SADStyledPreviousLink>
-              <SADStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case"} > Next </SADStyledNextLink>
+              <SADStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case"} delay={100} pdfOnClick={savePdf}> Next </SADStyledNextLink>
             </SADStyledPreviousNextLinkContainer>
 
           </SADFormAndLabelContainer>
@@ -213,7 +224,6 @@ import {
       </React.Fragment>
 
     )
-  }
 }
 
 export default SolutionAndDataScreen

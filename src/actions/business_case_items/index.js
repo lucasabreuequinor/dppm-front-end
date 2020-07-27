@@ -43,14 +43,22 @@ import changeProductionItemYear5 from './changeProductionItemYear5'
 import changeProductionItemTotal from './changeProductionItemTotal'
 import changeProductionItemAssumptionsComments from './changeProductionItemAssumptionsComments'
 
+import addDriverItem from './addDriverItem'
+import deleteDriverItem from './deleteDriverItem'
+import incrementNextDriverItemID from './incrementNextDriverItemID'
+import decrementNextDriverItemID from './decrementNextDriverItemID'
+import changeDriverItemDriver from './changeDriverItemDriver'
+import changeDriverItemEnabler from './changeDriverItemEnabler'
+import changeDriverItemAction from './changeDriverItemAction'
+import changeDriverItemFeasibility from './changeDriverItemFeasibility'
+
+
 import changeBaselineColumnSelected from './changeBaselineColumnSelected'
 import changeYear1ColumnSelected from './changeYear1ColumnSelected'
 import changeYear2ColumnSelected from './changeYear2ColumnSelected'
 import changeYear3ColumnSelected from './changeYear3ColumnSelected'
 import changeYear4ColumnSelected from './changeYear4ColumnSelected'
 import changeYear5ColumnSelected from './changeYear5ColumnSelected'
-
-
 
 export {
   addCostItem,
@@ -97,6 +105,15 @@ export {
   changeProductionItemYear5,
   changeProductionItemTotal,
   changeProductionItemAssumptionsComments,
+
+  addDriverItem,
+  deleteDriverItem,
+  incrementNextDriverItemID,
+  decrementNextDriverItemID,
+  changeDriverItemDriver,
+  changeDriverItemEnabler,
+  changeDriverItemAction,
+  changeDriverItemFeasibility,  
 
   changeBaselineColumnSelected,
   changeYear1ColumnSelected,

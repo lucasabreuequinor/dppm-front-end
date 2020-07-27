@@ -1,18 +1,19 @@
 Reducers
 
-[ ] lpcmLegalItem.js
-[ ] import rgRisks in 'bcis.js' and export in it combineReducer
+[OK] lpcmLegalItem.js
+[OK] import rgRisks in 'bcis.js' and export in it combineReducer
 
 Actions
 
-[OK] addLegal.js AND addChangeMgmtItem.js
-[OK] deleteLegalItem.js AND deleteChangeMgmtItem.js
-[OK] incrementNextLegalItemID.js AND incrementNextChangeMgmtItemID
-[OK] decrementNextLegalItemID.js AND decrementNextChangeMgmtItemID.js
+[OK] addDriverItem.js 
+[OK] deleteDriverItem.js 
+[OK] incrementNextDriverItemID.js
+[OK] decrementNextDriverItemID.js
 
-[OK] changeLegalItemRequirement.js AND changeChangeMgmtItemRequirement.js
-[OK] changeLegalItemStatus.js AND changeChangeMgmtItemStatus.js
-[OK] changeLegalItemFollowUpAction.js AND changeChangeMgmtItemFollowUpAction.js
+[OK] changeDriverItemDriver.js
+[OK] changeDriverItemEnabler.js
+[OK] changeDriverItemAction.js
+[ok] changeDriverItemFeasibility.js
 
 
 Actions dont need to be packed into a combinedReducer
