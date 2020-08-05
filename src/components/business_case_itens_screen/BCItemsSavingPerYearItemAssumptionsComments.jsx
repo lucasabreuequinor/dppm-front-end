@@ -30,6 +30,7 @@ const BCItemsSavingPerYearItemAssumptionsComments = ({savingItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsSavingPerYearItemAssumptionsCommentsStyled
+            data-html2canvas-ignore
             type="text"
             key={savingItem.id}
             style={{

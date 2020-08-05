@@ -1,4 +1,4 @@
-const sadArchContractStatus = (state = "inicio", action) => {
+const sadArchContractStatus = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_ARCH_CONTRACT_STATUS':
       return action.text

@@ -30,6 +30,7 @@ const BCItemsCostPerYearItemAssumptionsComments = ({costItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemAssumptionsCommentsStyled
+            data-html2canvas-ignore
             type="text"
             key={costItem.id}
             style={{

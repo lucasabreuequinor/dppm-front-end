@@ -9,7 +9,7 @@ import RiskRegisterScreen from './RiskRegisterScreen'
 import LegalPlanChangeMgmtScreen from './LegalPlanChangeMgmtScreen'
 import ProjectPlanScreen from './ProjectPlanScreen'
 import BusinessCaseRealizationPlanScreen from './BusinessCaseRealizationPlanScreen'
-
+import PDFA3 from './PDFA3'
 
 export {
       WelcomeScreen,
@@ -22,5 +22,6 @@ export {
       RiskRegisterScreen,
       LegalPlanChangeMgmtScreen,
       ProjectPlanScreen,
-      BusinessCaseRealizationPlanScreen
+      BusinessCaseRealizationPlanScreen,
+      PDFA3
     }

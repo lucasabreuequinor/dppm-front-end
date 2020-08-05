@@ -1,4 +1,4 @@
-const bcApprovedBy = (state = "inicio", action) => {
+const bcApprovedBy = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_APPROVED_BY':
       return action.text

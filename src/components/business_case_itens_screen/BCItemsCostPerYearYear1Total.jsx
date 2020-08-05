@@ -9,8 +9,9 @@ const BCItemsCostPerYearYear1TotalStyled = styled.input`
   width:100%;
   padding: .5rem;
   padding-bottom: 0;
-  font-weight: 500;
+  font-weight: bold;
   font-family: inherit;
+  font-size: 1.2rem;
   color: #000000;
   box-sizing: border-box;
   text-overflow: ellipsis;

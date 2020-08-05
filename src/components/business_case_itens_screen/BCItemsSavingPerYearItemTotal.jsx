@@ -48,6 +48,7 @@ const BCItemsSavingPerYearItemTotal = ({savingItem}) => {
                                           .reduce((sum,key) => sum + (currentSavingItem[key] ? parseFloat(currentSavingItem[key]): 0) , 0)
 
   return <BCItemsSavingPerYearItemTotalStyled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={savingItem.id}  

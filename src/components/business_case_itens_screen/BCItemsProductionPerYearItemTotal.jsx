@@ -48,6 +48,7 @@ const BCItemsProductionPerYearItemTotal = ({productionItem}) => {
                                           .reduce((sum,key) => sum + (currentProductionItem[key] ? parseFloat(currentProductionItem[key]): 0) , 0)
 
   return <BCItemsProductionPerYearItemTotalStyled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={productionItem.id}  

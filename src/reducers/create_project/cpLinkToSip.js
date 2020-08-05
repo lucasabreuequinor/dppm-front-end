@@ -1,4 +1,4 @@
-const cpLinkToSip = (state = "inicio", action) => {
+const cpLinkToSip = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_LINK_TO_SIP':
       return action.text

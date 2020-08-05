@@ -1,4 +1,4 @@
-const sadSolutionOverview = (state = "inicio", action) => {
+const sadSolutionOverview = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_SOLUTION_OVERVIEW':
       return action.text

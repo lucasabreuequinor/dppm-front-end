@@ -30,6 +30,7 @@ const BCItemsCostPerYearItemType = ({costItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemTypeStyled
+            data-html2canvas-ignore
             type="text"
             key={costItem.id}
             style={{

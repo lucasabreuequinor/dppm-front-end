@@ -1,4 +1,4 @@
-const chBy = (state = "inicio", action) => {
+const chBy = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_BY':
       return action.text

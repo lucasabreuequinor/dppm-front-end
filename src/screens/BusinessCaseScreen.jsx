@@ -128,15 +128,13 @@ const BusinessCaseScreen = () => {
 
   const savePdf = () => {
 
-    let canvas_bc = document.getElementById('bc_pdf_container'); 
-    window.scrollTo(0,0);  
-    window.canvasObject[3].width = canvas_bc.offsetWidth;
-    window.canvasObject[3].height = canvas_bc.offsetHeight;
-
+    let canvas_bc = document.getElementById('bc-graphic-pdf');
+    
+    window.scrollTo(0,0); 
     window.html2canvas(canvas_bc).then(function(canvas) {
-    window.canvasObject[3].canvas = canvas;
+      window.canvasObject[3].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
-  })
+    })
 }
 
     return(
@@ -268,7 +266,7 @@ const BusinessCaseScreen = () => {
                     </BCKeyPerformanceIndicatorsContainer>
                   </BCKeyAssumpCashFlowImpactKeyPerformanceIndicatorsContainer>
 
-                  <BCCashFlowGraphicContainer style={{overflow:'hidden'}}>
+                  <BCCashFlowGraphicContainer id="bc-graphic-pdf" style={{overflow:'hidden'}}>
 
                     <BCCashFlowGraphic>
                       
@@ -280,7 +278,7 @@ const BusinessCaseScreen = () => {
 
               <BCStyledPreviousNextLinkContainer data-html2canvas-ignore>
                 <BCStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/solution_and_data"} > Previous </BCStyledPreviousLink>
-                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} delay={100} pdfOnClick={savePdf}> Next </BCStyledNextLink>
+                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} delay={1000} pdfOnClick={savePdf}> Next </BCStyledNextLink>
               </BCStyledPreviousNextLinkContainer>
 
             </BCFormAndCashFlowGraphicContainerAndLabel>

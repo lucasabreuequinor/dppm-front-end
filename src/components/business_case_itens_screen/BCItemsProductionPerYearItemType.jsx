@@ -30,6 +30,7 @@ const BCItemsProductionPerYearItemType = ({productionItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsProductionPerYearItemTypeStyled
+            data-html2canvas-ignore
             type="text"
             key={productionItem.id}
             style={{

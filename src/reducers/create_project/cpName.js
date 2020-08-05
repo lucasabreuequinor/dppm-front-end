@@ -1,4 +1,4 @@
-const cpName = (state = "inicio", action) => {
+const cpName = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_PROJECT_NAME':
       return action.text

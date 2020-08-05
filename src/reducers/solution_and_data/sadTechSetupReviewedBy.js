@@ -1,4 +1,4 @@
-const sadTechSetupReviewedBy = (state = "inicio", action) => {
+const sadTechSetupReviewedBy = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_TECH_SETUP_REVIEWED_BY':
       return action.text

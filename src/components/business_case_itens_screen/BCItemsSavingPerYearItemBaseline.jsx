@@ -31,6 +31,7 @@ const BCItemsSavingPerYearItemBaseline = ({savingItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsSavingPerYearItemBaselineStyled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={savingItem.id}

@@ -1,4 +1,4 @@
-const cpApprover = (state = "inicio", action) => {
+const cpApprover = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_APPROVER':
       return action.text

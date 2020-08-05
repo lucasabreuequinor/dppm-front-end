@@ -30,6 +30,7 @@ const BCItemsProductionPerYearItemAssumptionsComments = ({productionItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsProductionPerYearItemAssumptionsCommentsStyled
+            data-html2canvas-ignore
             type="text"
             key={productionItem.id}
             style={{

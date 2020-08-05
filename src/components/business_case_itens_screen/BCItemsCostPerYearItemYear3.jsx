@@ -31,6 +31,7 @@ const BCItemsCostPerYearItemYear3 = ({costItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemYear3Styled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={costItem.id}  

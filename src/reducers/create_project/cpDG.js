@@ -1,4 +1,4 @@
-const cpDG = (state = "inicio", action) => {
+const cpDG = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_DG':
       return action.text

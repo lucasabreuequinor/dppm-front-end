@@ -1,4 +1,4 @@
-const chTo = (state = "inicio", action) => {
+const chTo = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_TO':
       return action.text

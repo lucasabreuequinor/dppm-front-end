@@ -48,6 +48,7 @@ const BCItemsCostPerYearItemTotal = ({costItem}) => {
                                           .reduce((sum,key) => sum + (currentCostItem[key] ? parseFloat(currentCostItem[key]): 0) , 0)
 
   return <BCItemsCostPerYearItemTotalStyled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={costItem.id}  

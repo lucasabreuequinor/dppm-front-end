@@ -1,4 +1,4 @@
-const bcReviewer = (state = "inicio", action) => {
+const bcReviewer = (state = "test", action) => {
   switch(action.type){
     case 'CHANGE_REVIEWER':
       return action.text

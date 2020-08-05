@@ -205,8 +205,8 @@ const BusinessCaseItensScreen = () => {
       dispatch(addCostItem(
                 {
                   id: nextCostItemId,
-                  item: "exemplo",
-                  cost_type: "exemplo",
+                  item: "test",
+                  cost_type: "test",
                   baseline: 100,
                   year1: 100,
                   year2: 100,
@@ -214,7 +214,7 @@ const BusinessCaseItensScreen = () => {
                   year4: 100,
                   year5: 100,
                   total:100,
-                  assumptionsComments: "exemplo"
+                  assumptionsComments: "test"
                 }
       ))
       dispatch(incrementNextCostItemID())
@@ -243,8 +243,8 @@ const BusinessCaseItensScreen = () => {
       dispatch(addSavingItem(
                 {
                   id: nextSavingItemId,
-                  item: "exemplo",
-                  saving_type: "exemplo",
+                  item: "test",
+                  saving_type: "test",
                   baseline: 100,
                   year1: 100,
                   year2: 100,
@@ -252,7 +252,7 @@ const BusinessCaseItensScreen = () => {
                   year4: 100,
                   year5: 100,
                   total:100,
-                  assumptionsComments: "exemplo"
+                  assumptionsComments: "test"
                 }
       ))
       dispatch(incrementNextSavingItemID())
@@ -280,8 +280,8 @@ const BusinessCaseItensScreen = () => {
       dispatch(addProductionItem(
                 {
                   id: nextProductionItemId,
-                  item: "exemplo",
-                  production_type: "exemplo",
+                  item: "test",
+                  production_type: "test",
                   baseline: 100,
                   year1: 100,
                   year2: 100,
@@ -289,7 +289,7 @@ const BusinessCaseItensScreen = () => {
                   year4: 100,
                   year5: 100,
                   total:100,
-                  assumptionsComments: "exemplo"
+                  assumptionsComments: "test"
                 }
       ))
       dispatch(incrementNextProductionItemID())
@@ -310,15 +310,34 @@ const BusinessCaseItensScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const savePdf = () => {
 
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el => el.style.display = 'none'
+    )
+    
     let canvas_bcItems = document.getElementById('bcitems_pdf_container'); 
     window.scrollTo(0,0);  
     window.canvasObject[4].width = canvas_bcItems.offsetWidth;
     window.canvasObject[4].height = canvas_bcItems.offsetHeight;
 
     window.html2canvas(canvas_bcItems).then(function(canvas) {
-    window.canvasObject[4].canvas = canvas;
+    window.canvasObject[4].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
   })
 }
@@ -327,7 +346,7 @@ const BusinessCaseItensScreen = () => {
       <React.Fragment>
         <BCItemsMainContainer>
           <BCItemsContainer id="bcitems_pdf_container">
-            <BCItemsLabel>Business Case Itens</BCItemsLabel>
+            <BCItemsLabel data-html2canvas-ignore >Business Case Itens</BCItemsLabel>
             <BCItemsCostSavingNetProdTotalTableContainer>
               <BCItemsCostSavingNetProdTotalTableItemColumn>Item</BCItemsCostSavingNetProdTotalTableItemColumn>
               

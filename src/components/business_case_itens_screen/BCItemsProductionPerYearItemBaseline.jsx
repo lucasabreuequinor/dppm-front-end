@@ -31,6 +31,7 @@ const BCItemsProductionPerYearItemBaseline = ({productionItem}) => {
   const dispatch = useDispatch();
 
   return <BCItemsProductionPerYearItemBaselineStyled
+            data-html2canvas-ignore
             type="number"
             min="0"
             key={productionItem.id}
