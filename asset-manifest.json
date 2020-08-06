@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dppm-front-end/static/css/main.585ee47f.chunk.css",
-    "main.js": "/dppm-front-end/static/js/main.79b69816.chunk.js",
-    "main.js.map": "/dppm-front-end/static/js/main.79b69816.chunk.js.map",
+    "main.js": "/dppm-front-end/static/js/main.68e288c1.chunk.js",
+    "main.js.map": "/dppm-front-end/static/js/main.68e288c1.chunk.js.map",
     "runtime-main.js": "/dppm-front-end/static/js/runtime-main.c9875b10.js",
     "runtime-main.js.map": "/dppm-front-end/static/js/runtime-main.c9875b10.js.map",
-    "static/js/2.7241162c.chunk.js": "/dppm-front-end/static/js/2.7241162c.chunk.js",
-    "static/js/2.7241162c.chunk.js.map": "/dppm-front-end/static/js/2.7241162c.chunk.js.map",
+    "static/js/2.958de8b0.chunk.js": "/dppm-front-end/static/js/2.958de8b0.chunk.js",
+    "static/js/2.958de8b0.chunk.js.map": "/dppm-front-end/static/js/2.958de8b0.chunk.js.map",
     "index.html": "/dppm-front-end/index.html",
-    "precache-manifest.bd80f20cef5d0cfe9f3780925f046cc6.js": "/dppm-front-end/precache-manifest.bd80f20cef5d0cfe9f3780925f046cc6.js",
+    "precache-manifest.f7d6fe8af00eed7126e13053d4eee49b.js": "/dppm-front-end/precache-manifest.f7d6fe8af00eed7126e13053d4eee49b.js",
     "service-worker.js": "/dppm-front-end/service-worker.js",
     "static/css/main.585ee47f.chunk.css.map": "/dppm-front-end/static/css/main.585ee47f.chunk.css.map",
     "static/media/equinor-logo.svg": "/dppm-front-end/static/media/equinor-logo.38fd1213.svg",
@@ -21,8 +21,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c9875b10.js",
-    "static/js/2.7241162c.chunk.js",
+    "static/js/2.958de8b0.chunk.js",
     "static/css/main.585ee47f.chunk.css",
-    "static/js/main.79b69816.chunk.js"
+    "static/js/main.68e288c1.chunk.js"
   ]
 }
