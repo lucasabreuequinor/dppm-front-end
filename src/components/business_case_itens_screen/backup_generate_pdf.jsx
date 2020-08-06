@@ -48,6 +48,20 @@ import {
   LPCMStyledPreviousLink,
   LPCMStyledNextLink
 
+//         RRButtonsContainer,
+
+//         RRaddRiskButtonContainer,
+//         RRaddRiskButton,
+//         RRaddRiskButtonLabel,
+
+//         RRdeleteRiskButtonContainer,
+//         RRdeleteRiskButton,
+//         RRdeleteRiskButtonLabel,
+
+//         RRStyledPreviousNextLinkContainer,
+//         RRStyledPreviousLink,
+//         RRStyledNextLink
+
          }
        from '../components/legal_plan_change_mgmt_screen'
 
@@ -66,7 +80,7 @@ import { addLegalItem,
          }   
   from '../actions/legal_plan_change_mgmt'
 
-import A3Pdf from '../components/pdf_components/A3Pdf'
+import { PDFA3 } from './index'
 
 const LegalPlanChangeMgmtScreen = () => {
 
@@ -144,13 +158,131 @@ const LegalPlanChangeMgmtScreen = () => {
     e.preventDefault()
   }
 
+  const calculatePDF_height_width = (element, factor) => {
+   
+    let html_width = !factor ? element.width : element.width * factor
+    let html_height = !factor ? element.height: element.height * factor
+
+    return {
+        html_width,
+        html_height
+    }
+  }
+
   const generatePDF = () => {
-  
-    A3Pdf().then((blob) => {
-      console.log(blob);
-      var downloadLink = document.getElementById('pdf-download-link');
-      downloadLink.href = URL.createObjectURL(blob) 
-    })  
+
+    let pixelToMM = (pixels) => {
+      return ( pixels * 25.4 ) / (window.devicePixelRatio*96)
+    }
+
+    let pdf = new window.jsPDF('p', 'mm', 'a3'),
+        availableHeightOnCurrentPage = pdf.internal.pageSize.getHeight(),
+        totalCanvasHeightOnCurrentPage = 0
+        // fixedYdistance = pixelToMM(10)
+        
+
+    window.canvasObject
+      .map((canvasItem, index) => {
+        // index == 0 || index == 1 || index == 2
+          if (1 == 1 )
+          {
+
+            let {
+              html_width,
+              html_height
+            } = calculatePDF_height_width(canvasItem ,0.75);   
+
+            html_width = pixelToMM(html_width)
+            html_height = pixelToMM(html_height)
+
+            let imgX = (pdf.internal.pageSize.getWidth()/2) - (html_width/2);
+
+            // alert(`${html_height} <= ${availableHeightOnCurrentPage} = ${html_height <= availableHeightOnCurrentPage}`)
+            if (html_height <= availableHeightOnCurrentPage) {
+
+                pdf.addImage(canvasItem.canvas, 'JPEG',
+                imgX, 
+                totalCanvasHeightOnCurrentPage, 
+                html_width, 
+                html_height,
+                null,
+                'NONE'    
+              );
+              
+              totalCanvasHeightOnCurrentPage = totalCanvasHeightOnCurrentPage + html_height
+              availableHeightOnCurrentPage = availableHeightOnCurrentPage - totalCanvasHeightOnCurrentPage;
+            }
+            else {
+              pdf.addPage()
+              availableHeightOnCurrentPage = pdf.internal.pageSize.getHeight()
+              totalCanvasHeightOnCurrentPage = 0;
+
+              pdf.addImage(canvasItem.canvas, 'JPEG',
+              imgX, 
+              totalCanvasHeightOnCurrentPage, 
+              html_width, 
+              html_height,
+              null,
+              'NONE'    
+            );
+
+            totalCanvasHeightOnCurrentPage = totalCanvasHeightOnCurrentPage + html_height
+            availableHeightOnCurrentPage = availableHeightOnCurrentPage - totalCanvasHeightOnCurrentPage;
+
+            }
+          }
+          
+          // pdf.addImage(canvasItem.canvas, 'JPEG',
+          //                 imgX, 
+          //                 fixedY, 
+          //                 pixelToMM(html_width), 
+          //                 pixelToMM(html_height),
+          //                 null,
+          //                 'NONE'    
+          //           );
+          // pdf.addPage()     
+
+        
+      })
+
+    // let imgData = window.canvasObject['lpcmCanvas'].toDataURL("image/jpeg", 1.0)
+    // pdf.addPage();
+    // document.body.appendChild(window.canvasObject[8].canvas)
+    // console.log(window.canvasObject[canvas])
+
+
+    setTimeout(function() {
+                    //Save PDF Doc	
+                    // pdf.save("HTML-Document.pdf");
+
+                    //Generate BLOB object
+                    var blob = pdf.output("blob");
+
+                    //Getting URL of blob object
+                    var blobURL = URL.createObjectURL(PDFA3);
+
+                    // //Showing PDF generated in iFrame element
+                    // var iframe = document.getElementById('sample-pdf');
+                    // iframe.src = blobURL;
+
+                    //Setting download link
+                    var downloadLink = document.getElementById('pdf-download-link');
+                    downloadLink.href = blobURL;        
+      },0)
+  }
+
+  const savePdf = () => {
+
+    let canvas_lpcm = document.getElementById('lpcm_pdf_container');
+    window.scrollTo(0,0);
+    window.html2canvas(canvas_lpcm).then(function(canvas) {
+    window.canvasObject[9].canvas = canvas;
+    window.canvasObject[9].width = canvas_lpcm.offsetWidth;
+    window.canvasObject[9].height = canvas_lpcm.offsetHeight;
+
+    generatePDF();
+
+  });
 
   }
 
@@ -244,10 +376,10 @@ const LegalPlanChangeMgmtScreen = () => {
             </LPCMStyledPreviousNextLinkContainer>
               
           </LPCMContainer>
-          <button onClick={ generatePDF }>
+          <button onClick={ savePdf }>
             save legal pdf
           </button>
-          <a target="_blank" id="pdf-download-link" title="Download PDF File">Download PDF file</a>
+          <a id="pdf-download-link" title="Download PDF File">Download PDF file</a>
         </LPCMMainContainer>
 
       </React.Fragment>
@@ -255,3 +387,19 @@ const LegalPlanChangeMgmtScreen = () => {
 }
 
 export default LegalPlanChangeMgmtScreen
+
+
+
+
+    // let bc_svg = document.getElementsByClassName('recharts-surface')[0]
+
+    // var svg = new XMLSerializer().serializeToString(bc_svg)
+
+    // let blob = new Blob([svg], {type: 'image/svg+xml'});
+    // let url_input = URL.createObjectURL(blob);
+
+    // new SvgToPngConverter().convertFromInput(url_input, function(imgData){
+    //   window.bc_graphic = imgData
+    //     // You now have your png data in base64 (imgData). 
+    //     // Do what ever you wish with it here.
+    // });

@@ -34,8 +34,6 @@ const BCCashFlowGraphic = () => {
                   const capexSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'CAPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
                   const peSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'PE').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
                   const mppSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'MPP').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
-                  const co2Sum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'CO2').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
-                  const savedHoursSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'Saved Hours').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
 
                   return( 
                   {
@@ -43,9 +41,7 @@ const BCCashFlowGraphic = () => {
                     ...(opexSum ? {'OPEX': opexSum}: {}), 
                     ...(capexSum ? {'CAPEX': capexSum}: {}),
                     ...(peSum ? {'PE': peSum}: {}),
-                    ...(mppSum ? {'MPP': mppSum}: {}),
-                    ...(co2Sum ? {'CO2': co2Sum}: {}),                    
-                    ...(savedHoursSum ? {'SAVED HOURS': savedHoursSum}: {})                   
+                    ...(mppSum ? {'MPP': mppSum}: {})                  
                   })
                 })
   return (
@@ -74,14 +70,6 @@ const BCCashFlowGraphic = () => {
 
         <Bar dataKey="MPP" stackId="a" fill="#FFA261">
           <LabelList dataKey="MPP" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
-        </Bar>
-
-        <Bar dataKey="CO2" stackId="a" fill="#28C858">
-          <LabelList dataKey="CO2" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
-        </Bar>
-
-        <Bar dataKey="SAVED HOURS" stackId="a" fill="#FFB2C8">
-          <LabelList dataKey="SAVED HOURS" style={{fill: "#000000", fontSize:".6em",fontWeight:'bold'}}></LabelList>
         </Bar>
 
       </BarChart>

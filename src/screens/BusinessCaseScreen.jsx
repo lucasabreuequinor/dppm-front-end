@@ -73,6 +73,7 @@ import {
   BCKeyPerformanceIndicatorsKpiItemYear4,
   BCKeyPerformanceIndicatorsKpiItemYear5,
   BCCashFlowGraphicContainer,
+  BCCashFlowGraphicLabel,
   BCCashFlowGraphic,
 
   BCStyledPreviousNextLinkContainer,
@@ -265,9 +266,11 @@ const BusinessCaseScreen = () => {
                       </BCKeyPerformanceIndicatorsTableContainer>
                     </BCKeyPerformanceIndicatorsContainer>
                   </BCKeyAssumpCashFlowImpactKeyPerformanceIndicatorsContainer>
-
-                  <BCCashFlowGraphicContainer id="bc-graphic-pdf" style={{overflow:'hidden'}}>
-
+                  
+                  {/* style={{overflow:'hidden'}} */}
+                  <BCCashFlowGraphicContainer id="bc-graphic-pdf">
+                    <BCCashFlowGraphicLabel>Cashflow impact in MUSD, before tax; Equinor share</BCCashFlowGraphicLabel>
+                    
                     <BCCashFlowGraphic>
                       
                     </BCCashFlowGraphic>

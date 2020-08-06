@@ -23,15 +23,15 @@ const kpi = (state, action) => {
           selected: "",
           outcome: {
             selected: "",
-            values: ["", 'OPEX', 'CAPEX', 'PE', 'MPP', 'CO2', 'Saved Hours']
+            values: ["", 'OPEX', 'CAPEX', 'PE', 'MPP']
           },
           performance: {
             selected: "",
-            values: ["", 'a', 'b', 'c', 'd']
+            values: ["", 'test', 'test', 'test']
           },
           progress: {
             selected: "",
-            values: ["", 'e', 'f', 'g', 'h']
+            values: ["", 'test', 'test', 'test']
           },
         },
         baseline: action.baseline,
