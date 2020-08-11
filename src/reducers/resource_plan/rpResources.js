@@ -111,7 +111,7 @@ const nextResourceId = (state = 0, action) => {
   }
 }
 
-const maxResources = (state = 7, action) => {
+const maxResources = (state = 5, action) => {
   switch(action.type){
     default:
       return state

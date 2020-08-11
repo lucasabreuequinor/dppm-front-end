@@ -26,3 +26,23 @@ select {
 .del-margin {
   margin: 0 !important
 }
+
+.hide-arrow-select, .hide-arrow-select option {
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  color: #000000 !important;
+  font-weight: bold;
+  font-size: 1.2rem;
+
+}
+
+.table-label-pdf {
+  font-size: 1.3rem !important;
+}
+
+.table-column-pdf {
+  font-size: 1.3rem !important;
+}
+

@@ -76,7 +76,33 @@ const RiskRegisterScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const savePdf = () => {
+
+      /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+      Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+        el =>  el.style.display = 'none'
+
+      )
+
+      Array.from(getAllElementsWithAttribute('data-table-column')).map(
+        el => el.classList.add('table-column-pdf')
+        
+      )       
 
       let canvas_rr = document.getElementById('rr_pdf_container'); 
       window.scrollTo(0,0);  
@@ -84,7 +110,7 @@ const RiskRegisterScreen = () => {
       window.canvasObject[8].height = canvas_rr.offsetHeight;
 
       window.html2canvas(canvas_rr).then(function(canvas) {
-      window.canvasObject[8].canvas = canvas;
+      window.canvasObject[8].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
     })
   }
@@ -93,11 +119,11 @@ const RiskRegisterScreen = () => {
       <React.Fragment>
         <RRMainContainer>
           <RRContainer id="rr_pdf_container">
-            <RRLabel>Risk register</RRLabel>
+            <RRLabel data-html2canvas-ignore >Risk register</RRLabel>
             <RRTableContainer>
-              <RRDescriptionColumn>Description</RRDescriptionColumn>
-              <RRImpactColumn>Impact</RRImpactColumn>
-              <RRMitigatingActionColumn>Mitigating Actions</RRMitigatingActionColumn>
+              <RRDescriptionColumn data-table-column >Description</RRDescriptionColumn>
+              <RRImpactColumn data-table-column >Impact</RRImpactColumn>
+              <RRMitigatingActionColumn data-table-column >Mitigating Actions</RRMitigatingActionColumn>
 
               {
                 risks.map(risk => 

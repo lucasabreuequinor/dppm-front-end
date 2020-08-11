@@ -5,7 +5,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 
 
-const BCCashFlowGraphic = () => {
+const BCCashFlowGraphic = ({style}) => {
   const jsfiddleUrl = 'https://jsfiddle.net/alidingling/90v76x08/'
   
   const kpis = useSelector(state => state.bcReducers.bcKPIs.kpis);
@@ -45,7 +45,10 @@ const BCCashFlowGraphic = () => {
                   })
                 })
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer 
+        id='meuuu_containerrrr'
+        style={style}
+      >
       <BarChart
         data={data}
         // margin={{

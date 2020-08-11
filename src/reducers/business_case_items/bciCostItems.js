@@ -156,7 +156,7 @@ const nextCostItemId = (state = 0, action) => {
   }
 }
 
-const maxCostItems = (state = 7, action) => {
+const maxCostItems = (state = 5, action) => {
   switch(action.type){
     default:
       return state

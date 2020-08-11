@@ -20,7 +20,6 @@ const RPTableContainer = styled.div`
   font-weight: bold;
   margin-top: 1.6rem;
   resize: none;
-  text-align: center;
 }
 `
 export default RPTableContainer

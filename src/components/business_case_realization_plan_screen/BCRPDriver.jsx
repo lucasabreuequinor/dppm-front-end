@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { changeDriverItemDriver } from '../../actions/business_case_items';
 
-const BCRPDriverStyled = styled.input`
-
+const BCRPDriverStyled = styled.textarea.attrs({ 
+  rows: 6
+})`
 
   border: 0px solid #707070;
   width:100%;
@@ -13,7 +14,8 @@ const BCRPDriverStyled = styled.input`
   font-family: inherit;
   color: #000000;
   box-sizing: border-box;
-  text-overflow: ellipsis;  
+  text-overflow: ellipsis;
+  rows:4;
 
   &:active {
     border: none;

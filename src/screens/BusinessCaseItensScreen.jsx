@@ -327,10 +327,30 @@ const BusinessCaseItensScreen = () => {
 
   const savePdf = () => {
 
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
     Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-      el => el.style.display = 'none'
+      el =>  el.style.display = 'none'
     )
     
+    Array.from(getAllElementsWithAttribute('data-keep-render')).map(
+      el =>  el.style.visibility = 'hidden'
+    )
+
+    Array.from(document.getElementsByTagName('select')).map(
+      el => el.classList.add('hide-arrow-select')
+      
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-label')).map(
+      el => el.classList.add('table-label-pdf')
+      
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-column')).map(
+      el => el.classList.add('table-column-pdf')
+      
+    )       
+
     let canvas_bcItems = document.getElementById('bcitems_pdf_container'); 
     window.scrollTo(0,0);  
     window.canvasObject[4].width = canvas_bcItems.offsetWidth;
@@ -348,50 +368,50 @@ const BusinessCaseItensScreen = () => {
           <BCItemsContainer id="bcitems_pdf_container">
             <BCItemsLabel data-html2canvas-ignore >Business Case Itens</BCItemsLabel>
             <BCItemsCostSavingNetProdTotalTableContainer>
-              <BCItemsCostSavingNetProdTotalTableItemColumn>Item</BCItemsCostSavingNetProdTotalTableItemColumn>
+              <BCItemsCostSavingNetProdTotalTableItemColumn data-keep-render >Item</BCItemsCostSavingNetProdTotalTableItemColumn>
               
-              <BCItemsCostSavingNetProdTotalTableTypeColumn>Type</BCItemsCostSavingNetProdTotalTableTypeColumn>
+              <BCItemsCostSavingNetProdTotalTableTypeColumn data-keep-render >Type</BCItemsCostSavingNetProdTotalTableTypeColumn>
 
               <BCItemsCostSavingNetProdTotalTableBaselineContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableBaselineColumn>Baseline</BCItemsCostSavingNetProdTotalTableBaselineColumn>
+                <BCItemsCostSavingNetProdTotalTableBaselineColumn data-html2canvas-ignore >Baseline</BCItemsCostSavingNetProdTotalTableBaselineColumn>
                 <BCItemsCostSavingNetProdTotalTableBaselineSelect></BCItemsCostSavingNetProdTotalTableBaselineSelect>
               </BCItemsCostSavingNetProdTotalTableBaselineContainer>
 
               <BCItemsCostSavingNetProdTotalTableYear1Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear1Column>Year 1</BCItemsCostSavingNetProdTotalTableYear1Column>
+                <BCItemsCostSavingNetProdTotalTableYear1Column data-html2canvas-ignore >Year 1</BCItemsCostSavingNetProdTotalTableYear1Column>
                 <BCItemsCostSavingNetProdTotalTableYear1Select></BCItemsCostSavingNetProdTotalTableYear1Select>
               </BCItemsCostSavingNetProdTotalTableYear1Container>
 
               <BCItemsCostSavingNetProdTotalTableYear2Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear2Column>Year 2</BCItemsCostSavingNetProdTotalTableYear2Column>
+                <BCItemsCostSavingNetProdTotalTableYear2Column data-html2canvas-ignore >Year 2</BCItemsCostSavingNetProdTotalTableYear2Column>
                 <BCItemsCostSavingNetProdTotalTableYear2Select></BCItemsCostSavingNetProdTotalTableYear2Select> 
               </BCItemsCostSavingNetProdTotalTableYear2Container>
 
 
               <BCItemsCostSavingNetProdTotalTableYear3Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear3Column>Year 3</BCItemsCostSavingNetProdTotalTableYear3Column>
+                <BCItemsCostSavingNetProdTotalTableYear3Column data-html2canvas-ignore >Year 3</BCItemsCostSavingNetProdTotalTableYear3Column>
                 <BCItemsCostSavingNetProdTotalTableYear3Select></BCItemsCostSavingNetProdTotalTableYear3Select> 
               </BCItemsCostSavingNetProdTotalTableYear3Container>
 
               <BCItemsCostSavingNetProdTotalTableYear4Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear4Column>Year 4</BCItemsCostSavingNetProdTotalTableYear4Column>
+                <BCItemsCostSavingNetProdTotalTableYear4Column data-html2canvas-ignore >Year 4</BCItemsCostSavingNetProdTotalTableYear4Column>
                 <BCItemsCostSavingNetProdTotalTableYear4Select></BCItemsCostSavingNetProdTotalTableYear4Select> 
               </BCItemsCostSavingNetProdTotalTableYear4Container>
 
               <BCItemsCostSavingNetProdTotalTableYear5Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear5Column>Year 5</BCItemsCostSavingNetProdTotalTableYear5Column>
+                <BCItemsCostSavingNetProdTotalTableYear5Column data-html2canvas-ignore >Year 5</BCItemsCostSavingNetProdTotalTableYear5Column>
                 <BCItemsCostSavingNetProdTotalTableYear5Select></BCItemsCostSavingNetProdTotalTableYear5Select> 
               </BCItemsCostSavingNetProdTotalTableYear5Container>
 
               <BCItemsCostSavingNetProdTotalTableTotalContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableTotalColumn>Total</BCItemsCostSavingNetProdTotalTableTotalColumn>
+                <BCItemsCostSavingNetProdTotalTableTotalColumn data-table-column >Total</BCItemsCostSavingNetProdTotalTableTotalColumn>
               </BCItemsCostSavingNetProdTotalTableTotalContainer>
 
               <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn>Assumptions/Comments</BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn>
+                <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn data-table-column >Assumptions/Comments</BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn>
               </BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer>
 
-              <BCItemsCostPerYearLabel>Costs per year</BCItemsCostPerYearLabel>
+              <BCItemsCostPerYearLabel data-table-label >Costs per year</BCItemsCostPerYearLabel>
 
               <BCItemsCostPerYearBaselineTotal></BCItemsCostPerYearBaselineTotal>
               <BCItemsCostPerYearYear1Total></BCItemsCostPerYearYear1Total>
@@ -437,7 +457,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsCostPerYearButtonsContainer>
 
-              <BCItemsSavingPerYearLabel>Savings per year</BCItemsSavingPerYearLabel>
+              <BCItemsSavingPerYearLabel data-table-label >Savings per year</BCItemsSavingPerYearLabel>
               
               <BCItemsSavingPerYearBaselineTotal></BCItemsSavingPerYearBaselineTotal>
               <BCItemsSavingPerYearYear1Total></BCItemsSavingPerYearYear1Total>
@@ -484,7 +504,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsSavingPerYearButtonsContainer>
 
-              <BCItemsNetPerYearLabel>Net impact</BCItemsNetPerYearLabel>
+              <BCItemsNetPerYearLabel data-table-label >Net impact</BCItemsNetPerYearLabel>
 
               <BCItemsNetPerYearBaselineTotal></BCItemsNetPerYearBaselineTotal>
               <BCItemsNetPerYearYear1Total></BCItemsNetPerYearYear1Total>
@@ -496,7 +516,7 @@ const BusinessCaseItensScreen = () => {
               <div style={{borderBottom: "0.1rem solid #808080"}}></div>
               
 
-              <BCItemsProductionPerYearLabel>Production effect</BCItemsProductionPerYearLabel>
+              <BCItemsProductionPerYearLabel data-table-label >Production effect</BCItemsProductionPerYearLabel>
               
               <BCItemsProductionPerYearBaselineTotal></BCItemsProductionPerYearBaselineTotal>
               <BCItemsProductionPerYearYear1Total></BCItemsProductionPerYearYear1Total>
@@ -542,7 +562,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsProductionPerYearButtonsContainer>
               
-              <BCItemsTotalPerYearLabel>Total effect</BCItemsTotalPerYearLabel>
+              <BCItemsTotalPerYearLabel data-table-label>Total effect</BCItemsTotalPerYearLabel>
 
               <BCItemsTotalPerYearBaselineTotal></BCItemsTotalPerYearBaselineTotal>
               <BCItemsTotalPerYearYear1Total></BCItemsTotalPerYearYear1Total>

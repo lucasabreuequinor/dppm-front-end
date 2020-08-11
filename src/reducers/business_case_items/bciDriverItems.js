@@ -90,7 +90,7 @@ const nextDriverItemId = (state = 0, action) => {
   }
 }
 
-const maxDriverItems = (state = 7, action) => {
+const maxDriverItems = (state = 3, action) => {
   switch(action.type){
     default:
       return state

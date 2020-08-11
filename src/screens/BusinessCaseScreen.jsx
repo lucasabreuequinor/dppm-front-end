@@ -127,7 +127,26 @@ const BusinessCaseScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const savePdf = () => {
+
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el => el.style.display = 'none'
+    )
 
     let canvas_bc = document.getElementById('bc-graphic-pdf');
     
@@ -269,7 +288,7 @@ const BusinessCaseScreen = () => {
                   
                   {/* style={{overflow:'hidden'}} */}
                   <BCCashFlowGraphicContainer id="bc-graphic-pdf">
-                    <BCCashFlowGraphicLabel>Cashflow impact in MUSD, before tax; Equinor share</BCCashFlowGraphicLabel>
+                    <BCCashFlowGraphicLabel data-html2canvas-ignore>Cashflow impact in MUSD, before tax; Equinor share</BCCashFlowGraphicLabel>
                     
                     <BCCashFlowGraphic>
                       

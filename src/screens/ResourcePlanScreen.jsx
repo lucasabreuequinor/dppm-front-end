@@ -86,8 +86,33 @@ const ResourcePlanScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
 
   const savePdf = () => {
+
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el =>  el.style.display = 'none'
+
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-column')).map(
+      el => el.classList.add('table-column-pdf')
+      
+    )    
 
     let canvas_rp = document.getElementById('rp_pdf_container'); 
     window.scrollTo(0,0);
@@ -95,7 +120,7 @@ const ResourcePlanScreen = () => {
     window.canvasObject[7].height = canvas_rp.offsetHeight;    
     
     window.html2canvas(canvas_rp).then(function(canvas) {
-    window.canvasObject[7].canvas = canvas;
+    window.canvasObject[7].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
   })
 }  
@@ -104,15 +129,15 @@ const ResourcePlanScreen = () => {
       <React.Fragment>
         <RPMainContainer>
           <RPContainer id="rp_pdf_container">
-            <RPLabel>Resource Plan</RPLabel>
+            <RPLabel data-html2canvas-ignore >Resource Plan</RPLabel>
             <RPTableContainer>
 
-              <RPResourceOwnerColumn>Resource owner</RPResourceOwnerColumn>
-              <RPRoleRequiredColumn>Role required</RPRoleRequiredColumn>
-              <RPNameColumn>Name</RPNameColumn>
-              <RPAllocationColumn>Allocation</RPAllocationColumn>
-              <RPStartDateColumn>Start date</RPStartDateColumn>
-              <RPDurationColumn>Duration</RPDurationColumn>
+              <RPResourceOwnerColumn data-table-column >Resource owner</RPResourceOwnerColumn>
+              <RPRoleRequiredColumn data-table-column >Role required</RPRoleRequiredColumn>
+              <RPNameColumn data-table-column >Name</RPNameColumn>
+              <RPAllocationColumn data-table-column >Allocation</RPAllocationColumn>
+              <RPStartDateColumn data-table-column >Start date</RPStartDateColumn>
+              <RPDurationColumn data-table-column >Duration</RPDurationColumn>
 
               {
                 resources.map(resource => 

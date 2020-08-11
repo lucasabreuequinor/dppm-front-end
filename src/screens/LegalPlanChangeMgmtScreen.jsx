@@ -144,27 +144,73 @@ const LegalPlanChangeMgmtScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const generatePDF = () => {
+    
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el =>  el.style.display = 'none'
+
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-column')).map(
+      el => el.classList.add('table-column-pdf')
+      
+    )        
+ 
+    let canvas_lpcm_one = document.getElementById('lpcm_pdf_container_one');
+    let canvas_lpcm_two = document.getElementById('lpcm_pdf_container_two');  
+    window.scrollTo(0,0);  
+
+    window.html2canvas(canvas_lpcm_one).then(function(canvas) {
+      window.canvasObject[9].canvasOne = canvas.toDataURL('image/jpeg', 1.0);
+
+    })
+    
+    window.html2canvas(canvas_lpcm_two).then(function(canvas) {
+      window.canvasObject[9].canvasTwo = canvas.toDataURL('image/jpeg', 1.0);
   
-    A3Pdf().then((blob) => {
-      console.log(blob);
-      var downloadLink = document.getElementById('pdf-download-link');
-      downloadLink.href = URL.createObjectURL(blob) 
-    })  
+    })        
+
+    setTimeout(() => {
+
+          A3Pdf().then((blob) => {
+            console.log(blob);
+            var downloadLink = document.getElementById('pdf-download-link');
+            downloadLink.href = URL.createObjectURL(blob) 
+          })  
+
+        }
+    
+    , 2000)
 
   }
 
   return (
       <React.Fragment>
         <LPCMMainContainer>
-          <LPCMContainer id="lpcm_pdf_container">
-            <LPCMLegalPlanLabel>Legal and security plan</LPCMLegalPlanLabel>
-            <LPCMLegalPlanTableContainer>
+          <LPCMContainer>
+            <LPCMLegalPlanLabel data-html2canvas-ignore >Legal and security plan</LPCMLegalPlanLabel>
+            <LPCMLegalPlanTableContainer id="lpcm_pdf_container_one">
 
-              <LPCMRequirementColumn>Requirements</LPCMRequirementColumn>
-              <LPCMStatusColumn>Status</LPCMStatusColumn>
-              <LPCMFollowUpActionColumn>Follow up actions</LPCMFollowUpActionColumn>
-              <LPCMReviewedApprovedColumn>Reviewed/approved by</LPCMReviewedApprovedColumn>
+              <LPCMRequirementColumn data-table-column >Requirements</LPCMRequirementColumn>
+              <LPCMStatusColumn data-table-column >Status</LPCMStatusColumn>
+              <LPCMFollowUpActionColumn data-table-column >Follow up actions</LPCMFollowUpActionColumn>
+              <LPCMReviewedApprovedColumn data-table-column >Reviewed/approved by</LPCMReviewedApprovedColumn>
 
               {
                 legalItems.map(legal => 
@@ -198,13 +244,13 @@ const LegalPlanChangeMgmtScreen = () => {
             </LPCMLegalPlanTableContainer>
 
 
-            <LPCMChangeMgmtLabel>Change management and value realisation</LPCMChangeMgmtLabel>
-            <LPCMChangeMgmtTableContainer> 
+            <LPCMChangeMgmtLabel data-html2canvas-ignore >Change management and value realisation</LPCMChangeMgmtLabel>
+            <LPCMChangeMgmtTableContainer id="lpcm_pdf_container_two"> 
 
-              <LPCMRequirementColumn>Legal and security plan</LPCMRequirementColumn>  
-              <LPCMStatusColumn>Status</LPCMStatusColumn>
-              <LPCMFollowUpActionColumn>Follow up actions</LPCMFollowUpActionColumn>
-              <LPCMReviewedApprovedColumn>Reviewed/approved by</LPCMReviewedApprovedColumn>
+              <LPCMRequirementColumn data-table-column >Requirements</LPCMRequirementColumn>  
+              <LPCMStatusColumn data-table-column >Status</LPCMStatusColumn>
+              <LPCMFollowUpActionColumn data-table-column >Follow up actions</LPCMFollowUpActionColumn>
+              <LPCMReviewedApprovedColumn data-table-column >Reviewed/approved by</LPCMReviewedApprovedColumn>
 
 
               {

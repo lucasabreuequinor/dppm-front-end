@@ -156,7 +156,7 @@ const nextSavingItemId = (state = 0, action) => {
   }
 }
 
-const maxSavingItems = (state = 7, action) => {
+const maxSavingItems = (state = 5, action) => {
   switch(action.type){
     default:
       return state

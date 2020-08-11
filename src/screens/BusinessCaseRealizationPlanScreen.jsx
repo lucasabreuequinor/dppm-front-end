@@ -113,7 +113,32 @@ const BusinessCaseRealizationPlanScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const savePdf = () => {
+
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el =>  el.style.display = 'none'
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-column')).map(
+      el => el.classList.add('table-column-pdf')
+      
+    )
 
     let canvas_bcrpItems = document.getElementById('bcrp_pdf_container'); 
     window.scrollTo(0,0);  
@@ -121,7 +146,7 @@ const BusinessCaseRealizationPlanScreen = () => {
     window.canvasObject[5].height = canvas_bcrpItems.offsetHeight;
 
     window.html2canvas(canvas_bcrpItems).then(function(canvas) {
-    window.canvasObject[5].canvas = canvas;
+    window.canvasObject[5].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
   })
 }
@@ -130,17 +155,17 @@ const BusinessCaseRealizationPlanScreen = () => {
       <React.Fragment>
         <BCRPMainContainer>
           <BCRPContainer id="bcrp_pdf_container">
-            <BCRPLabel>Business Case: Realization plan</BCRPLabel>
+            <BCRPLabel data-html2canvas-ignore >Business Case: Realization plan</BCRPLabel>
             <BCRPTableContainer>
-              <BCRPDriverColumn>Value drivers / Cost drivers</BCRPDriverColumn>
-              <BCRPEnablerColumn>Enablers</BCRPEnablerColumn>
-              <BCRPActionColumn>Actions</BCRPActionColumn>
-              <BCRPFeasibilityColumn>Feasibility</BCRPFeasibilityColumn>
+              <BCRPDriverColumn data-table-column >Value drivers / Cost drivers</BCRPDriverColumn>
+              <BCRPEnablerColumn data-table-column >Enablers</BCRPEnablerColumn>
+              <BCRPActionColumn data-table-column >Actions</BCRPActionColumn>
+              <BCRPFeasibilityColumn data-table-column >Feasibility</BCRPFeasibilityColumn>
 
               {
                 driverItems.map(driverItem => 
                   <React.Fragment>
-                    <BCRPDriver driverItem={driverItem}></BCRPDriver>
+                    <BCRPDriver driverItem={driverItem}></BCRPDriver> 
                     <BCRPEnabler driverItem={driverItem}></BCRPEnabler>
                     <BCRPAction driverItem={driverItem}></BCRPAction>
                     <BCRPFeasibility driverItem={driverItem}></BCRPFeasibility>

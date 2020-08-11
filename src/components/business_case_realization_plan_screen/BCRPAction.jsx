@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { changeDriverItemAction } from '../../actions/business_case_items';
 
-const BCRPActionStyled = styled.input`
-
+const BCRPActionStyled = styled.textarea.attrs({
+  rows: 6
+})`
 
   border: 0px solid #707070;
   width:100%;

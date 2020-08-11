@@ -160,7 +160,7 @@ const nextKpiId = (state = 0, action) => {
   }
 }
 
-const maxKpis = (state = 7, action) => {
+const maxKpis = (state = 5, action) => {
   switch(action.type){
     default:
       return state

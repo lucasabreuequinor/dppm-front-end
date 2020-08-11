@@ -89,7 +89,7 @@ const nextChangeMgmtItemId = (state = 0, action) => {
   }
 }
 
-const maxChangeMgmtItems = (state = 7, action) => {
+const maxChangeMgmtItems = (state = 5, action) => {
   switch(action.type){
     default:
       return state

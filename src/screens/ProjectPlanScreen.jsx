@@ -95,7 +95,33 @@ const ProjectPlanScreen = () => {
     e.preventDefault()
   }
 
+  const getAllElementsWithAttribute = (attribute) => {
+
+    var matchingElements = [];
+    var allElements = document.getElementsByTagName('*');
+    for (var i = 0, n = allElements.length; i < n; i++)
+    {
+      if (allElements[i].getAttribute(attribute) !== null)
+      {
+        // Element exists with attribute. Add to array.
+        matchingElements.push(allElements[i]);
+      }
+    }
+    return matchingElements;
+  }
+
   const savePdf = () => {
+
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
+      el =>  el.style.display = 'none'
+
+    )
+
+    Array.from(getAllElementsWithAttribute('data-table-column')).map(
+      el => el.classList.add('table-column-pdf')
+      
+    )    
 
       let canvas_pp = document.getElementById('pp_pdf_container'); 
       window.scrollTo(0,0);  
@@ -103,7 +129,7 @@ const ProjectPlanScreen = () => {
       window.canvasObject[6].height = canvas_pp.offsetHeight;
 
       window.html2canvas(canvas_pp).then(function(canvas) {
-      window.canvasObject[6].canvas = canvas;
+      window.canvasObject[6].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
     })
   }
@@ -112,12 +138,12 @@ const ProjectPlanScreen = () => {
       <React.Fragment>
         <PPMainContainer>
           <PPContainer id="pp_pdf_container">
-            <PPLabel>Project plan</PPLabel>
+            <PPLabel data-html2canvas-ignore >Project plan</PPLabel>
             <PPTableContainer>
-              <PPProjectPlanTypeColumn>Type</PPProjectPlanTypeColumn>
-              <PPActivityColumn>Activity</PPActivityColumn>
-              <PPBeginColumn>Date (Begin)</PPBeginColumn>
-              <PPEndColumn>Date (End)</PPEndColumn>
+              <PPProjectPlanTypeColumn data-table-column >Type</PPProjectPlanTypeColumn>
+              <PPActivityColumn data-table-column >Activity</PPActivityColumn>
+              <PPBeginColumn data-table-column >Date (Begin)</PPBeginColumn>
+              <PPEndColumn data-table-column >Date (End)</PPEndColumn>
 
 
               {

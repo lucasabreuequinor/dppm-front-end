@@ -89,7 +89,7 @@ const nextLegalItemId = (state = 0, action) => {
   }
 }
 
-const maxLegalItems = (state = 7, action) => {
+const maxLegalItems = (state = 5, action) => {
   switch(action.type){
     default:
       return state

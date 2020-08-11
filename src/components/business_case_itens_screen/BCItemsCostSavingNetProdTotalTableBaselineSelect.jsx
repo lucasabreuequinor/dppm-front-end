@@ -23,6 +23,7 @@ const BCItemsCostSavingNetProdTotalTableBaselineSelectStyled = styled.select`
   }  
   
   } 
+}
 
 
 `

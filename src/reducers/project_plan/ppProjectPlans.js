@@ -89,7 +89,7 @@ const nextProjectPlanId = (state = 0, action) => {
   }
 }
 
-const maxProjectPlans = (state = 7, action) => {
+const maxProjectPlans = (state = 9, action) => {
   switch(action.type){
     default:
       return state
