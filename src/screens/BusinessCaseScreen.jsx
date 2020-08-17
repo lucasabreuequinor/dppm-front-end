@@ -127,10 +127,10 @@ const BusinessCaseScreen = () => {
     e.preventDefault()
   }
 
-  const getAllElementsWithAttribute = (attribute) => {
+  const getAllElementsWithAttribute = (rootDoc, attribute) => {
 
     var matchingElements = [];
-    var allElements = document.getElementsByTagName('*');
+    var allElements = rootDoc.getElementsByTagName('*');
     for (var i = 0, n = allElements.length; i < n; i++)
     {
       if (allElements[i].getAttribute(attribute) !== null)
@@ -144,14 +144,18 @@ const BusinessCaseScreen = () => {
 
   const savePdf = () => {
 
-    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-      el => el.style.display = 'none'
-    )
-
     let canvas_bc = document.getElementById('bc-graphic-pdf');
     
     window.scrollTo(0,0); 
-    window.html2canvas(canvas_bc).then(function(canvas) {
+    window.html2canvas(canvas_bc, {
+      onclone: function (clonedDoc) {
+
+        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
+          el => el.style.display = 'none'
+        )        
+      }
+
+    }).then(function(canvas) {
       window.canvasObject[3].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
     })
@@ -300,7 +304,7 @@ const BusinessCaseScreen = () => {
 
               <BCStyledPreviousNextLinkContainer data-html2canvas-ignore>
                 <BCStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/solution_and_data"} > Previous </BCStyledPreviousLink>
-                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} delay={1000} pdfOnClick={savePdf}> Next </BCStyledNextLink>
+                <BCStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} delay={100} pdfOnClick={savePdf}> Next </BCStyledNextLink>
               </BCStyledPreviousNextLinkContainer>
 
             </BCFormAndCashFlowGraphicContainerAndLabel>

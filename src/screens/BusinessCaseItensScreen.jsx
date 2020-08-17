@@ -310,10 +310,10 @@ const BusinessCaseItensScreen = () => {
     e.preventDefault()
   }
 
-  const getAllElementsWithAttribute = (attribute) => {
-
+  const getAllElementsWithAttribute = (rootDoc, attribute) => {
+    
     var matchingElements = [];
-    var allElements = document.getElementsByTagName('*');
+    var allElements = rootDoc.getElementsByTagName('*');
     for (var i = 0, n = allElements.length; i < n; i++)
     {
       if (allElements[i].getAttribute(attribute) !== null)
@@ -327,36 +327,27 @@ const BusinessCaseItensScreen = () => {
 
   const savePdf = () => {
 
-    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-      el =>  el.style.display = 'none'
-    )
-    
-    Array.from(getAllElementsWithAttribute('data-keep-render')).map(
-      el =>  el.style.visibility = 'hidden'
-    )
-
-    Array.from(document.getElementsByTagName('select')).map(
-      el => el.classList.add('hide-arrow-select')
-      
-    )
-
-    Array.from(getAllElementsWithAttribute('data-table-label')).map(
-      el => el.classList.add('table-label-pdf')
-      
-    )
-
-    Array.from(getAllElementsWithAttribute('data-table-column')).map(
-      el => el.classList.add('table-column-pdf')
-      
-    )       
-
     let canvas_bcItems = document.getElementById('bcitems_pdf_container'); 
     window.scrollTo(0,0);  
     window.canvasObject[4].width = canvas_bcItems.offsetWidth;
     window.canvasObject[4].height = canvas_bcItems.offsetHeight;
 
-    window.html2canvas(canvas_bcItems).then(function(canvas) {
+    window.html2canvas(canvas_bcItems, {
+      onclone: function (clonedDoc) {
+        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+
+        Array.from(clonedDoc.getElementsByClassName('hide')).map(el => {
+          el.classList.add('hide-pdf')
+        })
+
+
+        Array(clonedDoc.getElementsByClassName('ignore')).map(el => {
+          el.classList.add('ignore-pdf');
+        })
+
+                    
+      }
+    }).then(function(canvas) {  /*Agendando uma MICROTASK*/
     window.canvasObject[4].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
   })
@@ -366,52 +357,52 @@ const BusinessCaseItensScreen = () => {
       <React.Fragment>
         <BCItemsMainContainer>
           <BCItemsContainer id="bcitems_pdf_container">
-            <BCItemsLabel data-html2canvas-ignore >Business Case Itens</BCItemsLabel>
+            <BCItemsLabel className="ignore" >Business Case Itens</BCItemsLabel>
             <BCItemsCostSavingNetProdTotalTableContainer>
-              <BCItemsCostSavingNetProdTotalTableItemColumn data-keep-render >Item</BCItemsCostSavingNetProdTotalTableItemColumn>
+              <BCItemsCostSavingNetProdTotalTableItemColumn className="hide" >Item</BCItemsCostSavingNetProdTotalTableItemColumn>
               
-              <BCItemsCostSavingNetProdTotalTableTypeColumn data-keep-render >Type</BCItemsCostSavingNetProdTotalTableTypeColumn>
+              <BCItemsCostSavingNetProdTotalTableTypeColumn className="hide" >Type</BCItemsCostSavingNetProdTotalTableTypeColumn>
 
               <BCItemsCostSavingNetProdTotalTableBaselineContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableBaselineColumn data-html2canvas-ignore >Baseline</BCItemsCostSavingNetProdTotalTableBaselineColumn>
+                <BCItemsCostSavingNetProdTotalTableBaselineColumn className="ignore" >Baseline</BCItemsCostSavingNetProdTotalTableBaselineColumn>
                 <BCItemsCostSavingNetProdTotalTableBaselineSelect></BCItemsCostSavingNetProdTotalTableBaselineSelect>
               </BCItemsCostSavingNetProdTotalTableBaselineContainer>
 
               <BCItemsCostSavingNetProdTotalTableYear1Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear1Column data-html2canvas-ignore >Year 1</BCItemsCostSavingNetProdTotalTableYear1Column>
+                <BCItemsCostSavingNetProdTotalTableYear1Column className="ignore" >Year 1</BCItemsCostSavingNetProdTotalTableYear1Column>
                 <BCItemsCostSavingNetProdTotalTableYear1Select></BCItemsCostSavingNetProdTotalTableYear1Select>
               </BCItemsCostSavingNetProdTotalTableYear1Container>
 
               <BCItemsCostSavingNetProdTotalTableYear2Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear2Column data-html2canvas-ignore >Year 2</BCItemsCostSavingNetProdTotalTableYear2Column>
+                <BCItemsCostSavingNetProdTotalTableYear2Column className="ignore" >Year 2</BCItemsCostSavingNetProdTotalTableYear2Column>
                 <BCItemsCostSavingNetProdTotalTableYear2Select></BCItemsCostSavingNetProdTotalTableYear2Select> 
               </BCItemsCostSavingNetProdTotalTableYear2Container>
 
 
               <BCItemsCostSavingNetProdTotalTableYear3Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear3Column data-html2canvas-ignore >Year 3</BCItemsCostSavingNetProdTotalTableYear3Column>
+                <BCItemsCostSavingNetProdTotalTableYear3Column className="ignore" >Year 3</BCItemsCostSavingNetProdTotalTableYear3Column>
                 <BCItemsCostSavingNetProdTotalTableYear3Select></BCItemsCostSavingNetProdTotalTableYear3Select> 
               </BCItemsCostSavingNetProdTotalTableYear3Container>
 
               <BCItemsCostSavingNetProdTotalTableYear4Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear4Column data-html2canvas-ignore >Year 4</BCItemsCostSavingNetProdTotalTableYear4Column>
+                <BCItemsCostSavingNetProdTotalTableYear4Column className="ignore" >Year 4</BCItemsCostSavingNetProdTotalTableYear4Column>
                 <BCItemsCostSavingNetProdTotalTableYear4Select></BCItemsCostSavingNetProdTotalTableYear4Select> 
               </BCItemsCostSavingNetProdTotalTableYear4Container>
 
               <BCItemsCostSavingNetProdTotalTableYear5Container className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableYear5Column data-html2canvas-ignore >Year 5</BCItemsCostSavingNetProdTotalTableYear5Column>
+                <BCItemsCostSavingNetProdTotalTableYear5Column className="ignore" >Year 5</BCItemsCostSavingNetProdTotalTableYear5Column>
                 <BCItemsCostSavingNetProdTotalTableYear5Select></BCItemsCostSavingNetProdTotalTableYear5Select> 
               </BCItemsCostSavingNetProdTotalTableYear5Container>
 
               <BCItemsCostSavingNetProdTotalTableTotalContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableTotalColumn data-table-column >Total</BCItemsCostSavingNetProdTotalTableTotalColumn>
+                <BCItemsCostSavingNetProdTotalTableTotalColumn >Total</BCItemsCostSavingNetProdTotalTableTotalColumn>
               </BCItemsCostSavingNetProdTotalTableTotalContainer>
 
               <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer className="del-margin">
-                <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn data-table-column >Assumptions/Comments</BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn>
+                <BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn >Assumptions/Comments</BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn>
               </BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer>
 
-              <BCItemsCostPerYearLabel data-table-label >Costs per year</BCItemsCostPerYearLabel>
+              <BCItemsCostPerYearLabel >Costs per year</BCItemsCostPerYearLabel>
 
               <BCItemsCostPerYearBaselineTotal></BCItemsCostPerYearBaselineTotal>
               <BCItemsCostPerYearYear1Total></BCItemsCostPerYearYear1Total>
@@ -439,7 +430,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }             
 
-              <BCItemsCostPerYearButtonsContainer data-html2canvas-ignore>
+              <BCItemsCostPerYearButtonsContainer id="boi" >
 
                 <BCItemsCostPerYearAddCostItemButtonContainer>
                   <BCItemsCostPerYearAddCostItemButton onClick={ addNewCostItem }></BCItemsCostPerYearAddCostItemButton>
@@ -457,7 +448,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsCostPerYearButtonsContainer>
 
-              <BCItemsSavingPerYearLabel data-table-label >Savings per year</BCItemsSavingPerYearLabel>
+              <BCItemsSavingPerYearLabel >Savings per year</BCItemsSavingPerYearLabel>
               
               <BCItemsSavingPerYearBaselineTotal></BCItemsSavingPerYearBaselineTotal>
               <BCItemsSavingPerYearYear1Total></BCItemsSavingPerYearYear1Total>
@@ -485,7 +476,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }
 
-              <BCItemsSavingPerYearButtonsContainer data-html2canvas-ignore>
+              <BCItemsSavingPerYearButtonsContainer className="ignore">
 
                 <BCItemsSavingPerYearAddSavingItemButtonContainer>
                   <BCItemsSavingPerYearAddSavingItemButton onClick={ addNewSavingItem }></BCItemsSavingPerYearAddSavingItemButton>
@@ -504,7 +495,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsSavingPerYearButtonsContainer>
 
-              <BCItemsNetPerYearLabel data-table-label >Net impact</BCItemsNetPerYearLabel>
+              <BCItemsNetPerYearLabel >Net impact</BCItemsNetPerYearLabel>
 
               <BCItemsNetPerYearBaselineTotal></BCItemsNetPerYearBaselineTotal>
               <BCItemsNetPerYearYear1Total></BCItemsNetPerYearYear1Total>
@@ -516,7 +507,7 @@ const BusinessCaseItensScreen = () => {
               <div style={{borderBottom: "0.1rem solid #808080"}}></div>
               
 
-              <BCItemsProductionPerYearLabel data-table-label >Production effect</BCItemsProductionPerYearLabel>
+              <BCItemsProductionPerYearLabel >Production effect</BCItemsProductionPerYearLabel>
               
               <BCItemsProductionPerYearBaselineTotal></BCItemsProductionPerYearBaselineTotal>
               <BCItemsProductionPerYearYear1Total></BCItemsProductionPerYearYear1Total>
@@ -544,7 +535,7 @@ const BusinessCaseItensScreen = () => {
                 )
               }
 
-              <BCItemsProductionPerYearButtonsContainer data-html2canvas-ignore>
+              <BCItemsProductionPerYearButtonsContainer className="ignore">
 
               <BCItemsProductionPerYearAddProductionItemButtonContainer>
                 <BCItemsProductionPerYearAddProductionItemButton onClick={ addNewProductionItem }></BCItemsProductionPerYearAddProductionItemButton>
@@ -562,7 +553,7 @@ const BusinessCaseItensScreen = () => {
 
               </BCItemsProductionPerYearButtonsContainer>
               
-              <BCItemsTotalPerYearLabel data-table-label>Total effect</BCItemsTotalPerYearLabel>
+              <BCItemsTotalPerYearLabel >Total effect</BCItemsTotalPerYearLabel>
 
               <BCItemsTotalPerYearBaselineTotal></BCItemsTotalPerYearBaselineTotal>
               <BCItemsTotalPerYearYear1Total></BCItemsTotalPerYearYear1Total>
@@ -575,7 +566,7 @@ const BusinessCaseItensScreen = () => {
 
             </BCItemsCostSavingNetProdTotalTableContainer>
 
-            <BCItemstyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <BCItemstyledPreviousNextLinkContainer className="ignore">
                 <BCItemsStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/business_case"} > Previous </BCItemsStyledPreviousLink>
                 <BCItemsStyledNextLink to={process.env.PUBLIC_URL + "/create_project/business_case_realization_plan"} delay={100} pdfOnClick={savePdf}> Next </BCItemsStyledNextLink>
             </BCItemstyledPreviousNextLinkContainer>

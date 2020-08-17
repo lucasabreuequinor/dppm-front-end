@@ -86,10 +86,10 @@ const ResourcePlanScreen = () => {
     e.preventDefault()
   }
 
-  const getAllElementsWithAttribute = (attribute) => {
+  const getAllElementsWithAttribute = (rootDoc, attribute) => {
 
     var matchingElements = [];
-    var allElements = document.getElementsByTagName('*');
+    var allElements = rootDoc.getElementsByTagName('*');
     for (var i = 0, n = allElements.length; i < n; i++)
     {
       if (allElements[i].getAttribute(attribute) !== null)
@@ -103,27 +103,30 @@ const ResourcePlanScreen = () => {
 
   const savePdf = () => {
 
-    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-      el =>  el.style.display = 'none'
-
-    )
-
-    Array.from(getAllElementsWithAttribute('data-table-column')).map(
-      el => el.classList.add('table-column-pdf')
-      
-    )    
-
     let canvas_rp = document.getElementById('rp_pdf_container'); 
     window.scrollTo(0,0);
     window.canvasObject[7].width = canvas_rp.offsetWidth;
     window.canvasObject[7].height = canvas_rp.offsetHeight;    
     
-    window.html2canvas(canvas_rp).then(function(canvas) {
-    window.canvasObject[7].canvas = canvas.toDataURL('image/jpeg', 1.0);
+    window.html2canvas(canvas_rp, {
+      onclone: function (clonedDoc) {
+        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
+          el =>  el.style.display = 'none'
 
-  })
-}  
+        )
+
+        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
+          el => el.classList.add('table-column-pdf')
+          
+        )    
+      }
+      
+    }).then(function(canvas) {
+      window.canvasObject[7].canvas = canvas.toDataURL('image/jpeg', 1.0);
+
+    }) 
+  }  
 
   return (
       <React.Fragment>

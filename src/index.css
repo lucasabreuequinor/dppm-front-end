@@ -38,6 +38,14 @@ select {
 
 }
 
+.hide-pdf {
+  visibility: hidden !important;
+}
+
+.ignore-pdf {
+  display: none !important;
+}
+
 .table-label-pdf {
   font-size: 1.3rem !important;
 }

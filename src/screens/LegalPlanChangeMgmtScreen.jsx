@@ -144,10 +144,10 @@ const LegalPlanChangeMgmtScreen = () => {
     e.preventDefault()
   }
 
-  const getAllElementsWithAttribute = (attribute) => {
+  const getAllElementsWithAttribute = (rootDoc, attribute) => {
 
     var matchingElements = [];
-    var allElements = document.getElementsByTagName('*');
+    var allElements = rootDoc.getElementsByTagName('*');
     for (var i = 0, n = allElements.length; i < n; i++)
     {
       if (allElements[i].getAttribute(attribute) !== null)
@@ -159,18 +159,7 @@ const LegalPlanChangeMgmtScreen = () => {
     return matchingElements;
   }
 
-  const generatePDF = () => {
-    
-    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-    Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-      el =>  el.style.display = 'none'
-
-    )
-
-    Array.from(getAllElementsWithAttribute('data-table-column')).map(
-      el => el.classList.add('table-column-pdf')
-      
-    )        
+  const generatePDF = () => {  
  
     let canvas_lpcm_one = document.getElementById('lpcm_pdf_container_one');
     let canvas_lpcm_two = document.getElementById('lpcm_pdf_container_two');  
@@ -181,7 +170,20 @@ const LegalPlanChangeMgmtScreen = () => {
 
     })
     
-    window.html2canvas(canvas_lpcm_two).then(function(canvas) {
+    window.html2canvas(canvas_lpcm_two, {
+      onclone: function (clonedDoc) {
+        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
+          el =>  el.style.display = 'none'
+
+        )
+
+        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
+          el => el.classList.add('table-column-pdf')
+          
+        )              
+      }
+    }).then(function(canvas) {
       window.canvasObject[9].canvasTwo = canvas.toDataURL('image/jpeg', 1.0);
   
     })        

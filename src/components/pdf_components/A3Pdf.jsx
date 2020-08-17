@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
    
   sectionFour: {
     height:'12.5%',
-    // backgroundColor: 'orange'
+    backgroundColor: 'orange'
   },
 
   sectionFourBusinessCaseItemsTable: {

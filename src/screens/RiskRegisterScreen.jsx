@@ -76,10 +76,10 @@ const RiskRegisterScreen = () => {
     e.preventDefault()
   }
 
-  const getAllElementsWithAttribute = (attribute) => {
+  const getAllElementsWithAttribute = (rootDoc, attribute) => {
 
     var matchingElements = [];
-    var allElements = document.getElementsByTagName('*');
+    var allElements = rootDoc.getElementsByTagName('*');
     for (var i = 0, n = allElements.length; i < n; i++)
     {
       if (allElements[i].getAttribute(attribute) !== null)
@@ -91,25 +91,27 @@ const RiskRegisterScreen = () => {
     return matchingElements;
   }
 
-  const savePdf = () => {
-
-      /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-      Array.from(getAllElementsWithAttribute('data-html2canvas-ignore')).map(
-        el =>  el.style.display = 'none'
-
-      )
-
-      Array.from(getAllElementsWithAttribute('data-table-column')).map(
-        el => el.classList.add('table-column-pdf')
-        
-      )       
+  const savePdf = () => {     
 
       let canvas_rr = document.getElementById('rr_pdf_container'); 
       window.scrollTo(0,0);  
       window.canvasObject[8].width = canvas_rr.offsetWidth;
       window.canvasObject[8].height = canvas_rr.offsetHeight;
 
-      window.html2canvas(canvas_rr).then(function(canvas) {
+      window.html2canvas(canvas_rr, {
+        onclone: function (clonedDoc) {
+          /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
+            el =>  el.style.display = 'none'
+
+          )
+
+          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
+            el => el.classList.add('table-column-pdf')
+            
+          )            
+        }
+      }).then(function(canvas) {
       window.canvasObject[8].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
     })
