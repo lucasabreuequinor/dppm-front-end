@@ -27,7 +27,7 @@ const BCItemsSavingPerYearItemTotalStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsSavingPerYearItemTotal = ({savingItem}) => {
+const BCItemsSavingPerYearItemTotal = ({savingItem, className}) => {
 
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ const BCItemsSavingPerYearItemTotal = ({savingItem}) => {
                                           .reduce((sum,key) => sum + (currentSavingItem[key] ? parseFloat(currentSavingItem[key]): 0) , 0)
 
   return <BCItemsSavingPerYearItemTotalStyled
-            data-html2canvas-ignore
+            className={className}
             type="number"
             min="0"
             key={savingItem.id}  

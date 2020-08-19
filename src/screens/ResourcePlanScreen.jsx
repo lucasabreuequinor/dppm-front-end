@@ -42,7 +42,7 @@ import { addResource,
          decrementNextResourceID,
          }   
   from '../actions/resource_plan'
-
+import html2canvas from '@nidi/html2canvas'
 
 const ResourcePlanScreen = () => {
 
@@ -103,25 +103,28 @@ const ResourcePlanScreen = () => {
 
   const savePdf = () => {
 
-    let canvas_rp = document.getElementById('rp_pdf_container'); 
+    let canvas_rp = document.getElementById('rp_pdf_container');
+    canvas_rp.style.opacity='0';
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+
+    Array.from(document.getElementsByClassName('ignore')).map(el => {
+      el.classList.add('ignore-pdf')
+    })
+    
+    Array.from(document.getElementsByClassName('table-column')).map( el => {
+      el.classList.add('table-column-pdf')
+      
+    })        
+
     window.scrollTo(0,0);
     window.canvasObject[7].width = canvas_rp.offsetWidth;
     window.canvasObject[7].height = canvas_rp.offsetHeight;    
     
-    window.html2canvas(canvas_rp, {
-      onclone: function (clonedDoc) {
-        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
-          el =>  el.style.display = 'none'
-
-        )
-
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
-          el => el.classList.add('table-column-pdf')
-          
-        )    
-      }
-      
+    html2canvas(canvas_rp, {
+      onclone: function(clonedDoc) {
+        let canvas_rp = clonedDoc.getElementById('rp_pdf_container');
+        canvas_rp.style.opacity='1';
+      }           
     }).then(function(canvas) {
       window.canvasObject[7].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
@@ -132,15 +135,15 @@ const ResourcePlanScreen = () => {
       <React.Fragment>
         <RPMainContainer>
           <RPContainer id="rp_pdf_container">
-            <RPLabel data-html2canvas-ignore >Resource Plan</RPLabel>
+            <RPLabel className="ignore" >Resource Plan</RPLabel>
             <RPTableContainer>
 
-              <RPResourceOwnerColumn data-table-column >Resource owner</RPResourceOwnerColumn>
-              <RPRoleRequiredColumn data-table-column >Role required</RPRoleRequiredColumn>
-              <RPNameColumn data-table-column >Name</RPNameColumn>
-              <RPAllocationColumn data-table-column >Allocation</RPAllocationColumn>
-              <RPStartDateColumn data-table-column >Start date</RPStartDateColumn>
-              <RPDurationColumn data-table-column >Duration</RPDurationColumn>
+              <RPResourceOwnerColumn className="table-column" >Resource owner</RPResourceOwnerColumn>
+              <RPRoleRequiredColumn className="table-column" >Role required</RPRoleRequiredColumn>
+              <RPNameColumn className="table-column" >Name</RPNameColumn>
+              <RPAllocationColumn className="table-column" >Allocation</RPAllocationColumn>
+              <RPStartDateColumn className="table-column" >Start date</RPStartDateColumn>
+              <RPDurationColumn className="table-column" >Duration</RPDurationColumn>
 
               {
                 resources.map(resource => 
@@ -155,7 +158,7 @@ const ResourcePlanScreen = () => {
                 )
               }
 
-              <RPButtonsContainer data-html2canvas-ignore>
+              <RPButtonsContainer className="ignore" >
 
                 <RPaddResourceButtonContainer>
                   <RPaddResourceButton onClick={ addNewResource }></RPaddResourceButton>
@@ -175,7 +178,7 @@ const ResourcePlanScreen = () => {
 
             </RPTableContainer>
 
-            <RPStyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <RPStyledPreviousNextLinkContainer className="ignore" >
                 <RPStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/project_plan"} > Previous </RPStyledPreviousLink>
                 <RPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/risk_register"} delay={100} pdfOnClick={ savePdf }> Next </RPStyledNextLink>
             </RPStyledPreviousNextLinkContainer>

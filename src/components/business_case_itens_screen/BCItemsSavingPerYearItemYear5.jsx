@@ -27,11 +27,11 @@ const BCItemsSavingPerYearItemYear5Styled = styled.input`
   resize: none;
 }
 `
-const BCItemsSavingPerYearItemYear5 = ({savingItem}) => {
+const BCItemsSavingPerYearItemYear5 = ({savingItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsSavingPerYearItemYear5Styled
-            data-html2canvas-ignore
+            className={className}
             type="number"
             min="0"
             key={savingItem.id}  

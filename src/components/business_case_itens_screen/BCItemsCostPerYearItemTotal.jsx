@@ -27,7 +27,7 @@ const BCItemsCostPerYearItemTotalStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsCostPerYearItemTotal = ({costItem}) => {
+const BCItemsCostPerYearItemTotal = ({costItem, className}) => {
 
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ const BCItemsCostPerYearItemTotal = ({costItem}) => {
                                           .reduce((sum,key) => sum + (currentCostItem[key] ? parseFloat(currentCostItem[key]): 0) , 0)
 
   return <BCItemsCostPerYearItemTotalStyled
-            data-html2canvas-ignore
+            className={className}
             type="number"
             min="0"
             key={costItem.id}  

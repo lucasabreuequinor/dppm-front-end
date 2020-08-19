@@ -27,7 +27,7 @@ import {
 
 import {useSelector, useDispatch} from 'react-redux'
 import {changeCpCanvas} from '../actions/canvas'
-
+import html2canvas from '@nidi/html2canvas'
 
 const CreateProjectScreen = () => {
 
@@ -38,7 +38,7 @@ const CreateProjectScreen = () => {
     window.canvasObject[0].width = canvas_cp.offsetWidth;
     window.canvasObject[0].height = canvas_cp.offsetHeight;
 
-    window.html2canvas(canvas_cp, {useCORS:true}).then(function(canvas) {
+    html2canvas(canvas_cp, {useCORS:true}).then(function(canvas) {
     window.canvasObject[0].canvas = canvas;
 
   })

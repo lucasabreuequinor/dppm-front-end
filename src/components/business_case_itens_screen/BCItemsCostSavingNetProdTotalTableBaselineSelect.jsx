@@ -27,7 +27,7 @@ const BCItemsCostSavingNetProdTotalTableBaselineSelectStyled = styled.select`
 
 
 `
-const BCItemsCostSavingNetProdTotalTableBaselineSelect = () => {
+const BCItemsCostSavingNetProdTotalTableBaselineSelect = ({className}) => {
   
   const baselineColumn = useSelector(state => state.bciReducers.bciItems.bciBaselineColumn)
   const dispatch = useDispatch();
@@ -37,12 +37,13 @@ const BCItemsCostSavingNetProdTotalTableBaselineSelect = () => {
                       , ...createRange(baselineColumn.start, baselineColumn.start+6)]
 
   return <BCItemsCostSavingNetProdTotalTableBaselineSelectStyled
-            onChange={(e) => dispatch(changeBaselineColumnSelected(e.target.value)) }          
+            onChange={(e) => dispatch(changeBaselineColumnSelected(e.target.value)) }
+            className={className}          
           >
             {
               rangeBaseline.map(year => {
                   
-                    return <option selected={year == baselineColumn.selected ? true : false} 
+                    return <option className={className} selected={year == baselineColumn.selected ? true : false} 
                                    value={year}>
                                    {year}
                            </option> 

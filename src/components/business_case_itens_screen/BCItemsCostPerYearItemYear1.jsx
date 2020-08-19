@@ -27,11 +27,11 @@ const BCItemsCostPerYearItemYear1Styled = styled.input`
   resize: none;
 }
 `
-const BCItemsCostPerYearItemYear1 = ({costItem}) => {
+const BCItemsCostPerYearItemYear1 = ({costItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemYear1Styled
-            data-html2canvas-ignore
+            className={className}
             type="number"
             min="0"
             key={costItem.id}  

@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent: 'space-between',
     height:'10.5%',
-
+    // backgroundColor:'red'
   },
  
   sectionOneLeft: {
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
   sectionTwo: {
     display: 'flex',
     flexDirection: 'column',
-    height:'24.5%',
-
+    height:'22.5%',
+    // backgroundColor: 'green'
 
   },
 
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
 
   sectionTwoBottomLeftFrom: {
     fontSize: '14',
-    maxLines: '13',
+    maxLines: '12',
     textOverflow: 'ellipsis'
   },
  
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 
   sectionTwoBottomMiddleBy: {
     fontSize: '14',
-    maxLines: '13',
+    maxLines: '12',
     textOverflow: 'ellipsis'
   },
  
@@ -175,12 +175,12 @@ const styles = StyleSheet.create({
   sectionTwoBottomRightToLabel: {
     fontSize: '16',
     paddingBottom: '3',
-    // backgroundColor: 'red'   
+    // // backgroundColor: 'red'   
   },
  
   sectionTwoBottomRightTo: {
     fontSize: '14',
-    maxLines: '13',
+    maxLines: '12',
     textOverflow: 'ellipsis'
   },
 
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   sectionThreeTopBusinessCaseLabel: {
     fontSize: '20',
     paddingBottom: '3',
-    // backgroundColor: 'blue'
+    // // backgroundColor: 'blue'
   },
  
   sectionThreeBottom: {
@@ -203,23 +203,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexGrow: '1',
-    // backgroundColor: 'purple'
+    // // backgroundColor: 'purple'
 
-    // backgroundColor: 'red'
+    // // backgroundColor: 'red'
 
   },
  
   sectionThreeBottomLeft: {
     flexBasis: '50%',
     paddingBottom: '3',
-    // backgroundColor: 'yellow'
+    // // backgroundColor: 'yellow'
    
   },
 
   sectionThreeBottomLeftKeyAssumptionsLabel:{
     fontSize: '16',
     paddingBottom: '3',
-    // backgroundColor: 'brown'
+    // // backgroundColor: 'brown'
   },
 
   sectionThreeBottomLeftKeyAssumptions:{
@@ -227,40 +227,40 @@ const styles = StyleSheet.create({
     fontSize: '14',
     maxLines: '13',
     textOverflow: 'ellipsis',
-    // backgroundColor: 'purple'
+    // // backgroundColor: 'purple'
   },
  
   // 485 x 262
   sectionThreeBottomRight: {
     width: '369',
     height: '256',
-    // backgroundColor: 'gray'
+    // // backgroundColor: 'gray'
   },
 
   sectionThreeBottomRightCashflowImpactLabel:{
     height:'10%',
     fontSize: '14',
-    // backgroundColor: 'red'
+    // // backgroundColor: 'red'
   },
 
   sectionThreeBottomRightCashflowImpactGraphicContainer: {
     height: '90%',
-    // backgroundColor: '#97f04f'
+    // // backgroundColor: '#97f04f'
   },
 
   sectionThreeBottomRightCashflowImpactGraphic: {
     width: '100%',
     height:'100%',
     objectFit: 'contain',
-    // backgroundColor: '#97f04f'
+    // // backgroundColor: '#97f04f'
     // objectPositionX: '0',
     // objectPositionY: '5'
 
   },
    
   sectionFour: {
-    height:'12.5%',
-    backgroundColor: 'orange'
+    height:'14.5%',
+    // backgroundColor: 'orange'
   },
 
   sectionFourBusinessCaseItemsTable: {
@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     fontSize: '20',
     paddingBottom: '3',
 
-    // backgroundColor: 'red' 
+    // // backgroundColor: 'red' 
   },
 
   sectionFiveRealizationPlanTable: {
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     fontSize: '20',
     paddingBottom: '3',
 
-    // backgroundColor: 'red' 
+    // // backgroundColor: 'red' 
   },
   
   sectionSixProjectPlanTable: {
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     fontSize: '20',
     paddingBottom: '3',
 
-    // backgroundColor: 'red' 
+    // // backgroundColor: 'red' 
   },
   
   sectionEightRiskRegisterTable: {
@@ -421,10 +421,10 @@ const styles = StyleSheet.create({
   headerPageThree:{
     display: 'flex',
     flexDirection: 'row',
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
     alignItems: 'center',
     height:'8%',
-    // backgroundColor:'orange',
+    // backgroundColor:'blue',
   },
 
   sectionNine: {
@@ -437,7 +437,7 @@ const styles = StyleSheet.create({
     fontSize: '20',
     paddingBottom: '3',
 
-    // backgroundColor: 'red' 
+    // // backgroundColor: 'red' 
   },
 
   sectionNineLegalAndSecurityPlanTable:{
@@ -457,7 +457,7 @@ const styles = StyleSheet.create({
     fontSize: '20',
     paddingBottom: '3',
   
-    // backgroundColor: 'red' 
+    // // backgroundColor: 'red' 
   },
   
   sectionTenChangeManagementAndValueRealisationTable:{
@@ -465,15 +465,25 @@ const styles = StyleSheet.create({
     height:'100%',
     objectFit: 'contain',
     objectPosition: '0 0'
-  },  
+  },
+  
+  sectionPhantom1: {
+    width: '100%',
+    height: '256',
+    // backgroundColor: 'red'  
+  },
+  
+  sectionPhantom2: {
+    width: '100%',
+    height: '246',
+    // backgroundColor: 'red'  
+  }, 
 
   footerPageThree: {
     display:'flex',
     flexDirection:'row',
     justifyContent:'flex-end',
-    alignItems: 'flex-end',
-    position: 'fixed',
-    bottom: '0'
+    alignItems: 'flex-end'
   },  
  
 });
@@ -706,7 +716,10 @@ const A3Pdf = () => pdf(
                     >
             </Image>            
           </View>
-        </View>        
+        </View>
+
+        <View style={styles.sectionPhantom1}></View>        
+        <View style={styles.sectionPhantom2}></View>        
 
         <View style={styles.footerPageThree}>
             <Text>{`Created on ${new Date().getDay()}/${new Date().getMonth()}/${new Date().getFullYear()}`}</Text>

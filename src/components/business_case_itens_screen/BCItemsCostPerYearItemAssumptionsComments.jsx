@@ -26,11 +26,11 @@ const BCItemsCostPerYearItemAssumptionsCommentsStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsCostPerYearItemAssumptionsComments = ({costItem}) => {
+const BCItemsCostPerYearItemAssumptionsComments = ({costItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemAssumptionsCommentsStyled
-            data-html2canvas-ignore
+            className={className}
             type="text"
             key={costItem.id}
             style={{

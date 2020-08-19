@@ -52,7 +52,7 @@ import { addProjectPlan,
          decrementNextProjectPlanID,
          }   
   from '../actions/project_plan'
-
+import html2canvas from '@nidi/html2canvas'
 
 const ProjectPlanScreen = () => {
 
@@ -112,25 +112,29 @@ const ProjectPlanScreen = () => {
 
   const savePdf = () => { 
 
-      let canvas_pp = document.getElementById('pp_pdf_container'); 
-      window.scrollTo(0,0);  
-      window.canvasObject[6].width = canvas_pp.offsetWidth;
-      window.canvasObject[6].height = canvas_pp.offsetHeight;
+      let canvas_pp = document.getElementById('pp_pdf_container');
+      canvas_pp.style.opacity='0';
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
 
-      window.html2canvas(canvas_pp, {
-        onclone: function (clonedDoc) {
-          /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
-            el =>  el.style.display = 'none'
+    Array.from(document.getElementsByClassName('ignore')).map(el => {
+      el.classList.add('ignore-pdf')
+    })
+    
+    Array.from(document.getElementsByClassName('table-column')).map( el => {
+      el.classList.add('table-column-pdf')
+      
+    })    
 
-          )
+    window.scrollTo(0,0);  
+    window.canvasObject[6].width = canvas_pp.offsetWidth;
+    window.canvasObject[6].height = canvas_pp.offsetHeight;
 
-          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
-            el => el.classList.add('table-column-pdf')
-            
-          )            
-        }        
-      }).then(function(canvas) {
+    html2canvas(canvas_pp, {
+      onclone: function(clonedDoc) {
+        let canvas_pp = clonedDoc.getElementById('pp_pdf_container');
+        canvas_pp.style.opacity='1';
+      }      
+    }).then(function(canvas) {
       window.canvasObject[6].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
     })
@@ -140,12 +144,12 @@ const ProjectPlanScreen = () => {
       <React.Fragment>
         <PPMainContainer>
           <PPContainer id="pp_pdf_container">
-            <PPLabel data-html2canvas-ignore >Project plan</PPLabel>
+            <PPLabel className="ignore" >Project plan</PPLabel>
             <PPTableContainer>
-              <PPProjectPlanTypeColumn data-table-column >Type</PPProjectPlanTypeColumn>
-              <PPActivityColumn data-table-column >Activity</PPActivityColumn>
-              <PPBeginColumn data-table-column >Date (Begin)</PPBeginColumn>
-              <PPEndColumn data-table-column >Date (End)</PPEndColumn>
+              <PPProjectPlanTypeColumn className="table-column" >Type</PPProjectPlanTypeColumn>
+              <PPActivityColumn className="table-column" >Activity</PPActivityColumn>
+              <PPBeginColumn className="table-column" >Date (Begin)</PPBeginColumn>
+              <PPEndColumn className="table-column" >Date (End)</PPEndColumn>
 
 
               {
@@ -159,9 +163,9 @@ const ProjectPlanScreen = () => {
                 )
               }      
             
-            <PPButtonsContainer data-html2canvas-ignore>
+            <PPButtonsContainer className="ignore" >
 
-              <PPaddProjectPlanButtonContainer >
+              <PPaddProjectPlanButtonContainer>
                 <PPaddProjectPlanButton onClick={ addNewProjectPlan }></PPaddProjectPlanButton>
                 <PPaddProjectPlanButtonLabel>
                   Add item
@@ -179,7 +183,7 @@ const ProjectPlanScreen = () => {
 
             </PPTableContainer>
 
-            <PPStyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <PPStyledPreviousNextLinkContainer className="ignore" >
               <PPStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/business_case_realization_plan"} > Previous </PPStyledPreviousLink>
               <PPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/resource_plan"} delay={100} pdfOnClick={savePdf}> Next </PPStyledNextLink>
             </PPStyledPreviousNextLinkContainer>

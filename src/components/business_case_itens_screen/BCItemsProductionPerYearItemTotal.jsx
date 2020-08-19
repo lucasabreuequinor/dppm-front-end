@@ -27,7 +27,7 @@ const BCItemsProductionPerYearItemTotalStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsProductionPerYearItemTotal = ({productionItem}) => {
+const BCItemsProductionPerYearItemTotal = ({productionItem, className}) => {
 
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ const BCItemsProductionPerYearItemTotal = ({productionItem}) => {
                                           .reduce((sum,key) => sum + (currentProductionItem[key] ? parseFloat(currentProductionItem[key]): 0) , 0)
 
   return <BCItemsProductionPerYearItemTotalStyled
-            data-html2canvas-ignore
+            className={className}
             type="number"
             min="0"
             key={productionItem.id}  

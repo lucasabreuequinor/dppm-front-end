@@ -27,7 +27,7 @@ select {
   margin: 0 !important
 }
 
-.hide-arrow-select, .hide-arrow-select option {
+.hide-arrow-select-pdf {
   
   -webkit-appearance: none;
   -moz-appearance: none;

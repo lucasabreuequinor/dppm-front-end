@@ -26,7 +26,7 @@ const BCItemsCostSavingNetProdTotalTableYear4SelectStyled = styled.select`
 
 
 `
-const BCItemsCostSavingNetProdTotalTableYear4Select = () => {
+const BCItemsCostSavingNetProdTotalTableYear4Select = ({className}) => {
   
   const year4Column = useSelector(state => state.bciReducers.bciItems.bciYear4Column)
   const dispatch = useDispatch();
@@ -36,12 +36,13 @@ const BCItemsCostSavingNetProdTotalTableYear4Select = () => {
                       , ...createRange(year4Column.start, year4Column.start+6)]
 
   return <BCItemsCostSavingNetProdTotalTableYear4SelectStyled
-            onChange={(e) => dispatch(changeYear4ColumnSelected(e.target.value)) }          
+            onChange={(e) => dispatch(changeYear4ColumnSelected(e.target.value)) }
+            className={className}          
           >
             {
               rangeYear4.map(year => {
                   
-                    return <option selected={year == year4Column.selected ? true : false} 
+                    return <option className={className} selected={year == year4Column.selected ? true : false} 
                                    value={year}>
                                    {year}
                            </option> 

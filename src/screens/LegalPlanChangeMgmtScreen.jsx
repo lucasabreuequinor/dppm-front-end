@@ -46,7 +46,10 @@ import {
 
   LPCMStyledPreviousNextLinkContainer,
   LPCMStyledPreviousLink,
-  LPCMStyledNextLink
+  LPCMStyledNextLink,
+
+  LPCMGeneratePDFContainer,
+  LPCMGeneratePDFButton
 
          }
        from '../components/legal_plan_change_mgmt_screen'
@@ -67,6 +70,8 @@ import { addLegalItem,
   from '../actions/legal_plan_change_mgmt'
 
 import A3Pdf from '../components/pdf_components/A3Pdf'
+import store from '../store'
+import html2canvas from '@nidi/html2canvas'
 
 const LegalPlanChangeMgmtScreen = () => {
 
@@ -162,38 +167,71 @@ const LegalPlanChangeMgmtScreen = () => {
   const generatePDF = () => {  
  
     let canvas_lpcm_one = document.getElementById('lpcm_pdf_container_one');
-    let canvas_lpcm_two = document.getElementById('lpcm_pdf_container_two');  
+    canvas_lpcm_one.style.opacity='0';
+
+    let canvas_lpcm_two = document.getElementById('lpcm_pdf_container_two');
+    canvas_lpcm_two.style.opacity='0';
+    
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+    
+    Array.from(document.getElementsByClassName('ignore')).map(el => {
+      el.classList.add('ignore-pdf')
+    })
+    
+    Array.from(document.getElementsByClassName('table-column')).map( el => {
+      el.classList.add('table-column-pdf')
+      
+    })         
+
     window.scrollTo(0,0);  
 
-    window.html2canvas(canvas_lpcm_one).then(function(canvas) {
+    html2canvas(canvas_lpcm_one, {
+      onclone: function(clonedDoc) {
+        let canvas_lpcm_one = clonedDoc.getElementById('lpcm_pdf_container_one');
+        canvas_lpcm_one.style.opacity='1';
+      }               
+    }).then(function(canvas) {
       window.canvasObject[9].canvasOne = canvas.toDataURL('image/jpeg', 1.0);
 
     })
     
-    window.html2canvas(canvas_lpcm_two, {
-      onclone: function (clonedDoc) {
-        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
-          el =>  el.style.display = 'none'
-
-        )
-
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
-          el => el.classList.add('table-column-pdf')
-          
-        )              
-      }
+    html2canvas(canvas_lpcm_two, {
+      onclone: function(clonedDoc) {
+        let canvas_lpcm_two = clonedDoc.getElementById('lpcm_pdf_container_two');
+        canvas_lpcm_two.style.opacity='1';
+      }              
     }).then(function(canvas) {
+
+      /*Restoring the styles*/
+      Array.from(document.getElementsByClassName('ignore')).map(el => {
+        el.classList.remove('ignore-pdf')
+      })
+      
+      Array.from(document.getElementsByClassName('table-column')).map( el => {
+        el.classList.remove('table-column-pdf')
+        
+      })
+
+      /*Restoring the opacity*/
+      canvas_lpcm_one.style.opacity='1';
+      canvas_lpcm_two.style.opacity='1';      
+
       window.canvasObject[9].canvasTwo = canvas.toDataURL('image/jpeg', 1.0);
-  
+      
     })        
 
     setTimeout(() => {
 
           A3Pdf().then((blob) => {
             console.log(blob);
-            var downloadLink = document.getElementById('pdf-download-link');
-            downloadLink.href = URL.createObjectURL(blob) 
+            var a = document.getElementById('pdf-download-link'),
+                url = window.URL.createObjectURL(blob);
+      
+            a.href = url;
+            a.download = store.getState().cpReducers.cpName;
+            window.open(url)
+            window.URL.revokeObjectURL(url);
+
           })  
 
         }
@@ -206,13 +244,13 @@ const LegalPlanChangeMgmtScreen = () => {
       <React.Fragment>
         <LPCMMainContainer>
           <LPCMContainer>
-            <LPCMLegalPlanLabel data-html2canvas-ignore >Legal and security plan</LPCMLegalPlanLabel>
+            <LPCMLegalPlanLabel className="ignore" >Legal and security plan</LPCMLegalPlanLabel>
             <LPCMLegalPlanTableContainer id="lpcm_pdf_container_one">
 
-              <LPCMRequirementColumn data-table-column >Requirements</LPCMRequirementColumn>
-              <LPCMStatusColumn data-table-column >Status</LPCMStatusColumn>
-              <LPCMFollowUpActionColumn data-table-column >Follow up actions</LPCMFollowUpActionColumn>
-              <LPCMReviewedApprovedColumn data-table-column >Reviewed/approved by</LPCMReviewedApprovedColumn>
+              <LPCMRequirementColumn className="table-column" >Requirements</LPCMRequirementColumn>
+              <LPCMStatusColumn className="table-column" >Status</LPCMStatusColumn>
+              <LPCMFollowUpActionColumn className="table-column" >Follow up actions</LPCMFollowUpActionColumn>
+              <LPCMReviewedApprovedColumn className="table-column" >Reviewed/approved by</LPCMReviewedApprovedColumn>
 
               {
                 legalItems.map(legal => 
@@ -225,7 +263,7 @@ const LegalPlanChangeMgmtScreen = () => {
                 )
               }
 
-              <LPCMLegalButtonsContainer data-html2canvas-ignore>
+              <LPCMLegalButtonsContainer className="ignore" >
 
                 <LPCMaddLegalButtonContainer>
                   <LPCMaddLegalButton onClick={ addNewLegal }></LPCMaddLegalButton>
@@ -246,13 +284,13 @@ const LegalPlanChangeMgmtScreen = () => {
             </LPCMLegalPlanTableContainer>
 
 
-            <LPCMChangeMgmtLabel data-html2canvas-ignore >Change management and value realisation</LPCMChangeMgmtLabel>
+            <LPCMChangeMgmtLabel className="ignore" >Change management and value realisation</LPCMChangeMgmtLabel>
             <LPCMChangeMgmtTableContainer id="lpcm_pdf_container_two"> 
 
-              <LPCMRequirementColumn data-table-column >Requirements</LPCMRequirementColumn>  
-              <LPCMStatusColumn data-table-column >Status</LPCMStatusColumn>
-              <LPCMFollowUpActionColumn data-table-column >Follow up actions</LPCMFollowUpActionColumn>
-              <LPCMReviewedApprovedColumn data-table-column >Reviewed/approved by</LPCMReviewedApprovedColumn>
+              <LPCMRequirementColumn className="table-column" >Requirements</LPCMRequirementColumn>  
+              <LPCMStatusColumn className="table-column" >Status</LPCMStatusColumn>
+              <LPCMFollowUpActionColumn className="table-column" >Follow up actions</LPCMFollowUpActionColumn>
+              <LPCMReviewedApprovedColumn className="table-column" >Reviewed/approved by</LPCMReviewedApprovedColumn>
 
 
               {
@@ -266,7 +304,7 @@ const LegalPlanChangeMgmtScreen = () => {
                 )
               }
 
-              <LPCMChangeMgmtButtonsContainer data-html2canvas-ignore>
+              <LPCMChangeMgmtButtonsContainer className="ignore" >
 
                 <LPCMaddChangeMgmtButtonContainer>
                   <LPCMaddChangeMgmtButton onClick={ addNewChangeMgmt }></LPCMaddChangeMgmtButton>
@@ -286,16 +324,17 @@ const LegalPlanChangeMgmtScreen = () => {
 
             </LPCMChangeMgmtTableContainer>
 
-            <LPCMStyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <LPCMStyledPreviousNextLinkContainer className="ignore" >
               <LPCMStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/risk_register"} > Previous </LPCMStyledPreviousLink>
               <LPCMStyledNextLink to={process.env.PUBLIC_URL + "/"} > Next </LPCMStyledNextLink>
             </LPCMStyledPreviousNextLinkContainer>
-              
+
+
+            <LPCMGeneratePDFContainer className="ignore">
+              <LPCMGeneratePDFButton onClick={ generatePDF }> Download PDF </LPCMGeneratePDFButton>
+            </LPCMGeneratePDFContainer>  
           </LPCMContainer>
-          <button onClick={ generatePDF }>
-            save legal pdf
-          </button>
-          <a target="_blank" id="pdf-download-link" title="Download PDF File">Download PDF file</a>
+          <a target="_blank" id="pdf-download-link" style={{display: "none"}} title="Download PDF File"></a>
         </LPCMMainContainer>
 
       </React.Fragment>

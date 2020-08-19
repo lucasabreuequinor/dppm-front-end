@@ -35,7 +35,7 @@ import { addRisk,
          decrementNextRiskID,
          }   
   from '../actions/risk_register'
-
+import html2canvas from '@nidi/html2canvas'
 
 const RiskRegisterScreen = () => {
 
@@ -93,24 +93,28 @@ const RiskRegisterScreen = () => {
 
   const savePdf = () => {     
 
-      let canvas_rr = document.getElementById('rr_pdf_container'); 
+      let canvas_rr = document.getElementById('rr_pdf_container');
+      canvas_rr.style.opacity='0';
+      /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+      
+      Array.from(document.getElementsByClassName('ignore')).map(el => {
+        el.classList.add('ignore-pdf')
+      })
+      
+      Array.from(document.getElementsByClassName('table-column')).map( el => {
+        el.classList.add('table-column-pdf')
+        
+      })        
+      
       window.scrollTo(0,0);  
       window.canvasObject[8].width = canvas_rr.offsetWidth;
       window.canvasObject[8].height = canvas_rr.offsetHeight;
 
-      window.html2canvas(canvas_rr, {
-        onclone: function (clonedDoc) {
-          /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
-            el =>  el.style.display = 'none'
-
-          )
-
-          Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
-            el => el.classList.add('table-column-pdf')
-            
-          )            
-        }
+      html2canvas(canvas_rr, {
+        onclone: function(clonedDoc) {
+          let canvas_rr = clonedDoc.getElementById('rr_pdf_container');
+          canvas_rr.style.opacity='1';
+        }           
       }).then(function(canvas) {
       window.canvasObject[8].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
@@ -121,11 +125,11 @@ const RiskRegisterScreen = () => {
       <React.Fragment>
         <RRMainContainer>
           <RRContainer id="rr_pdf_container">
-            <RRLabel data-html2canvas-ignore >Risk register</RRLabel>
+            <RRLabel className="ignore" >Risk register</RRLabel>
             <RRTableContainer>
-              <RRDescriptionColumn data-table-column >Description</RRDescriptionColumn>
-              <RRImpactColumn data-table-column >Impact</RRImpactColumn>
-              <RRMitigatingActionColumn data-table-column >Mitigating Actions</RRMitigatingActionColumn>
+              <RRDescriptionColumn className="table-column" >Description</RRDescriptionColumn>
+              <RRImpactColumn className="table-column" >Impact</RRImpactColumn>
+              <RRMitigatingActionColumn className="table-column" >Mitigating Actions</RRMitigatingActionColumn>
 
               {
                 risks.map(risk => 
@@ -137,7 +141,7 @@ const RiskRegisterScreen = () => {
                 )
               }      
             
-            <RRButtonsContainer data-html2canvas-ignore>
+            <RRButtonsContainer className="ignore" >
 
               <RRaddRiskButtonContainer>
                 <RRaddRiskButton onClick={ addNewRisk }></RRaddRiskButton>
@@ -158,7 +162,7 @@ const RiskRegisterScreen = () => {
             </RRTableContainer>
 
 
-            <RRStyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <RRStyledPreviousNextLinkContainer className="ignore" >
               <RRStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/resource_plan"} > Previous </RRStyledPreviousLink>
               <RRStyledNextLink to={process.env.PUBLIC_URL + "/create_project/legal_plan_change_mgmt"} delay={100} pdfOnClick={savePdf}> Next </RRStyledNextLink>
             </RRStyledPreviousNextLinkContainer>

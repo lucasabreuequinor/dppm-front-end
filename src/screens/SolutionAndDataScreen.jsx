@@ -68,7 +68,7 @@ import {
   // CHStyledPreviousLink
   }
   from "../components/solution_and_data_screen"
-
+import html2canvas from '@nidi/html2canvas'
 
   const SolutionAndDataScreen = () => {
 
@@ -79,7 +79,7 @@ import {
       window.canvasObject[2].width = canvas_sad.offsetWidth;
       window.canvasObject[2].height = canvas_sad.offsetHeight;
 
-      window.html2canvas(canvas_sad, {useCORS:true}).then(function(canvas) {
+      html2canvas(canvas_sad, {useCORS:true}).then(function(canvas) {
       window.canvasObject[2].canvas = canvas;
 
     })

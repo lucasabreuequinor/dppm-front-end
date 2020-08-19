@@ -26,11 +26,11 @@ const BCItemsProductionPerYearItemItemStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsProductionPerYearItemItem = ({productionItem}) => {
+const BCItemsProductionPerYearItemItem = ({productionItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsProductionPerYearItemItemStyled
-            data-html2canvas-ignore
+            className={className}
             type="text"
             key={productionItem.id}
             style={{

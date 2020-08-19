@@ -72,6 +72,7 @@ import { addDriverItem,
          decrementNextDriverItemID,
          }   
   from '../actions/business_case_items'
+import html2canvas from '@nidi/html2canvas'
 
 const BusinessCaseRealizationPlanScreen = () => {
 
@@ -130,23 +131,28 @@ const BusinessCaseRealizationPlanScreen = () => {
 
   const savePdf = () => {
 
-    let canvas_bcrpItems = document.getElementById('bcrp_pdf_container'); 
+    let canvas_bcrpItems = document.getElementById('bcrp_pdf_container');
+    canvas_bcrpItems.style.opacity='0';
+    /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
+
+    Array.from(document.getElementsByClassName('ignore')).map(el => {
+      el.classList.add('ignore-pdf')
+    })
+    
+    Array.from(document.getElementsByClassName('table-column')).map( el => {
+      el.classList.add('table-column-pdf')
+      
+    })
+
     window.scrollTo(0,0);  
     window.canvasObject[5].width = canvas_bcrpItems.offsetWidth;
     window.canvasObject[5].height = canvas_bcrpItems.offsetHeight;
 
-    window.html2canvas(canvas_bcrpItems, {
-      onclone: function (clonedDoc) {
-        /*** BEAUTY THE STYLE TO PRESENT ON PDF ***/
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(
-          el =>  el.style.display = 'none'
-        )
-
-        Array.from(getAllElementsWithAttribute(clonedDoc, 'data-table-column')).map(
-          el => el.classList.add('table-column-pdf')
-          
-        )        
-      }
+    html2canvas(canvas_bcrpItems, {
+      onclone: function(clonedDoc) {
+        let canvas_bcrpItems = clonedDoc.getElementById('bcrp_pdf_container');
+        canvas_bcrpItems.style.opacity='1';
+      }      
     }).then(function(canvas) {
     window.canvasObject[5].canvas = canvas.toDataURL('image/jpeg', 1.0);
 
@@ -157,12 +163,12 @@ const BusinessCaseRealizationPlanScreen = () => {
       <React.Fragment>
         <BCRPMainContainer>
           <BCRPContainer id="bcrp_pdf_container">
-            <BCRPLabel data-html2canvas-ignore >Business Case: Realization plan</BCRPLabel>
+            <BCRPLabel className="ignore" >Business Case: Realization plan</BCRPLabel>
             <BCRPTableContainer>
-              <BCRPDriverColumn data-table-column >Value drivers / Cost drivers</BCRPDriverColumn>
-              <BCRPEnablerColumn data-table-column >Enablers</BCRPEnablerColumn>
-              <BCRPActionColumn data-table-column >Actions</BCRPActionColumn>
-              <BCRPFeasibilityColumn data-table-column >Feasibility</BCRPFeasibilityColumn>
+              <BCRPDriverColumn className="table-column" >Value drivers / Cost drivers</BCRPDriverColumn>
+              <BCRPEnablerColumn className="table-column" >Enablers</BCRPEnablerColumn>
+              <BCRPActionColumn className="table-column" >Actions</BCRPActionColumn>
+              <BCRPFeasibilityColumn className="table-column" >Feasibility</BCRPFeasibilityColumn>
 
               {
                 driverItems.map(driverItem => 
@@ -175,7 +181,7 @@ const BusinessCaseRealizationPlanScreen = () => {
                 )
               }    
 
-              <BCRPRealizationPlanButtonsContainer data-html2canvas-ignore>
+              <BCRPRealizationPlanButtonsContainer className="ignore" >
 
                 <BCRPaddRealizationPlanButtonContainer>
                   <BCRPaddRealizationPlanButton onClick={ addNewRealizationPlan }></BCRPaddRealizationPlanButton>
@@ -195,7 +201,7 @@ const BusinessCaseRealizationPlanScreen = () => {
 
             </BCRPTableContainer>
 
-            <BCRPStyledPreviousNextLinkContainer data-html2canvas-ignore>
+            <BCRPStyledPreviousNextLinkContainer className="ignore">
               <BCRPStyledPreviousLink to={process.env.PUBLIC_URL + "/create_project/business_case_itens"} > Previous </BCRPStyledPreviousLink>
               <BCRPStyledNextLink to={process.env.PUBLIC_URL + "/create_project/project_plan"} delay={100} pdfOnClick={savePdf}> Next </BCRPStyledNextLink>
             </BCRPStyledPreviousNextLinkContainer>

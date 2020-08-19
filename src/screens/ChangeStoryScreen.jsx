@@ -18,7 +18,7 @@ import {
   CHStyledPreviousLink
   }
   from "../components/change_story_screen"
-
+import html2canvas from '@nidi/html2canvas'
 
 const ChangeStoryScreen = () => {
 
@@ -29,7 +29,7 @@ const ChangeStoryScreen = () => {
     window.canvasObject[1].width = canvas_ch.offsetWidth;
     window.canvasObject[1].height = canvas_ch.offsetHeight;
 
-    window.html2canvas(canvas_ch, {useCORS:true}).then(function(canvas) {
+    html2canvas(canvas_ch, {useCORS:true}).then(function(canvas) {
     window.canvasObject[1].canvas = canvas;
 
   })

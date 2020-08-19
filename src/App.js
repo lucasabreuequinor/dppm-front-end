@@ -70,7 +70,7 @@ function Container({location}) {
         <TransitionGroup className="transition-group">
           <CSSTransition
             key={location.key}
-            timeout={{ enter:300, exit: 300 }}
+            timeout={{ enter:100, exit: 100 }}
             classNames={'fade'}
           >
             <section className="route-section">
@@ -100,7 +100,7 @@ const Wrapper = styled.div`
     }
     .fade-enter.fade-enter-active {
         opacity: 1;
-        transition: opacity 300ms ease-in;
+        transition: opacity 100ms ease-in;
     }
     .fade-exit {
         opacity: 1;
@@ -108,7 +108,7 @@ const Wrapper = styled.div`
       
     .fade-exit.fade-exit-active {
         opacity: 0.01;
-        transition: opacity 300ms ease-in;
+        transition: opacity 100ms ease-in;
     }
 
     div.transition-group {

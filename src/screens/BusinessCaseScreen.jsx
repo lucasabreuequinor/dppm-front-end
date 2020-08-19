@@ -85,6 +85,7 @@ import {
 
 import { useSelector, useDispatch } from 'react-redux'
 import { addKPI, deleteKPI, decrementNextKPIID, incrementNextKPIID } from '../actions/business_case'
+import html2canvas from '@nidi/html2canvas'
 
 const BusinessCaseScreen = () => {
 
@@ -147,7 +148,7 @@ const BusinessCaseScreen = () => {
     let canvas_bc = document.getElementById('bc-graphic-pdf');
     
     window.scrollTo(0,0); 
-    window.html2canvas(canvas_bc, {
+    html2canvas(canvas_bc, {
       onclone: function (clonedDoc) {
 
         Array.from(getAllElementsWithAttribute(clonedDoc, 'data-html2canvas-ignore')).map(

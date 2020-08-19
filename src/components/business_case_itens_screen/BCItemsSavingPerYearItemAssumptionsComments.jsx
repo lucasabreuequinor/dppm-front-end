@@ -26,11 +26,11 @@ const BCItemsSavingPerYearItemAssumptionsCommentsStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsSavingPerYearItemAssumptionsComments = ({savingItem}) => {
+const BCItemsSavingPerYearItemAssumptionsComments = ({savingItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsSavingPerYearItemAssumptionsCommentsStyled
-            data-html2canvas-ignore
+            className={className}
             type="text"
             key={savingItem.id}
             style={{

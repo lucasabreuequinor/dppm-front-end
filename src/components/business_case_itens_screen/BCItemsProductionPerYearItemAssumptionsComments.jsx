@@ -26,11 +26,11 @@ const BCItemsProductionPerYearItemAssumptionsCommentsStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsProductionPerYearItemAssumptionsComments = ({productionItem}) => {
+const BCItemsProductionPerYearItemAssumptionsComments = ({productionItem, className}) => {
   const dispatch = useDispatch();
 
   return <BCItemsProductionPerYearItemAssumptionsCommentsStyled
-            data-html2canvas-ignore
+            className={className}
             type="text"
             key={productionItem.id}
             style={{

@@ -44,6 +44,9 @@ import LPCMStyledPreviousNextLinkContainer from './LPCMStyledPreviousNextLinkCon
 import LPCMStyledPreviousLink from './LPCMStyledPreviousLink'
 import LPCMStyledNextLink from './LPCMStyledNextLink'
 
+import LPCMGeneratePDFContainer from './LPCMGeneratePDFContainer'
+import LPCMGeneratePDFButton from './LPCMGeneratePDFButton'
+
 export {
   LPCMMainContainer,
   LPCMContainer,
@@ -89,6 +92,9 @@ export {
 
   LPCMStyledPreviousNextLinkContainer,
   LPCMStyledPreviousLink,
-  LPCMStyledNextLink
+  LPCMStyledNextLink,
+
+  LPCMGeneratePDFContainer,
+  LPCMGeneratePDFButton
 
 }
