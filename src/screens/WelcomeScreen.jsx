@@ -25,7 +25,7 @@ class WelcomeScreen extends React.Component {
                 <span>
                   Welcome
                 </span>
-                  Employee
+                  
               </h1>
             </WelcomeBrand>
           </WelcomeContainer>
