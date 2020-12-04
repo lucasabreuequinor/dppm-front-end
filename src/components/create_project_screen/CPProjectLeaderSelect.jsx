@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { adalApiFetch } from '../../adalConfig';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeProjectLeader } from '../../actions/create_project';
 
-const CPProjectLeaderSelectStyled = styled.input`
+const CPProjectLeaderSelectStyled = styled.select`
 
   border: 1px solid #707070;
   width: 100%;
@@ -23,10 +24,34 @@ const CPProjectLeaderSelect = () => {
   const projectLeader = useSelector(state => state.cpReducers.cpLeader);
   const dispatch = useDispatch();
 
-  return <CPProjectLeaderSelectStyled 
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    adalApiFetch(fetch, 'https://graph.microsoft.com/v1.0/users', {})
+      .then((response) => {
+        response.json()
+          .then((responseJson) => {
+            setUsers(responseJson.value)
+            console.log(responseJson)
+          });
+      })
+  }, []);
+
+  return <CPProjectLeaderSelectStyled
             value={projectLeader}
-            onChange={(e) => dispatch(changeProjectLeader(e.target.value)) }
-          />
+            onChange={(e) => dispatch(changeProjectLeader(e.target.value)) }  
+          >
+
+          {
+            users.map(user => 
+              <option key={user.id} value={user.id}>
+                {user.displayName}
+              </option>  
+            )
+          }       
+
+        </CPProjectLeaderSelectStyled>
+
 }
 
 export default CPProjectLeaderSelect

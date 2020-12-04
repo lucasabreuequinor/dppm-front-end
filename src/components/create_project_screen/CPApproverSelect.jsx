@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { adalApiFetch } from '../../adalConfig';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeApprover } from '../../actions/create_project';
 
-const CPApproverSelectStyled = styled.input`
+const CPApproverSelectStyled = styled.select`
 
   border: 1px solid #707070;
   width: 100%;
   padding-top: .5rem;
-  padding: .5rem;
+  padding: .5rem; 
   border-radius: .2rem;
   font-weight: 500;
   font-family: inherit;
@@ -23,10 +24,33 @@ const CPApproverSelect = () => {
   const approver = useSelector(state => state.cpReducers.cpApprover);
   const dispatch = useDispatch();
 
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    adalApiFetch(fetch, 'https://graph.microsoft.com/v1.0/users', {})
+      .then((response) => {
+        response.json()
+          .then((responseJson) => {
+            setUsers(responseJson.value) 
+            console.log(responseJson)
+          });
+      })
+  }, []);
+
   return <CPApproverSelectStyled 
             value={approver}
             onChange={(e) => dispatch(changeApprover(e.target.value)) }
-          />
+          >
+
+          {
+            users.map(user => 
+              <option key={user.id} value={user.id}>
+                {user.displayName}
+              </option>  
+            )
+          }   
+
+          </CPApproverSelectStyled>
 }
 
 export default CPApproverSelect

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { adalApiFetch } from '../adalConfig';
 import { MainContainer,
          WelcomeContainer,
          WelcomeBrand,
@@ -11,11 +12,20 @@ import { MainContainer,
          from "../components/welcome_screen"
       
 
-class WelcomeScreen extends React.Component {
+const WelcomeScreen = () => {
+  const [userName, setUsername] = useState('Employee')
 
-  render(){
+  useEffect(() => {
+    adalApiFetch(fetch, 'https://graph.microsoft.com/v1.0/me', {})
+      .then((response) => {
+        response.json()
+          .then((responseJson) => {
+            setUsername(responseJson.displayName)
+          });
+      })
+  }, []);
 
-    return(
+  return(
       <React.Fragment>
         <MainContainer>
           <WelcomeContainer>
@@ -25,7 +35,7 @@ class WelcomeScreen extends React.Component {
                 <span>
                   Welcome
                 </span>
-                  
+                  {userName}
               </h1>
             </WelcomeBrand>
           </WelcomeContainer>
@@ -53,14 +63,13 @@ class WelcomeScreen extends React.Component {
                   </WelcomeCreateProject>
 
                 </div>
-            </WelcomeOptions>
+          </WelcomeOptions>
           
         </MainContainer>
 
       </React.Fragment>
 
     )
-  }
 }
 
 export default WelcomeScreen
