@@ -1,4 +1,4 @@
-const cpLeader = (state = "test", action) => {
+const cpLeader = (state = "", action) => {
   switch(action.type){
     case 'CHANGE_PROJECT_LEADER':
       return action.text

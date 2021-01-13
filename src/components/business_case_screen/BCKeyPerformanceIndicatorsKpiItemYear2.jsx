@@ -31,14 +31,14 @@ const BCKeyPerformanceIndicatorsKpiItemYear2 = ({kpi}) => {
 
   return <BCKeyPerformanceIndicatorsKpiItemYear2Styled
             type="number"
-            min="0"
             key={kpi.id}
             style={{
                     backgroundColor: kpi.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={kpi.year2}
-            onChange={(e) => dispatch(changeKPIYear2({id: kpi.id, year2:parseInt(e.target.value ? e.target.value: 0)})) }
+            onChange={(e) => dispatch(changeKPIYear2({id: kpi.id, year2:parseFloat(e.target.value)})) }
+
           />
 
 }

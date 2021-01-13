@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeReviewedByOPAFC } from '../../actions/business_case';
 
-const BCCashFlowReviewedByOPAFCInputStyled = styled.input`
+const BCCashFlowReviewedByOPAFCInputStyled = styled.select`
 
   border: 1px solid #707070;
   width:100%;
@@ -24,10 +24,26 @@ const BCCashFlowReviewedByOPAFCInput = () => {
   const reviewedByOPAFC = useSelector(state => state.bcReducers.bcReviewedByOPAFC);
   const dispatch = useDispatch();
 
+
+  const reviewedByOPAFCStatus = [
+    { id:0, name: "YES" },
+    { id:1, name: "NO"}
+  ]
+
   return <BCCashFlowReviewedByOPAFCInputStyled
             value={reviewedByOPAFC}
             onChange={(e) => dispatch(changeReviewedByOPAFC(e.target.value)) }
-          />
+          >
+        
+          {
+            reviewedByOPAFCStatus.map(status => 
+              <option key={status.id} value={status.name}>
+                {status.name}
+              </option>  
+            )
+          }
+
+          </BCCashFlowReviewedByOPAFCInputStyled>
 
 }
 

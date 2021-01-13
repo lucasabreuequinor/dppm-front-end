@@ -1,6 +1,15 @@
 import {combineReducers} from 'redux' 
 
 
+function getCurrentDateFormated(){
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth()+1;
+  var day = today.getDate();
+
+  return `${year}-${month}-${day}`
+}
+
 const projectPlan = (state, action) => {
   switch(action.type){
     case 'ADD_PROJECT_PLAN':
@@ -8,8 +17,8 @@ const projectPlan = (state, action) => {
         id: action.id,
         project_plan_type: action.project_plan_type,
         activity: action.activity,
-        begin: action.begin,
-        end: action.end
+        begin: getCurrentDateFormated(),
+        end: getCurrentDateFormated(),
       }
 
     case 'DELETE_PROJECT_PLAN':

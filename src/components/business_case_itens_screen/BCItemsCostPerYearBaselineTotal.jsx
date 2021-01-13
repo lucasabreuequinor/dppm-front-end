@@ -33,13 +33,13 @@ const BCItemsCostPerYearBaselineTotal = () => {
 
   const dispatch = useDispatch();
 
-  const costItemsBaselineTotal  = useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
-                                   .reduce((sum, currItem) => sum + (currItem.baseline ? parseFloat(currItem.baseline): 0), 0)
+  const costItemsBaselineTotal  = parseFloat(useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
+                                   .reduce((sum, currItem) => sum + (currItem.baseline ? parseFloat(currItem.baseline): 0), 0)).toFixed(2)
 
   return <BCItemsCostPerYearBaselineTotalStyled
             type="number"
-            min="0"
             readOnly
+            step="any"
             // style={{
             //         backgroundColor: costItem.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
             //       }}

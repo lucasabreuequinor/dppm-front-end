@@ -7,7 +7,6 @@ const savingItem = (state, action) => {
       return {
         id: action.id,
         item: action.item,
-        saving_type: action.saving_type,
         baseline: action.baseline,
         year1: action.year1,
         year2: action.year2,
@@ -28,14 +27,6 @@ const savingItem = (state, action) => {
       return {
         ...state,
         item: action.item
-      };
-    case 'CHANGE_SAVING_ITEM_SAVING_TYPE':
-      if(state.id !== action.id){
-        return state;
-      }
-      return {
-        ...state,
-        saving_type: action.saving_type
       };
     case 'CHANGE_SAVING_ITEM_BASELINE':
       if(state.id !== action.id){
@@ -120,8 +111,6 @@ const savingItems = (state = [], action) => {
 
 
     case 'CHANGE_SAVING_ITEM_ITEM':
-      return state.map(savingItem_item => savingItem(savingItem_item,action))
-    case 'CHANGE_SAVING_ITEM_SAVING_TYPE':
       return state.map(savingItem_item => savingItem(savingItem_item,action))
       case 'CHANGE_SAVING_ITEM_BASELINE':
         return state.map(savingItem_item => savingItem(savingItem_item,action))

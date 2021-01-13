@@ -27,23 +27,23 @@ const BCItemsCostPerYearItemBaselineStyled = styled.input`
   resize: none;
 }
 `
-const BCItemsCostPerYearItemBaseline = ({costItem, className}) => {
+const BCItemsCostPerYearItemBaseline = ({costItem, className}) => { 
   const dispatch = useDispatch();
 
   return <BCItemsCostPerYearItemBaselineStyled
             className={className}
             type="number"
-            min="0"
+            step="any"
             key={costItem.id}
             style={{
                     backgroundColor: costItem.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={costItem.baseline}
-            onChange={(e) => dispatch(changeCostItemBaseline({id: costItem.id, baseline:parseInt(e.target.value)})) }
+            onChange={(e) => dispatch(changeCostItemBaseline({id: costItem.id, baseline:parseFloat(e.target.value)})) }
             />
 
 }
-
+ 
 export default BCItemsCostPerYearItemBaseline
 

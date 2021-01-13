@@ -30,8 +30,9 @@ const RPResourceItemStartDate = ({resource}) => {
   const dispatch = useDispatch();
 
   return <RPResourceItemStartDateStyled
-            type="text"
+            type="date"
             key={resource.id}
+            onKeyDown={(e) => e.preventDefault()}
             style={{
                     backgroundColor: resource.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}

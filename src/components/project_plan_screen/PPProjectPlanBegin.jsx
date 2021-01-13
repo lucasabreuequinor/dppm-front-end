@@ -30,10 +30,11 @@ const PPProjectPlanBegin = ({projectPlan}) => {
   const dispatch = useDispatch();
 
   return <PPProjectPlanBeginStyled
-            type="text"
+            type="date"
             key={projectPlan.id}
+            onKeyDown={(e) => e.preventDefault()}
             style={{
-                    backgroundColor: projectPlan.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
+                    backgroundColor: projectPlan.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0' 
                   }}
 
             value={projectPlan.begin}

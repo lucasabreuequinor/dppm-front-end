@@ -18,7 +18,8 @@ import { WelcomeScreen,
   WrapLogoLabelHeader,
   Icon, LabelHeader,
   NavBar,
-  NavBarMenu,  
+  NavBarMenu, 
+  MainHeaderStyledLogoutButton,  
   ExitNavBarMenu,
   ItemNavBarMenu,
   StyledLink }
@@ -26,6 +27,8 @@ import { WelcomeScreen,
 
 import { BrowserRouter as Router, Switch, Route, withRouter } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
+
+console.log("APP JS!!");
 
 function App() {
   return (
@@ -37,23 +40,8 @@ function App() {
               <LabelHeader>Create new project</LabelHeader>
             </WrapLogoLabelHeader>
             <NavBar>
-              <Icon hide_break_point onClick={(event) => {console.log(event.target)}} cursor="pointer" width="32px" id="menu" name="ham_logo" alt="toggle menu" ></Icon>
-              <NavBarMenu id="nav" className="hide-menu">
-                <ExitNavBarMenu id="exit">
-                  <Icon cursor="pointer" width="15px" name="exit_menu_logo" ></Icon>
-                </ExitNavBarMenu>
-                <ItemNavBarMenu>
-                  <StyledLink>Link 1</StyledLink>                      
-                </ItemNavBarMenu>
-                <ItemNavBarMenu>
-                  <StyledLink>Link 1</StyledLink>                      
-                </ItemNavBarMenu>
-                <ItemNavBarMenu>
-                  <StyledLink>Link 1</StyledLink>                      
-                </ItemNavBarMenu>
-                <ItemNavBarMenu>
-                  <StyledLink>Link 1</StyledLink>                      
-                </ItemNavBarMenu>                            
+              <NavBarMenu>
+                <MainHeaderStyledLogoutButton onClick={() => window.signOut() }>Logout</MainHeaderStyledLogoutButton>                         
               </NavBarMenu>
             </NavBar>
           </Header>

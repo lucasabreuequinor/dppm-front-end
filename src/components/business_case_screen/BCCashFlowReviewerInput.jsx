@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeReviewer } from '../../actions/business_case';
 
-const BCCashFlowReviewerInputStyled = styled.input`
+const BCCashFlowReviewerInputStyled = styled.select`
 
   border: 1px solid #707070;
-  width:100%;
+  // width:100%;
+  width: 180px;
   padding-top: .5rem;
   padding: .5rem;
   border-radius: .2rem;
@@ -21,13 +22,32 @@ const BCCashFlowReviewerInputStyled = styled.input`
 }
 `
 const BCCashFlowReviewerInput = () => {
-  const reviewer = useSelector(state => state.bcReducers.bcReviewer);
+  const reviewer = useSelector(state => state.bcReducers.bcReviewer); 
   const dispatch = useDispatch();
+
+  const [users, setUsers]  = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUsers(window.usersAD);
+      console.log(users);
+    }, 5000);
+  });
 
   return <BCCashFlowReviewerInputStyled
             value={reviewer}
             onChange={(e) => dispatch(changeReviewer(e.target.value)) }
-          />
+          >
+
+          {
+            users.map(user => 
+              <option key={user.id} value={user.id}>
+                {user.displayName}
+              </option>  
+            )
+          } 
+
+          </BCCashFlowReviewerInputStyled>
 
 }
 

@@ -19,6 +19,7 @@ import OptionIcon from "./OptionIcon"
 import WelcomeListProjects from "./WelcomeListProjects"
 import WelcomeCreateProject from "./WelcomeCreateProject" 
 import StyledOptionLink from "./StyledOptionLink"
+import MainHeaderStyledLogoutButton from "./MainHeaderStyledLogoutButton"
 
 
 export {
@@ -42,4 +43,5 @@ export {
       WelcomeListProjects,
       WelcomeCreateProject,
       StyledOptionLink,
+      MainHeaderStyledLogoutButton
 }

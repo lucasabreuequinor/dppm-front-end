@@ -5,9 +5,6 @@ import { BCItemsMainContainer,
          BCItemsCostSavingNetProdTotalTableContainer,
          BCItemsCostSavingNetProdTotalTableItemColumn,
 
-         BCItemsCostSavingNetProdTotalTableTypeContainer,
-         BCItemsCostSavingNetProdTotalTableTypeColumn,
-
          BCItemsCostSavingNetProdTotalTableBaselineContainer,
          BCItemsCostSavingNetProdTotalTableBaselineColumn,
          BCItemsCostSavingNetProdTotalTableBaselineSelect,
@@ -34,7 +31,6 @@ import { BCItemsMainContainer,
 
          BCItemsCostSavingNetProdTotalTableTotalContainer,
          BCItemsCostSavingNetProdTotalTableTotalColumn,
-         BCItemsCostSavingNetProdTotalTableTotalDisplay,
 
          BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer,
          BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn,
@@ -47,13 +43,9 @@ import { BCItemsMainContainer,
          BCItemsCostPerYearYear5Total,
          BCItemsCostPerYearTotal,
 
-
          BCItemsCostPerYearLabel,
-         BCItemsCostPerYearSeparator1,
-         BCItemsCostPerYearSeparator2,
          
          BCItemsCostPerYearItemItem,
-         BCItemsCostPerYearItemType,
          BCItemsCostPerYearItemBaseline,
          BCItemsCostPerYearItemYear1,
          BCItemsCostPerYearItemYear2,
@@ -74,8 +66,6 @@ import { BCItemsMainContainer,
          BCItemsCostPerYearDeleteCostItemButtonLabel,
          
          BCItemsSavingPerYearLabel,
-         BCItemsSavingsPerYearSeparator1,
-         BCItemsSavingPerYearSeparator2,
 
          BCItemsSavingPerYearBaselineTotal,
          BCItemsSavingPerYearYear1Total,
@@ -86,7 +76,6 @@ import { BCItemsMainContainer,
          BCItemsSavingPerYearTotal,
        
          BCItemsSavingPerYearItemItem,
-         BCItemsSavingPerYearItemType,
          BCItemsSavingPerYearItemBaseline,
          BCItemsSavingPerYearItemYear1,
          BCItemsSavingPerYearItemYear2,
@@ -105,47 +94,6 @@ import { BCItemsMainContainer,
          BCItemsSavingPerYearDeleteSavingItemButtonContainer,
          BCItemsSavingPerYearDeleteSavingItemButton,
          BCItemsSavingPerYearDeleteSavingItemButtonLabel,
-
-         BCItemsNetPerYearLabel,
-
-         BCItemsNetPerYearBaselineTotal,
-         BCItemsNetPerYearYear1Total,
-         BCItemsNetPerYearYear2Total,
-         BCItemsNetPerYearYear3Total,
-         BCItemsNetPerYearYear4Total,
-         BCItemsNetPerYearYear5Total,
-         BCItemsNetPerYearTotal,
-
-         BCItemsProductionPerYearLabel,
-
-         BCItemsProductionPerYearBaselineTotal,
-         BCItemsProductionPerYearYear1Total,
-         BCItemsProductionPerYearYear2Total,
-         BCItemsProductionPerYearYear3Total,
-         BCItemsProductionPerYearYear4Total,
-         BCItemsProductionPerYearYear5Total,
-         BCItemsProductionPerYearTotal,
-
-         BCItemsProductionPerYearItemItem,
-         BCItemsProductionPerYearItemType,
-         BCItemsProductionPerYearItemBaseline,
-         BCItemsProductionPerYearItemYear1,   
-         BCItemsProductionPerYearItemYear2,              
-         BCItemsProductionPerYearItemYear3,              
-         BCItemsProductionPerYearItemYear4,              
-         BCItemsProductionPerYearItemYear5,
-         BCItemsProductionPerYearItemTotal,              
-         BCItemsProductionPerYearItemAssumptionsComments,
-
-         BCItemsProductionPerYearButtonsContainer,
-
-         BCItemsProductionPerYearAddProductionItemButtonContainer,
-         BCItemsProductionPerYearAddProductionItemButton,
-         BCItemsProductionPerYearAddProductionItemButtonLabel,
-
-         BCItemsProductionPerYearDeleteProductionItemButtonContainer,
-         BCItemsProductionPerYearDeleteProductionItemButton,
-         BCItemsProductionPerYearDeleteProductionItemButtonLabel,
 
          BCItemsTotalPerYearLabel,
 
@@ -173,13 +121,10 @@ import { addCostItem,
          addSavingItem,
          deleteSavingItem,
          incrementNextSavingItemID,
-         decrementNextSavingItemID,
+         decrementNextSavingItemID, }   
 
-         addProductionItem,
-         deleteProductionItem,
-         incrementNextProductionItemID,
-         decrementNextProductionItemID }   
-  from '../actions/business_case_items'
+      from '../actions/business_case_items'
+      
 import html2canvas from '@nidi/html2canvas'
 
 const BusinessCaseItensScreen = () => {
@@ -193,10 +138,6 @@ const BusinessCaseItensScreen = () => {
   const savingItems = useSelector(state => state.bciReducers.bciItems.bciSavingItems.savingItems);
   const nextSavingItemId = useSelector(state => state.bciReducers.bciItems.bciSavingItems.nextSavingItemId);
   const maxSavingItems = useSelector(state => state.bciReducers.bciItems.bciSavingItems.maxSavingItems);
-
-  const productionItems = useSelector(state => state.bciReducers.bciItems.bciProductionItems.productionItems);
-  const nextProductionItemId = useSelector(state => state.bciReducers.bciItems.bciProductionItems.nextProductionItemId);
-  const maxProductionItems = useSelector(state => state.bciReducers.bciItems.bciProductionItems.maxProductionItems);
   
   const addNewCostItem = (e) => {
     
@@ -206,14 +147,13 @@ const BusinessCaseItensScreen = () => {
                 {
                   id: nextCostItemId,
                   item: "test",
-                  cost_type: "test",
-                  baseline: 100,
-                  year1: 100,
-                  year2: 100,
-                  year3: 100,
-                  year4: 100,
-                  year5: 100,
-                  total:100,
+                  baseline: 0,
+                  year1: 0,
+                  year2: 0,
+                  year3: 0,
+                  year4: 0,
+                  year5: 0,
+                  total:0,
                   assumptionsComments: "test"
                 }
       ))
@@ -244,14 +184,13 @@ const BusinessCaseItensScreen = () => {
                 {
                   id: nextSavingItemId,
                   item: "test",
-                  saving_type: "test",
-                  baseline: 100,
-                  year1: 100,
-                  year2: 100,
-                  year3: 100,
-                  year4: 100,
-                  year5: 100,
-                  total:100,
+                  baseline: 0,
+                  year1: 0,
+                  year2: 0,
+                  year3: 0,
+                  year4: 0,
+                  year5: 0,
+                  total: 0,
                   assumptionsComments: "test"
                 }
       ))
@@ -273,43 +212,6 @@ const BusinessCaseItensScreen = () => {
     e.preventDefault()
   }
   
-  const addNewProductionItem = (e) => {
-    
-    if(productionItems.length < maxProductionItems)
-    {
-      dispatch(addProductionItem(
-                {
-                  id: nextProductionItemId,
-                  item: "test",
-                  production_type: "test",
-                  baseline: 100,
-                  year1: 100,
-                  year2: 100,
-                  year3: 100,
-                  year4: 100,
-                  year5: 100,
-                  total:100,
-                  assumptionsComments: "test"
-                }
-      ))
-      dispatch(incrementNextProductionItemID())
-    }
-    else
-      alert(`Maximum Production Items:${maxProductionItems}`)
-  
-    e.preventDefault()
-  }
-
-  const deleteAnProductionItem = (e) => {
-
-    if(productionItems.length > 0)
-    {
-      dispatch(deleteProductionItem({id:productionItems.length-1}))
-      dispatch(decrementNextProductionItemID())
-    }
-    e.preventDefault()
-  }
-
   const getAllElementsWithAttribute = (rootDoc, attribute) => {
     
     var matchingElements = [];
@@ -374,12 +276,10 @@ const BusinessCaseItensScreen = () => {
       <React.Fragment>
         <BCItemsMainContainer>
           <BCItemsContainer id="bcitems_pdf_container">
-            <BCItemsLabel className="ignore" >Business Case Itens</BCItemsLabel>
+            <BCItemsLabel className="ignore" >Performance Indicators</BCItemsLabel>
             <BCItemsCostSavingNetProdTotalTableContainer>
               <BCItemsCostSavingNetProdTotalTableItemColumn className="hide" >Item</BCItemsCostSavingNetProdTotalTableItemColumn>
               
-              <BCItemsCostSavingNetProdTotalTableTypeColumn className="hide" >Type</BCItemsCostSavingNetProdTotalTableTypeColumn>
-
               <BCItemsCostSavingNetProdTotalTableBaselineContainer className="del-margin">
                 <BCItemsCostSavingNetProdTotalTableBaselineColumn className="ignore" >Baseline</BCItemsCostSavingNetProdTotalTableBaselineColumn>
                 <BCItemsCostSavingNetProdTotalTableBaselineSelect className="hide-arrow-select"></BCItemsCostSavingNetProdTotalTableBaselineSelect>
@@ -434,7 +334,6 @@ const BusinessCaseItensScreen = () => {
                 costItems.map(costItem => 
                   <React.Fragment>
                     <BCItemsCostPerYearItemItem className="ignore" costItem={costItem}></BCItemsCostPerYearItemItem>
-                    <BCItemsCostPerYearItemType className="ignore" costItem={costItem}></BCItemsCostPerYearItemType>
                     <BCItemsCostPerYearItemBaseline className="ignore" costItem={costItem}></BCItemsCostPerYearItemBaseline>
                     <BCItemsCostPerYearItemYear1 className="ignore" costItem={costItem}></BCItemsCostPerYearItemYear1>       
                     <BCItemsCostPerYearItemYear2 className="ignore" costItem={costItem}></BCItemsCostPerYearItemYear2>              
@@ -474,13 +373,12 @@ const BusinessCaseItensScreen = () => {
               <BCItemsSavingPerYearYear4Total></BCItemsSavingPerYearYear4Total>
               <BCItemsSavingPerYearYear5Total></BCItemsSavingPerYearYear5Total>
               <BCItemsSavingPerYearTotal></BCItemsSavingPerYearTotal>
-              <div style={{borderBottom: "0.1rem solid #808080"}}></div>
+              <div style={{borderBottom: "0.1rem solid #808080"}}></div>  
 
               {
                 savingItems.map(savingItem =>
                   <React.Fragment>
                     <BCItemsSavingPerYearItemItem className="ignore" savingItem={savingItem}></BCItemsSavingPerYearItemItem>
-                    <BCItemsSavingPerYearItemType className="ignore" savingItem={savingItem}></BCItemsSavingPerYearItemType>
                     <BCItemsSavingPerYearItemBaseline className="ignore" savingItem={savingItem}></BCItemsSavingPerYearItemBaseline>
                     <BCItemsSavingPerYearItemYear1 className="ignore" savingItem={savingItem}></BCItemsSavingPerYearItemYear1>       
                     <BCItemsSavingPerYearItemYear2 className="ignore" savingItem={savingItem}></BCItemsSavingPerYearItemYear2>              
@@ -511,64 +409,6 @@ const BusinessCaseItensScreen = () => {
                 </BCItemsSavingPerYearDeleteSavingItemButtonContainer>
 
               </BCItemsSavingPerYearButtonsContainer>
-
-              <BCItemsNetPerYearLabel className="table-label" >Net impact</BCItemsNetPerYearLabel>
-
-              <BCItemsNetPerYearBaselineTotal></BCItemsNetPerYearBaselineTotal>
-              <BCItemsNetPerYearYear1Total></BCItemsNetPerYearYear1Total>
-              <BCItemsNetPerYearYear2Total></BCItemsNetPerYearYear2Total>
-              <BCItemsNetPerYearYear3Total></BCItemsNetPerYearYear3Total>
-              <BCItemsNetPerYearYear4Total></BCItemsNetPerYearYear4Total>
-              <BCItemsNetPerYearYear5Total></BCItemsNetPerYearYear5Total>
-              <BCItemsNetPerYearTotal></BCItemsNetPerYearTotal>
-              <div style={{borderBottom: "0.1rem solid #808080"}}></div>
-              
-
-              <BCItemsProductionPerYearLabel className="table-label" >Production effect</BCItemsProductionPerYearLabel>
-              
-              <BCItemsProductionPerYearBaselineTotal></BCItemsProductionPerYearBaselineTotal>
-              <BCItemsProductionPerYearYear1Total></BCItemsProductionPerYearYear1Total>
-              <BCItemsProductionPerYearYear2Total></BCItemsProductionPerYearYear2Total>
-              <BCItemsProductionPerYearYear3Total></BCItemsProductionPerYearYear3Total>
-              <BCItemsProductionPerYearYear4Total></BCItemsProductionPerYearYear4Total>
-              <BCItemsProductionPerYearYear5Total></BCItemsProductionPerYearYear5Total>
-              <BCItemsProductionPerYearTotal></BCItemsProductionPerYearTotal>
-              <div style={{borderBottom: "0.1rem solid #808080"}}></div>
-
-              {
-                productionItems.map(productionItem =>
-                  <React.Fragment>
-                    <BCItemsProductionPerYearItemItem className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemItem>
-                    <BCItemsProductionPerYearItemType className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemType>
-                    <BCItemsProductionPerYearItemBaseline className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemBaseline>
-                    <BCItemsProductionPerYearItemYear1 className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemYear1>       
-                    <BCItemsProductionPerYearItemYear2 className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemYear2>              
-                    <BCItemsProductionPerYearItemYear3 className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemYear3>              
-                    <BCItemsProductionPerYearItemYear4 className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemYear4>              
-                    <BCItemsProductionPerYearItemYear5 className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemYear5>
-                    <BCItemsProductionPerYearItemTotal className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemTotal>              
-                    <BCItemsProductionPerYearItemAssumptionsComments className="ignore" productionItem={productionItem}></BCItemsProductionPerYearItemAssumptionsComments>
-                  </React.Fragment>          
-                )
-              }
-
-              <BCItemsProductionPerYearButtonsContainer className="ignore">
-
-              <BCItemsProductionPerYearAddProductionItemButtonContainer>
-                <BCItemsProductionPerYearAddProductionItemButton onClick={ addNewProductionItem }></BCItemsProductionPerYearAddProductionItemButton>
-                <BCItemsProductionPerYearAddProductionItemButtonLabel>
-                  Add item
-                </BCItemsProductionPerYearAddProductionItemButtonLabel>
-              </BCItemsProductionPerYearAddProductionItemButtonContainer>
-
-              <BCItemsProductionPerYearDeleteProductionItemButtonContainer>
-                <BCItemsProductionPerYearDeleteProductionItemButton onClick={ deleteAnProductionItem }></BCItemsProductionPerYearDeleteProductionItemButton>
-                <BCItemsProductionPerYearDeleteProductionItemButtonLabel>
-                  Delete item
-                </BCItemsProductionPerYearDeleteProductionItemButtonLabel>
-              </BCItemsProductionPerYearDeleteProductionItemButtonContainer>
-
-              </BCItemsProductionPerYearButtonsContainer>
               
               <BCItemsTotalPerYearLabel className="table-label" >Total effect</BCItemsTotalPerYearLabel>
 

@@ -5,10 +5,6 @@ import BCItemsCostSavingNetProdTotalTableContainer from './BCItemsCostSavingNetP
 
 import BCItemsCostSavingNetProdTotalTableItemColumn from './BCItemsCostSavingNetProdTotalTableItemColumn'
 
-import BCItemsCostSavingNetProdTotalTableTypeContainer from './BCItemsCostSavingNetProdTotalTableTypeContainer'
-import BCItemsCostSavingNetProdTotalTableTypeColumn from './BCItemsCostSavingNetProdTotalTableTypeColumn'
-
-
 import BCItemsCostSavingNetProdTotalTableBaselineContainer from './BCItemsCostSavingNetProdTotalTableBaselineContainer'
 import BCItemsCostSavingNetProdTotalTableBaselineColumn from './BCItemsCostSavingNetProdTotalTableBaselineColumn'
 import BCItemsCostSavingNetProdTotalTableBaselineSelect from './BCItemsCostSavingNetProdTotalTableBaselineSelect'
@@ -41,7 +37,6 @@ import BCItemsCostSavingNetProdTotalTableYear5Select from './BCItemsCostSavingNe
 
 import BCItemsCostSavingNetProdTotalTableTotalContainer from './BCItemsCostSavingNetProdTotalTableTotalContainer'
 import BCItemsCostSavingNetProdTotalTableTotalColumn from './BCItemsCostSavingNetProdTotalTableTotalColumn'
-import BCItemsCostSavingNetProdTotalTableTotalDisplay from './BCItemsCostSavingNetProdTotalTableTotalDisplay'
 
 
 import BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer from './BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer'
@@ -60,7 +55,6 @@ import BCItemsCostPerYearYear5Total from './BCItemsCostPerYearYear5Total'
 import BCItemsCostPerYearTotal from './BCItemsCostPerYearTotal'
 
 import BCItemsCostPerYearItemItem from './BCItemsCostPerYearItemItem'
-import BCItemsCostPerYearItemType from './BCItemsCostPerYearItemType'
 import BCItemsCostPerYearItemBaseline from './BCItemsCostPerYearItemBaseline'
 import BCItemsCostPerYearItemYear1 from './BCItemsCostPerYearItemYear1'
 import BCItemsCostPerYearItemYear2 from './BCItemsCostPerYearItemYear2'
@@ -81,8 +75,6 @@ import BCItemsCostPerYearDeleteCostItemButton from './BCItemsCostPerYearDeleteCo
 import BCItemsCostPerYearDeleteCostItemButtonLabel from './BCItemsCostPerYearDeleteCostItemButtonLabel'
 
 import BCItemsSavingPerYearLabel from './BCItemsSavingPerYearLabel'
-import BCItemsSavingsPerYearSeparator1 from './BCItemsSavingsPerYearSeparator1'
-import BCItemsSavingPerYearSeparator2 from './BCItemsSavingPerYearSeparator2'
 
 import BCItemsSavingPerYearBaselineTotal from './BCItemsSavingPerYearBaselineTotal'
 import BCItemsSavingPerYearYear1Total from './BCItemsSavingPerYearYear1Total'
@@ -93,7 +85,6 @@ import BCItemsSavingPerYearYear5Total from './BCItemsSavingPerYearYear5Total'
 import BCItemsSavingPerYearTotal from './BCItemsSavingPerYearTotal'
 
 import BCItemsSavingPerYearItemItem from './BCItemsSavingPerYearItemItem'
-import BCItemsSavingPerYearItemType from './BCItemsSavingPerYearItemType'
 import BCItemsSavingPerYearItemBaseline from './BCItemsSavingPerYearItemBaseline'
 import BCItemsSavingPerYearItemYear1 from './BCItemsSavingPerYearItemYear1'
 import BCItemsSavingPerYearItemYear2 from './BCItemsSavingPerYearItemYear2'
@@ -113,47 +104,6 @@ import BCItemsSavingPerYearAddSavingItemButtonLabel from "./BCItemsSavingPerYear
 import BCItemsSavingPerYearDeleteSavingItemButtonContainer from "./BCItemsSavingPerYearDeleteSavingItemButtonContainer"
 import BCItemsSavingPerYearDeleteSavingItemButton from "./BCItemsSavingPerYearDeleteSavingItemButton"
 import BCItemsSavingPerYearDeleteSavingItemButtonLabel from "./BCItemsSavingPerYearDeleteSavingItemButtonLabel"
-
-import BCItemsNetPerYearLabel from './BCItemsNetPerYearLabel'
-
-import BCItemsNetPerYearBaselineTotal from './BCItemsNetPerYearBaselineTotal'
-import BCItemsNetPerYearYear1Total from './BCItemsNetPerYearYear1Total'
-import BCItemsNetPerYearYear2Total from './BCItemsNetPerYearYear2Total'
-import BCItemsNetPerYearYear3Total from './BCItemsNetPerYearYear3Total'
-import BCItemsNetPerYearYear4Total from './BCItemsNetPerYearYear4Total'
-import BCItemsNetPerYearYear5Total from './BCItemsNetPerYearYear5Total'
-import BCItemsNetPerYearTotal from './BCItemsNetPerYearTotal'
-
-import BCItemsProductionPerYearLabel from './BCItemsProductionPerYearLabel'
-
-import BCItemsProductionPerYearBaselineTotal from './BCItemsProductionPerYearBaselineTotal'
-import BCItemsProductionPerYearYear1Total from './BCItemsProductionPerYearYear1Total'
-import BCItemsProductionPerYearYear2Total from './BCItemsProductionPerYearYear2Total'
-import BCItemsProductionPerYearYear3Total from './BCItemsProductionPerYearYear3Total'
-import BCItemsProductionPerYearYear4Total from './BCItemsProductionPerYearYear4Total'
-import BCItemsProductionPerYearYear5Total from './BCItemsProductionPerYearYear5Total'
-import BCItemsProductionPerYearTotal from './BCItemsProductionPerYearTotal'
-
-import BCItemsProductionPerYearItemItem from './BCItemsProductionPerYearItemItem'
-import BCItemsProductionPerYearItemType from './BCItemsProductionPerYearItemType'
-import BCItemsProductionPerYearItemBaseline from './BCItemsProductionPerYearItemBaseline'
-import BCItemsProductionPerYearItemYear1 from './BCItemsProductionPerYearItemYear1'
-import BCItemsProductionPerYearItemYear2 from './BCItemsProductionPerYearItemYear2'
-import BCItemsProductionPerYearItemYear3 from './BCItemsProductionPerYearItemYear3'
-import BCItemsProductionPerYearItemYear4 from './BCItemsProductionPerYearItemYear4'
-import BCItemsProductionPerYearItemYear5 from './BCItemsProductionPerYearItemYear5'
-import BCItemsProductionPerYearItemTotal from './BCItemsProductionPerYearItemTotal'
-import BCItemsProductionPerYearItemAssumptionsComments from './BCItemsProductionPerYearItemAssumptionsComments'
-
-import BCItemsProductionPerYearButtonsContainer from './BCItemsProductionPerYearButtonsContainer'
-
-import BCItemsProductionPerYearAddProductionItemButtonContainer from './BCItemsProductionPerYearAddProductionItemButtonContainer'
-import BCItemsProductionPerYearAddProductionItemButton from './BCItemsProductionPerYearAddProductionItemButton'
-import BCItemsProductionPerYearAddProductionItemButtonLabel from './BCItemsProductionPerYearAddProductionItemButtonLabel'
-
-import BCItemsProductionPerYearDeleteProductionItemButtonContainer from './BCItemsProductionPerYearDeleteProductionItemButtonContainer'
-import BCItemsProductionPerYearDeleteProductionItemButton from './BCItemsProductionPerYearDeleteProductionItemButton'
-import BCItemsProductionPerYearDeleteProductionItemButtonLabel from './BCItemsProductionPerYearDeleteProductionItemButtonLabel'
 
 import BCItemsTotalPerYearLabel from './BCItemsTotalPerYearLabel'
 
@@ -175,9 +125,6 @@ export {
   BCItemsLabel,
   BCItemsCostSavingNetProdTotalTableContainer,
   BCItemsCostSavingNetProdTotalTableItemColumn,
-
-  BCItemsCostSavingNetProdTotalTableTypeContainer,
-  BCItemsCostSavingNetProdTotalTableTypeColumn,
 
   BCItemsCostSavingNetProdTotalTableBaselineContainer,
   BCItemsCostSavingNetProdTotalTableBaselineColumn,
@@ -205,7 +152,6 @@ export {
 
   BCItemsCostSavingNetProdTotalTableTotalContainer,
   BCItemsCostSavingNetProdTotalTableTotalColumn,
-  BCItemsCostSavingNetProdTotalTableTotalDisplay,
 
   BCItemsCostSavingNetProdTotalTableAssumptionsCommentsContainer,
   BCItemsCostSavingNetProdTotalTableAssumptionsCommentsColumn,
@@ -223,7 +169,6 @@ export {
   BCItemsCostPerYearTotal,
 
   BCItemsCostPerYearItemItem,
-  BCItemsCostPerYearItemType,
   BCItemsCostPerYearItemBaseline,
   BCItemsCostPerYearItemYear1,
   BCItemsCostPerYearItemYear2,
@@ -244,8 +189,6 @@ export {
   BCItemsCostPerYearDeleteCostItemButtonLabel,
   
   BCItemsSavingPerYearLabel,
-  BCItemsSavingsPerYearSeparator1,
-  BCItemsSavingPerYearSeparator2,
 
   BCItemsSavingPerYearBaselineTotal,
   BCItemsSavingPerYearYear1Total,
@@ -256,7 +199,6 @@ export {
   BCItemsSavingPerYearTotal,
 
   BCItemsSavingPerYearItemItem,
-  BCItemsSavingPerYearItemType,
   BCItemsSavingPerYearItemBaseline,
   BCItemsSavingPerYearItemYear1,
   BCItemsSavingPerYearItemYear2,
@@ -275,47 +217,6 @@ export {
   BCItemsSavingPerYearDeleteSavingItemButtonContainer,
   BCItemsSavingPerYearDeleteSavingItemButton,
   BCItemsSavingPerYearDeleteSavingItemButtonLabel,
-
-  BCItemsNetPerYearLabel,
-
-  BCItemsNetPerYearBaselineTotal,
-  BCItemsNetPerYearYear1Total,
-  BCItemsNetPerYearYear2Total,
-  BCItemsNetPerYearYear3Total,
-  BCItemsNetPerYearYear4Total,
-  BCItemsNetPerYearYear5Total,
-  BCItemsNetPerYearTotal,
-
-  BCItemsProductionPerYearLabel,
-
-  BCItemsProductionPerYearBaselineTotal,
-  BCItemsProductionPerYearYear1Total,
-  BCItemsProductionPerYearYear2Total,
-  BCItemsProductionPerYearYear3Total,
-  BCItemsProductionPerYearYear4Total,
-  BCItemsProductionPerYearYear5Total,
-  BCItemsProductionPerYearTotal,
-
-  BCItemsProductionPerYearItemItem,
-  BCItemsProductionPerYearItemType,
-  BCItemsProductionPerYearItemBaseline,
-  BCItemsProductionPerYearItemYear1,   
-  BCItemsProductionPerYearItemYear2,              
-  BCItemsProductionPerYearItemYear3,              
-  BCItemsProductionPerYearItemYear4,              
-  BCItemsProductionPerYearItemYear5,
-  BCItemsProductionPerYearItemTotal,              
-  BCItemsProductionPerYearItemAssumptionsComments,
-
-  BCItemsProductionPerYearButtonsContainer,
-
-  BCItemsProductionPerYearAddProductionItemButtonContainer,
-  BCItemsProductionPerYearAddProductionItemButton,
-  BCItemsProductionPerYearAddProductionItemButtonLabel,
-
-  BCItemsProductionPerYearDeleteProductionItemButtonContainer,
-  BCItemsProductionPerYearDeleteProductionItemButton,
-  BCItemsProductionPerYearDeleteProductionItemButtonLabel,
 
   BCItemsTotalPerYearLabel,
 

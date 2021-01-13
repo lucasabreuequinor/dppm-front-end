@@ -67,7 +67,6 @@ import BCKeyPerformanceIndicatorsDeleteKpiButton from "./BCKeyPerformanceIndicat
 import BCKeyPerformanceIndicatorsDeleteKpiButtonLabel from "./BCKeyPerformanceIndicatorsDeleteKpiButtonLabel"
 
 
-import BCKeyPerformanceIndicatorsKpiItemImpactType from "./BCKeyPerformanceIndicatorsKpiItemImpactType"
 import BCKeyPerformanceIndicatorsKpiItemIndicator from "./BCKeyPerformanceIndicatorsKpiItemIndicator"
 import BCKeyPerformanceIndicatorsKpiItemBaseline from "./BCKeyPerformanceIndicatorsKpiItemBaseline"
 import BCKeyPerformanceIndicatorsKpiItemYear1 from "./BCKeyPerformanceIndicatorsKpiItemYear1"
@@ -150,7 +149,6 @@ export {
        BCKeyPerformanceIndicatorsDeleteKpiButtonLabel,
 
        
-       BCKeyPerformanceIndicatorsKpiItemImpactType,
        BCKeyPerformanceIndicatorsKpiItemIndicator,
        BCKeyPerformanceIndicatorsKpiItemBaseline,
        BCKeyPerformanceIndicatorsKpiItemYear1,

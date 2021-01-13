@@ -33,14 +33,14 @@ const BCItemsCostPerYearItemYear4 = ({costItem, className}) => {
   return <BCItemsCostPerYearItemYear4Styled
             className={className}
             type="number"
-            min="0"
+            step="any"
             key={costItem.id}  
             style={{
                     backgroundColor: costItem.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={costItem.year4}
-            onChange={(e) => dispatch(changeCostItemYear4({id: costItem.id, year4:parseInt(e.target.value)})) }
+            onChange={(e) => dispatch(changeCostItemYear4({id: costItem.id, year4:parseFloat(e.target.value)})) }
           />
 
 }

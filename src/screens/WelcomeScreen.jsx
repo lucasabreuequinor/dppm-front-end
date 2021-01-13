@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { adalApiFetch } from '../adalConfig';
 import { MainContainer,
          WelcomeContainer,
          WelcomeBrand,
@@ -11,18 +10,11 @@ import { MainContainer,
          StyledOptionLink } 
          from "../components/welcome_screen"
       
-
 const WelcomeScreen = () => {
-  const [userName, setUsername] = useState('Employee')
+  const [userName, setUsername] = useState('')
 
   useEffect(() => {
-    adalApiFetch(fetch, 'https://graph.microsoft.com/v1.0/me', {})
-      .then((response) => {
-        response.json()
-          .then((responseJson) => {
-            setUsername(responseJson.displayName)
-          });
-      })
+
   }, []);
 
   return(
@@ -35,7 +27,7 @@ const WelcomeScreen = () => {
                 <span>
                   Welcome
                 </span>
-                  {userName}
+                   Employee
               </h1>
             </WelcomeBrand>
           </WelcomeContainer>

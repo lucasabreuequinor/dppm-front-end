@@ -9,6 +9,15 @@
       name="description"
       content="Web site created using create-react-app"
     />
+
+    <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+    <script src="https://alcdn.msauth.net/browser/2.7.0/js/msal-browser.js" integrity="sha384-5Fqyq1ncNYhL2mXCdWAFXkf2wWtKeA0mXYp++ryAX1lowD0ctAHFdity37L/ULXh" crossorigin="anonymous"></script>
+
+    <!-- To help ensure reliability, Microsoft provides a second CDN -->
+    <script type="text/javascript">
+      if(typeof Msal === 'undefined')document.write(unescape("%3Cscript src='https://alcdn.msftauth.net/browser/2.7.0/js/msal-browser.js' type='text/javascript' crossorigin='anonymous' %3E%3C/script%3E"));
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.8/dist/html2canvas.min.js"></script>
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
@@ -33,13 +42,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-    <style>
-      .hide-menu{
-        display: none;
-      }      
 
-
-    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -55,25 +58,158 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script>
-      window.onload = function() {
-        var menu = document.getElementById('menu')
-        var nav = document.getElementById('nav')
-        var exit = document.getElementById('exit')
-    
-        console.log(menu)
-        console.log(nav)
-        console.log(exit)
 
-        menu.addEventListener('click', function(e){
-          nav.classList.toggle('hide-menu');
-          //ALTERAR O STYLE DIRETO!
-          e.preventDefault();
-        });
-    
-        exit.addEventListener('click', function(e){
-          nav.classList.add('hide-menu');
-          e.preventDefault();
-        });
+      var username = '';
+      var displayName = '';
+      var shortNameCurrentUser= '';
+      var usersAD = [];
+      const msalConfig = {
+        auth: {
+          clientId: "e259013d-e60a-4994-9ea1-bc137592985c",
+          authority: "https://login.microsoftonline.com/c53d311b-c6fa-4eae-8b4f-e42dc6849524",
+          redirectUri: "http://localhost:1433",
+          postLogoutRedirectUri: "http://localhost:1433"
+        },
+        cache: {
+          cacheLocation: "localStorage", // This configures where your cache will be stored
+          storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+        }
+      };
+
+      // Add scopes here for ID token to be used at Microsoft identity platform endpoints.
+      var loginRequest = {
+      scopes: ["openid", "profile", "User.ReadBasic.All"]
+      };
+
+      // Add scopes here for access token to be used at Microsoft Graph API endpoints.
+      var tokenRequest = {
+      scopes: ["User.Read", "Mail.Read"]
+      };
+
+      // Add the endpoints here for Microsoft Graph API services you'd like to use.
+      var graphConfig = {
+        graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
+        graphUsersEndpoint: "https://graph.microsoft.com/v1.0/users", 
+        graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
+      };
+
+      var myMSALObj = new msal.PublicClientApplication(msalConfig);
+
+      // Redirect: once login is successful and redirects with tokens, call Graph API
+      myMSALObj.handleRedirectPromise().then(handleResponse).catch(err => {
+        console.error(err);
+      });
+
+
+      function handleResponse(resp) {
+          if (resp !== null) {
+            username = resp.account.username;
+            getUserDetails();
+            getUsersAD();
+          } else {
+              /**
+               * See here for more info on account retrieval:
+               * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
+               */
+              const currentAccounts = myMSALObj.getAllAccounts();
+              if (!currentAccounts || currentAccounts < 1) {
+                signIn();
+              } else if (currentAccounts.length > 1) {
+                // Add choose account code here\
+                console.warn("Multiple accounts detected.");
+              } else if (currentAccounts.length === 1) {
+                username = currentAccounts[0].username;
+                getUserDetails();
+                getUsersAD();
+              }
+          }
+      }
+
+      function signIn() {
+          myMSALObj.loginRedirect(loginRequest);
+      }
+
+      function signOut() {
+          const logoutRequest = {
+              account: myMSALObj.getAccountByUsername(username)
+          };
+
+          myMSALObj.logout(logoutRequest);
+      }
+
+      function getTokenRedirect(request) {
+          /**
+           * See here for more info on account retrieval:
+           * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/Accounts.md
+           */
+          request.account = myMSALObj.getAccountByUsername(username);
+
+          return myMSALObj.acquireTokenSilent(request)
+                      .catch(error => {
+                          console.warn("silent token acquisition fails. acquiring token using redirect");
+                          if (error instanceof msal.InteractionRequiredAuthError) {
+                              // fallback to interaction when silent call fails
+                              return myMSALObj.acquireTokenRedirect(request);
+                          } else {
+                              console.warn(error);
+                          }
+                      });
+      }
+
+      function getUserDetails() {
+          getTokenRedirect(loginRequest).then(response => {
+              callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, (data, endpoint) => {
+                displayName = data.displayName;
+                shortNameCurrentUser = data.id;
+                console.log(data)
+              });
+
+          }).catch(error => {
+              console.error(error);
+          });
+      }
+
+      function getUsersAD() {
+          getTokenRedirect(loginRequest).then(response => {
+              callMSGraph(graphConfig.graphUsersEndpoint, response.accessToken, (data, endpoint) => {
+                usersAD = data.value;
+              });
+
+          }).catch(error => {
+              console.error(error);
+          });
+      }
+
+      function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+      }      
+
+      /** 
+       * Helper function to call MS Graph API endpoint
+       * using the authorization bearer token scheme
+      */
+      function callMSGraph(endpoint, token, callback) {
+          const headers = new Headers();
+          const bearer = `Bearer ${token}`;
+
+          headers.append("Authorization", bearer);
+
+          const options = {
+              method: "GET",
+              headers: headers
+          };
+
+          console.log('request made to Graph API at: ' + new Date().toString());
+
+          fetch(endpoint, options)
+              .then(response => response.json())
+              .then(response => callback(response, endpoint))
+              .catch(error => console.log(error));
+      }      
+
+      window.onload = function() {
 
         window.canvasObject = [
           {

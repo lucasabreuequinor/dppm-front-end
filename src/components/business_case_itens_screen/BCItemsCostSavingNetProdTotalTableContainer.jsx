@@ -6,7 +6,7 @@ const BCItemsCostSavingNetProdTotalTablesContainer = styled.div`
   display: grid;
   // grid-template-columns: repeat(8,minmax(max-content, 1fr));
   // grid-template-columns: repeat(2,minmax(max-content, 2fr)) repeat(6,minmax(max-content,1fr));
-  grid-template-columns: repeat(2,2fr) repeat(7,1fr) repeat(1,2fr);
+  grid-template-columns: repeat(9,1fr);
   column-gap: .4rem;
   row-gap: .3rem;
   grid-template-rows: auto; 

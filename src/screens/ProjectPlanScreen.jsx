@@ -70,10 +70,10 @@ const ProjectPlanScreen = () => {
       dispatch(addProjectPlan(
                 {
                   id: nextProjectPlanId,
-                  project_plan_type: "lala",
-                  activity: "lala",
-                  begin: "lala",
-                  end: "lala"
+                  project_plan_type: "",
+                  activity: "",
+                  begin: "",
+                  end: ""
                 }
       ))
       dispatch(incrementNextProjectPlanID())

@@ -6,7 +6,7 @@ import bcYear4Column from './bcYear4Column'
 import bcYear5Column from './bcYear5Column'
 
 
-import {combineReducers} from 'redux' 
+import {combineReducers} from 'redux'   
 
 
 const kpi = (state, action) => {
@@ -15,24 +15,9 @@ const kpi = (state, action) => {
     case 'ADD_KPI':
       return {
         id: action.id,
-        impact_type: {
-          selected: "",
-          values: ["", "outcome", "performance", "progress"]
-        },
         indicator: {
           selected: "",
-          outcome: {
-            selected: "",
-            values: ["", 'OPEX', 'CAPEX', 'PE', 'MPP']
-          },
-          performance: {
-            selected: "",
-            values: ["", 'test', 'test', 'test']
-          },
-          progress: {
-            selected: "",
-            values: ["", 'test', 'test', 'test']
-          },
+          values: ["", 'OPEX', 'CAPEX', 'PE', 'MPP']
         },
         baseline: action.baseline,
         year1: action.year1,
@@ -45,14 +30,6 @@ const kpi = (state, action) => {
     case 'DELETE_KPI':
       return state.id !== action.id
 
-    case 'CHANGE_KPI_IMPACT_TYPE_SELECTED':
-      if(state.id !== action.id){
-        return state;
-      }
-      return {
-        ...state,
-        impact_type: {...state.impact_type, selected: action.selected }
-      };
     case 'CHANGE_KPI_INDICATOR_SELECTED':
       if(state.id !== action.id){
         return state;
@@ -127,8 +104,6 @@ const kpis = (state = [], action) => {
       return state.filter(kpi_item => kpi(kpi_item,action))
 
 
-    case 'CHANGE_KPI_IMPACT_TYPE_SELECTED':
-      return state.map(kpi_item => kpi(kpi_item,action))
     case 'CHANGE_KPI_INDICATOR_SELECTED':
       return state.map(kpi_item => kpi(kpi_item,action))
       case 'CHANGE_KPI_BASELINE':

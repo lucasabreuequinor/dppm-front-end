@@ -31,7 +31,6 @@ const BCKeyPerformanceIndicatorsKpiItemIndicatorTypeStyled = styled.select`
 `
 const BCKeyPerformanceIndicatorsKpiItemIndicatorType = ({kpi}) => {
 
-  const impactType = kpi.impact_type
   const dispatch = useDispatch();
 
   return <BCKeyPerformanceIndicatorsKpiItemIndicatorTypeStyled
@@ -42,39 +41,15 @@ const BCKeyPerformanceIndicatorsKpiItemIndicatorType = ({kpi}) => {
             onChange={(e) => dispatch(changeKPIIndicatorSelected({id: kpi.id,selected:e.target.value})) }
           >
             {
-              kpi.impact_type.selected ? 
-                (kpi.impact_type.selected == 'outcome' ? 
-                  (kpi.indicator.outcome.values.map(indicator =>
-                    <option selected={indicator == kpi.indicator.outcome.selected ? true : false}>
+
+                  kpi.indicator.values.map(indicator =>
+                    <option selected={indicator == kpi.indicator.selected ? true : false}>
                       {indicator}
                     </option>
-                  )) 
-                
-                :(kpi.impact_type.selected == 'performance' ? 
-                  (kpi.indicator.performance.values.map(indicator =>
-                    <option selected={indicator == kpi.indicator.performance.selected ? true : false}>
-                      {indicator}
-                    </option>                        
-                    ))
-                :(kpi.impact_type.selected == 'progress' ? 
-                  (kpi.indicator.progress.values.map(indicator =>
-                    <option selected={indicator == kpi.indicator.progress.selected ? true : false}>
-                      {indicator}
-                    </option>                             
-                    )) 
-                 : false)
-                  ))               
-              : false
+                  )
             }
           </BCKeyPerformanceIndicatorsKpiItemIndicatorTypeStyled>
 
 }
 
 export default BCKeyPerformanceIndicatorsKpiItemIndicatorType
-
-// kpi.indicator.values.map(impact => 
-//   <option selected={impact == kpi.impact_type.selected ? true : false}
-//           value={impact}>
-//           {impact}
-//   </option>
-//   )

@@ -4,7 +4,6 @@ const addSavingItem = (item) => {
     type: 'ADD_SAVING_ITEM',
     id: item.id,
     item: item.item,
-    saving_type: item.saving_type,
     baseline: item.baseline,
     year1: item.year1,
     year2: item.year2,

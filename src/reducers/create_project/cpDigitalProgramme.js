@@ -1,4 +1,4 @@
-const cpDigitalProgramme = (state = "test", action) => {
+const cpDigitalProgramme = (state = "", action) => {
   switch(action.type){
     case 'CHANGE_DIGITAL_PROGRAMME':
       return action.text

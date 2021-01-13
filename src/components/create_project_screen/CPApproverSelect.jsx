@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { adalApiFetch } from '../../adalConfig';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
 import { changeApprover } from '../../actions/create_project';
@@ -24,18 +23,15 @@ const CPApproverSelect = () => {
   const approver = useSelector(state => state.cpReducers.cpApprover);
   const dispatch = useDispatch();
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers]  = useState([]);
 
   useEffect(() => {
-    adalApiFetch(fetch, 'https://graph.microsoft.com/v1.0/users', {})
-      .then((response) => {
-        response.json()
-          .then((responseJson) => {
-            setUsers(responseJson.value) 
-            console.log(responseJson)
-          });
-      })
-  }, []);
+    setTimeout(() => {
+      setUsers(window.usersAD);
+      console.log(users);
+    }, 5000);
+  });
+
 
   return <CPApproverSelectStyled 
             value={approver}
@@ -48,7 +44,7 @@ const CPApproverSelect = () => {
                 {user.displayName}
               </option>  
             )
-          }   
+          } 
 
           </CPApproverSelectStyled>
 }

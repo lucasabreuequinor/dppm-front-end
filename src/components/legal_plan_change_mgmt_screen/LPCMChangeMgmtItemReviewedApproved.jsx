@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
 import { changeChangeMgmtItemReviewedApproved } from '../../actions/legal_plan_change_mgmt';
 
-const LPCMChangeMgmtItemReviewedApprovedStyled = styled.input`
+const LPCMChangeMgmtItemReviewedApprovedStyled = styled.select`
 
 
   border: 0px solid #707070;
@@ -29,6 +29,15 @@ const LPCMChangeMgmtItemReviewedApprovedStyled = styled.input`
 const LPCMChangeMgmtItemReviewedApproved = ({changeMgmt}) => {
   const dispatch = useDispatch();
 
+  const [users, setUsers]  = useState([]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUsers(window.usersAD);
+      console.log(users);
+    }, 5000);
+  });
+
   return <LPCMChangeMgmtItemReviewedApprovedStyled
             type="text"
             key={changeMgmt.id}
@@ -38,7 +47,18 @@ const LPCMChangeMgmtItemReviewedApproved = ({changeMgmt}) => {
 
             value={changeMgmt.reviewed_approved}
             onChange={(e) => dispatch(changeChangeMgmtItemReviewedApproved({id: changeMgmt.id, reviewed_approved:e.target.value})) }
-            />
+            >
+
+          {
+            users.map(user => 
+              <option key={user.id} value={user.id}>
+                {user.displayName}
+              </option>  
+            )
+          }   
+
+          </LPCMChangeMgmtItemReviewedApprovedStyled>
+          
 
 }
 

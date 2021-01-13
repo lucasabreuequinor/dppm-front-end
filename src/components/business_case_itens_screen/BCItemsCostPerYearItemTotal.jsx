@@ -34,23 +34,22 @@ const BCItemsCostPerYearItemTotal = ({costItem, className}) => {
   const currentCostItem = useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
                             .filter(currentItem  => currentItem.id  == costItem.id )[0]
           
-  const currentCostItemNewTotal = Object.keys(currentCostItem)
+  const currentCostItemNewTotal = parseFloat(Object.keys(currentCostItem) 
                                           .filter(key => {
                                               return (
                                                   key!='id' && 
                                                   key!='item' && 
-                                                  key!='cost_type' &&
                                                   key!='total' &&
                                                   key!='assumptionsComments'
                                                 )
                                               }  
                                             )
-                                          .reduce((sum,key) => sum + (currentCostItem[key] ? parseFloat(currentCostItem[key]): 0) , 0)
+                                          .reduce((sum,key) => sum + (currentCostItem[key] ? parseFloat(currentCostItem[key]): 0) , 0)).toFixed(2)
 
   return <BCItemsCostPerYearItemTotalStyled
             className={className}
             type="number"
-            min="0"
+            step="any"
             key={costItem.id}  
             readOnly
             style={{

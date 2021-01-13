@@ -237,8 +237,186 @@ const LegalPlanChangeMgmtScreen = () => {
         }
     
     , 2000)
-
+ 
   }
+
+  function transformDate(date){
+    var [year, month, day] = date.split('-')
+    var newYear = year.slice(-2)
+ 
+    return `${day}/${month}/${newYear}`
+  } 
+
+  const saveProject = () => {
+
+    var projectPayloadToInsert = store.getState();
+    var insertProjectObject = 
+      {
+        project: {
+          shortNameLeader: projectPayloadToInsert.cpReducers.cpLeader,
+          shortNameApprover: projectPayloadToInsert.cpReducers.cpApprover,
+          shortNameCreator: window.shortNameCurrentUser,
+          name: projectPayloadToInsert.cpReducers.cpName,
+          digitalProgramme: projectPayloadToInsert.cpReducers.cpDigitalProgramme,
+          sip: projectPayloadToInsert.cpReducers.cpLinkToSip,
+          dg: projectPayloadToInsert.cpReducers.cpDG
+        },
+        changeStory: {
+          froms: projectPayloadToInsert.chReducers.chFrom,
+          by: projectPayloadToInsert.chReducers.chBy,
+          to: projectPayloadToInsert.chReducers.chTo
+        },        
+        solutionAndData: {
+          makeOrBuyRationale: projectPayloadToInsert.sadReducers.sadMakeOrBuy,
+          solutionOverview: projectPayloadToInsert.sadReducers.sadSolutionOverview,
+          
+          architectureDetails: projectPayloadToInsert.sadReducers.sadArchtechtureDetail,
+          
+          architectureContractStatus: projectPayloadToInsert.sadReducers.sadArchContractStatus,
+          architectureContractFollowUp: projectPayloadToInsert.sadReducers.sadArchContractFollowUp,
+          shortNameArchitectureContractReviewer: projectPayloadToInsert.sadReducers.sadArchContractReviewedBy,
+          
+          technicalSetupStatus: projectPayloadToInsert.sadReducers.sadTechSetupStatus,
+          technicalSetupFollowUp: projectPayloadToInsert.sadReducers.sadTechSetupFollowUp,
+          shortNameTechnicalSetupReviewer: projectPayloadToInsert.sadReducers.sadTechSetupReviewedBy,
+          
+          operationalRunbookStatus: projectPayloadToInsert.sadReducers.sadOperationalRunbookStatus,
+          operationalRunbookFollowUp: projectPayloadToInsert.sadReducers.sadOperationalRunbookFollowUp,
+          shortNameOperationalRunbookReviewer: projectPayloadToInsert.sadReducers.sadOperationalRunbookReviewedBy
+        },
+        businessCase: {
+          assumption: projectPayloadToInsert.bcReducers.bcKeyAssumptions,
+          businessCaseReviewedByOPAFCStatus: projectPayloadToInsert.bcReducers.bcReviewedByOPAFC,
+          shortNameReviewer: projectPayloadToInsert.bcReducers.bcReviewer,
+          shortNameApprover: projectPayloadToInsert.bcReducers.bcApprovedBy
+        },
+        outcomeIndicatorArray: projectPayloadToInsert.bcReducers.bcKPIs.kpis
+            .map(function(el) {
+               return {
+                  name:el.indicator.selected,
+                  
+                  baseline_year: projectPayloadToInsert.bcReducers.bcKPIs.bcBaselineColumn.selected,
+                  baseline: el.baseline,
+              
+                  year1_year: projectPayloadToInsert.bcReducers.bcKPIs.bcYear1Column.selected,
+                  year1:  el.year1,
+              
+                  year2_year: projectPayloadToInsert.bcReducers.bcKPIs.bcYear2Column.selected,
+                  year2:  el.year2,
+              
+                  year3_year: projectPayloadToInsert.bcReducers.bcKPIs.bcYear3Column.selected,
+                  year3:  el.year3,
+              
+                  year4_year: projectPayloadToInsert.bcReducers.bcKPIs.bcYear4Column.selected,
+                  year4:  el.year4,
+              
+                  year5_year: projectPayloadToInsert.bcReducers.bcKPIs.bcYear5Column.selected,
+                  year5:  el.year5,
+                } 
+            }),
+        costItemArray: projectPayloadToInsert.bciReducers.bciItems.bciCostItems.costItems
+          .map(function(el){
+            return {
+                  name: el.item,
+                  assumptionsComments: el.assumptionsComments,
+      
+                  baseline_year: projectPayloadToInsert.bciReducers.bciItems.bciBaselineColumn.selected,
+                  baseline: el.baseline,
+      
+                  year1_year: projectPayloadToInsert.bciReducers.bciItems.bciYear1Column.selected,
+                  year1: el.year1,
+      
+                  year2_year: projectPayloadToInsert.bciReducers.bciItems.bciYear2Column.selected,
+                  year2: el.year2,
+      
+                  year3_year: projectPayloadToInsert.bciReducers.bciItems.bciYear3Column.selected,
+                  year3: el.year3,
+      
+                  year4_year: projectPayloadToInsert.bciReducers.bciItems.bciYear4Column.selected,
+                  year4: el.year4,
+      
+                  year5_year: projectPayloadToInsert.bciReducers.bciItems.bciYear5Column.selected,
+                  year5: el.year5,
+              }
+            }),
+        savingItemArray: projectPayloadToInsert.bciReducers.bciItems.bciSavingItems.savingItems
+          .map(function(el){
+            return {
+                  name: el.item,
+                  assumptionsComments: el.assumptionsComments,
+      
+                  baseline_year: projectPayloadToInsert.bciReducers.bciItems.bciBaselineColumn.selected,
+                  baseline: el.baseline,
+      
+                  year1_year: projectPayloadToInsert.bciReducers.bciItems.bciYear1Column.selected,
+                  year1: el.year1,
+      
+                  year2_year: projectPayloadToInsert.bciReducers.bciItems.bciYear2Column.selected,
+                  year2: el.year2,
+      
+                  year3_year: projectPayloadToInsert.bciReducers.bciItems.bciYear3Column.selected,
+                  year3: el.year3,
+      
+                  year4_year: projectPayloadToInsert.bciReducers.bciItems.bciYear4Column.selected,
+                  year4: el.year4,
+      
+                  year5_year: projectPayloadToInsert.bciReducers.bciItems.bciYear5Column.selected,
+                  year5: el.year5,
+              }
+            }),
+        realizationPlanArray: projectPayloadToInsert.bciReducers.bciItems.bciDriverItems.driverItems
+          .map(function(el){
+            return {
+                  driver: el.driver,
+                  enabler:el.enabler,
+                  action: el.driver_item_action,
+                  feasibility: el.feasibility
+                 }      
+            }),
+        projectPlanArray: projectPayloadToInsert.ppReducers.ppProjectPlans.projectPlans
+          .map(function(el){
+            return {
+                  projectPlanType: el.project_plan_type,
+                  activity:el.activity,
+                  begin: transformDate(el.begin),
+                  end: transformDate(el.end)
+                 }
+      
+            }),
+        resourcePlanArray: projectPayloadToInsert.rpReducers.rpResources.resources
+          .map(function(el){
+            return {
+                    resourcePlanOwner: el.resource_owner,
+                    roleRequired: el.role_required,
+                    name: el.name,
+                    allocation: el.allocation,
+                    start: transformDate(el.start_date),
+                    duration: el.duration
+                  }
+            }),
+        riskRegisterArray: projectPayloadToInsert.rrReducers.rrRisks.risks
+          .map(function(el){
+            return {
+                    description: el.description,
+                    impact: el.impact,
+                    mitigatingActions: el.mitigating_action,
+                  }
+            }),
+        riskRegisterArray: projectPayloadToInsert.lpcmReducers.lpcmItems.lpcmLegalItems.legalItems
+          .map(function(el){
+            return {
+                    requirement: el.requirement,
+                    status: el.status,
+                    follow_up_action: el.follow_up_action,
+                    reviewed_approved: el.reviewed_approved
+            }
+          })
+    }
+
+    var createEndpoint = ""
+    fetch(URL)
+
+  }  
 
   return (
       <React.Fragment>
@@ -333,6 +511,7 @@ const LegalPlanChangeMgmtScreen = () => {
             <LPCMGeneratePDFContainer className="ignore">
               <LPCMGeneratePDFButton onClick={ generatePDF }> Download PDF </LPCMGeneratePDFButton>
             </LPCMGeneratePDFContainer>  
+            <button onClick={ saveProject } style={{width:'100px'}}>Save Project</button>
           </LPCMContainer>
           <a target="_blank" id="pdf-download-link" style={{display: "none"}} title="Download PDF File"></a>
         </LPCMMainContainer>

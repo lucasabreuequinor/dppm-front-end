@@ -6,7 +6,6 @@ import bciYear4Column from './bciYear4Column'
 import bciYear5Column from './bciYear5Column'
 import bciCostItems from './bciCostItems'
 import bciSavingItems from './bciSavingItems'
-import bciProductionItems from './bciProductionItems'
 import bciDriverItems from './bciDriverItems'
 
 
@@ -22,7 +21,6 @@ const bciItems = combineReducers({
   bciYear5Column,
   bciCostItems,
   bciSavingItems,
-  bciProductionItems,
   bciDriverItems
 })
 

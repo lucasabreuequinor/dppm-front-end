@@ -1,5 +1,13 @@
 import {combineReducers} from 'redux' 
 
+function getCurrentDateFormated(){
+  var today = new Date();
+  var year = today.getFullYear();
+  var month = today.getMonth()+1;
+  var day = today.getDate();
+
+  return `${year}-${month}-${day}`
+}
 
 const resource = (state, action) => {
   switch(action.type){
@@ -10,7 +18,7 @@ const resource = (state, action) => {
         role_required: action.role_required,
         name: action.name,
         allocation: action.allocation,
-        start_date: action.start_date,
+        start_date: getCurrentDateFormated(),
         duration: action.duration
       }
 

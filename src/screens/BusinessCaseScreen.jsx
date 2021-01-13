@@ -26,7 +26,6 @@ import {
   BCKeyPerformanceIndicatorsContainer,
   BCKeyPerformanceIndicatorsLabel,
   BCKeyPerformanceIndicatorsTableContainer,
-  BCKeyPerformanceIndicatorsTableImpactColumn,
   BCKeyPerformanceIndicatorsTableIndicatorColumn,
 
   BCKeyPerformanceIndicatorsTableBaselineContainer,
@@ -64,7 +63,6 @@ import {
   BCKeyPerformanceIndicatorsDeleteKpiButton,
   BCKeyPerformanceIndicatorsDeleteKpiButtonLabel,
 
-  BCKeyPerformanceIndicatorsKpiItemImpactType,
   BCKeyPerformanceIndicatorsKpiItemIndicator,
   BCKeyPerformanceIndicatorsKpiItemBaseline,
   BCKeyPerformanceIndicatorsKpiItemYear1,
@@ -102,12 +100,12 @@ const BusinessCaseScreen = () => {
       dispatch(addKPI(
                 {
                   id: nextKpiId,
-                  baseline: 100,
-                  year1: 100,
-                  year2: 100,
-                  year3: 100,
-                  year4: 100,
-                  year5: 100,
+                  baseline: 0,
+                  year1: 0,
+                  year2: 0,
+                  year3: 0,
+                  year4: 0,
+                  year5: 0,
                 }
       ))
       dispatch(incrementNextKPIID())
@@ -216,11 +214,11 @@ const BusinessCaseScreen = () => {
 
                     </BCKeyAssumpCashFlowImpactContainer>
 
+                    {/* A ESTRUTURA A BAIXO DEVE MUDAR A NOMENCLATURA PARA DE KEY PERFORMANCE INDICATOR ÁRA OUTCOME INDICATOR!! */}
                     <BCKeyPerformanceIndicatorsContainer>
-                      <BCKeyPerformanceIndicatorsLabel>Key performance indicators:</BCKeyPerformanceIndicatorsLabel>
+                      <BCKeyPerformanceIndicatorsLabel>Outcome indicators:</BCKeyPerformanceIndicatorsLabel>
                       <BCKeyPerformanceIndicatorsTableContainer>
 
-                        <BCKeyPerformanceIndicatorsTableImpactColumn>Impact type</BCKeyPerformanceIndicatorsTableImpactColumn>
                         <BCKeyPerformanceIndicatorsTableIndicatorColumn>Indicator</BCKeyPerformanceIndicatorsTableIndicatorColumn>
                         
                         <BCKeyPerformanceIndicatorsTableBaselineContainer>
@@ -257,8 +255,7 @@ const BusinessCaseScreen = () => {
 
                         {
                           kpis.map(kpi =>
-                            <React.Fragment>
-                              <BCKeyPerformanceIndicatorsKpiItemImpactType kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemImpactType>
+                            <React.Fragment> 
                               <BCKeyPerformanceIndicatorsKpiItemIndicator kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemIndicator>
                               <BCKeyPerformanceIndicatorsKpiItemBaseline kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemBaseline>
                               <BCKeyPerformanceIndicatorsKpiItemYear1 kpi={kpi}></BCKeyPerformanceIndicatorsKpiItemYear1>

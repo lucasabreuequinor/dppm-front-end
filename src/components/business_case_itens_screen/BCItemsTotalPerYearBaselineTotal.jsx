@@ -41,17 +41,13 @@ const BCItemsTotalPerYearBaselineTotal = () => {
 
   const costItemsBaselineTotal = costItems.reduce((sum, currItem) => sum + (currItem.baseline ? parseFloat(currItem.baseline): 0), 0)
 
-  const productionItems  = useSelector(state => state.bciReducers.bciItems.bciProductionItems.productionItems)
-
-  const productionItemsBaselineTotal = productionItems.reduce((sum, currItem) => sum + (currItem.baseline ? parseFloat(currItem.baseline): 0), 0)
-
-  const totalPerYearBaselineTotal = savingItemsBaselineTotal - costItemsBaselineTotal + productionItemsBaselineTotal
+  const totalPerYearBaselineTotal = parseFloat(savingItemsBaselineTotal - costItemsBaselineTotal).toFixed(2)
 
   return <BCItemsTotalPerYearBaselineTotalStyled
             type="number"
-            min="0"
+            step="any"
             readOnly
-            value={ (savingItems.length || costItems.length || productionItems.length) ? totalPerYearBaselineTotal: ""}
+            value={ (savingItems.length || costItems.length) ? totalPerYearBaselineTotal: ""}
 
           />
 

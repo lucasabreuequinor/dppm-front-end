@@ -6,7 +6,6 @@ import addKPI from './addKPI'
 import deleteKPI from './deleteKPI'
 import incrementNextKPIID from './incrementNextKPIID'
 import decrementNextKPIID from './decrementNextKPIID'
-import changeKPIImpactTypeSelected from './changeKPIImpactTypeSelected'
 import changeKPIIndicatorSelected from './changeKPIIndicatorSelected'
 import changeKPIBaseline from './changeKPIBaseline'
 import changeKPIYear1 from './changeKPIYear1'
@@ -34,7 +33,6 @@ export {
   deleteKPI,
   incrementNextKPIID,
   decrementNextKPIID,
-  changeKPIImpactTypeSelected,
   changeKPIIndicatorSelected,
   changeKPIBaseline,
   changeKPIYear1,

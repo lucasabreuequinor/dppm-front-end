@@ -33,14 +33,14 @@ const BCItemsSavingPerYearItemYear1 = ({savingItem, className}) => {
   return <BCItemsSavingPerYearItemYear1Styled
             className={className}
             type="number"
-            min="0"
+            step="any"
             key={savingItem.id}  
             style={{
                     backgroundColor: savingItem.id % 2 != 0 ? '#b3c7c9' : '#E0E0E0'
                   }}
 
             value={savingItem.year1}
-            onChange={(e) => dispatch(changeSavingItemYear1({id: savingItem.id, year1:parseInt(e.target.value)})) }
+            onChange={(e) => dispatch(changeSavingItemYear1({id: savingItem.id, year1:parseFloat(e.target.value)})) }
           />
 
 }

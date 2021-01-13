@@ -4,7 +4,6 @@ const addCostItem = (item) => {
     type: 'ADD_COST_ITEM',
     id: item.id,
     item: item.item,
-    cost_type: item.cost_type,
     baseline: item.baseline,
     year1: item.year1,
     year2: item.year2,

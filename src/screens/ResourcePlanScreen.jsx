@@ -59,12 +59,12 @@ const ResourcePlanScreen = () => {
       dispatch(addResource(
                 {
                   id: nextResourceId,
-                  resource_owner: "lala",
-                  role_required: "lala",
-                  name: "lala",
-                  allocation: "lala",
-                  start_date: "lala",
-                  duration: "lala"
+                  resource_owner: "",
+                  role_required: "",
+                  name: "",
+                  allocation: "",
+                  start_date: "",
+                  duration: ""
                 }
       ))
       dispatch(incrementNextResourceID())

@@ -2,7 +2,6 @@ const addKPI = (kpi) => {
   return {
     type: 'ADD_KPI',
     id: kpi.id,
-    impact_type: kpi.impact_type,
     indicator: kpi.indicator,
     baseline: kpi.baseline,
     year1: kpi.year1,

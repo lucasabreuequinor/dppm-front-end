@@ -31,12 +31,9 @@ const BCItemsCostPerYearTotalSyled = styled.input`
 `
 const BCItemsCostPerYearTotal = () => {
 
-  const costItems = useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
+  const costItems = useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems) 
 
-  
-
-
-  const costItemsTotal = costItems.reduce((sum, item) => {
+  const costItemsTotal = parseFloat(costItems.reduce((sum, item) => {
                                           return (
                                               sum + 
                                               (item.baseline ? parseFloat(item.baseline): 0) +
@@ -47,13 +44,16 @@ const BCItemsCostPerYearTotal = () => {
                                               (item.year5 ? parseFloat(item.year5): 0) 
                                             ) 
                                           } 
-                                        , 0)
+                                        , 0)).toFixed(2)
+
+
+  console.log(costItemsTotal)
 
   return <BCItemsCostPerYearTotalSyled
             type="number"
-            min="0"
+            step="any"
             readOnly
-            value={costItemsTotal ? costItemsTotal : ""}
+            value={costItems.length ? costItemsTotal : ""}
           />
 
 }

@@ -33,12 +33,12 @@ const BCItemsCostPerYearYear5Total = () => {
 
   const dispatch = useDispatch();
 
-  const costItemsYear5Total  = useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
-                                   .reduce((sum, currItem) => sum + (currItem.year5 ? parseFloat(currItem.year5): 0), 0)
+  const costItemsYear5Total  = parseFloat(useSelector(state => state.bciReducers.bciItems.bciCostItems.costItems)
+                                   .reduce((sum, currItem) => sum + (currItem.year5 ? parseFloat(currItem.year5): 0), 0)).toFixed(2)
 
   return <BCItemsCostPerYearYear5TotalStyled
             type="number"
-            min="0"
+            step="any"
             readOnly
             value={costItemsYear5Total ? costItemsYear5Total : ""}
           />

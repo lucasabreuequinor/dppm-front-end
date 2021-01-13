@@ -7,7 +7,6 @@ const costItem = (state, action) => {
       return {
         id: action.id,
         item: action.item, 
-        cost_type: action.cost_type,
         baseline: action.baseline,
         year1: action.year1,
         year2: action.year2,
@@ -28,14 +27,6 @@ const costItem = (state, action) => {
       return {
         ...state,
         item: action.item
-      };
-    case 'CHANGE_COST_ITEM_COST_TYPE':
-      if(state.id !== action.id){
-        return state;
-      }
-      return {
-        ...state,
-        cost_type: action.cost_type
       };
     case 'CHANGE_COST_ITEM_BASELINE':
       if(state.id !== action.id){
@@ -120,8 +111,6 @@ const costItems = (state = [], action) => {
 
 
     case 'CHANGE_COST_ITEM_ITEM':
-      return state.map(costItem_item => costItem(costItem_item,action))
-    case 'CHANGE_COST_ITEM_COST_TYPE':
       return state.map(costItem_item => costItem(costItem_item,action))
       case 'CHANGE_COST_ITEM_BASELINE':
         return state.map(costItem_item => costItem(costItem_item,action))

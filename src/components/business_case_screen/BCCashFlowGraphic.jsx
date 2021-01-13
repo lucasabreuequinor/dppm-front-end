@@ -26,15 +26,15 @@ const BCCashFlowGraphic = ({style}) => {
     {year: year5LineColumn, name: 'year5' },
   ]
 
-  const data = [...Array(numberColumns).keys()]
+  const data = [...Array(numberColumns).keys()]  
                .map((el,i) =>
                 {
-            
-                  const opexSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'OPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
-                  const capexSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'CAPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
-                  const peSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'PE').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
-                  const mppSum = kpis.filter(el => el.impact_type.selected == 'outcome' && el.indicator.selected == 'MPP').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0)
 
+                  const opexSum = parseFloat(kpis.filter(el => el.indicator.selected == 'OPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0).toFixed(2))
+                  const capexSum = parseFloat(kpis.filter(el => el.indicator.selected == 'CAPEX').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0).toFixed(2))
+                  const peSum = parseFloat(kpis.filter(el => el.indicator.selected == 'PE').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0).toFixed(2))
+                  const mppSum = parseFloat(kpis.filter(el => el.indicator.selected == 'MPP').reduce(((acc, curr) => acc + curr[baselineYears[i].name]), 0).toFixed(2))
+                  
                   return( 
                   {
                     name: baselineYears[i].year,
